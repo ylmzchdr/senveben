@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://egelove.tr";
+  const baseUrl = "https://senveben.com.tr";
   const now = new Date();
 
   // Veritabanınızdan veya local bir json dosyasından 81 ili çekeceğiniz alan

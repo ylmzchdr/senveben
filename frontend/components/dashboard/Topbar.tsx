@@ -101,7 +101,7 @@ export default function Topbar({
 
   useEffect(() => {
     const storedTheme =
-      localStorage.getItem("egelove-theme");
+      localStorage.getItem("senveben-theme");
 
     const initialTheme: ThemeMode =
       storedTheme === "light" ||
@@ -205,7 +205,7 @@ export default function Topbar({
     setTheme(nextTheme);
 
     localStorage.setItem(
-      "egelove-theme",
+      "senveben-theme",
       nextTheme,
     );
 
@@ -257,7 +257,8 @@ export default function Topbar({
   return (
     <div
       ref={topbarRef}
-      className="relative z-50 mb-7 rounded-[26px] border border-white/[0.07] bg-[#0b0e18]/80 px-3 py-3 shadow-[0_20px_70px_rgba(0,0,0,0.24)] backdrop-blur-2xl sm:px-4"
+      className="relative z-50 mb-7 rounded-[26px] border border-zinc-100 bg-white px-3 py-3 shadow-sm"
+
     >
       <div
         aria-hidden="true"
@@ -270,7 +271,9 @@ export default function Topbar({
           type="button"
           onClick={onOpenMobileMenu}
           aria-label="Menüyü aç"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.035] text-slate-300 transition-all duration-300 hover:border-pink-400/20 hover:bg-pink-400/[0.07] hover:text-pink-300 lg:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-zinc-100 bg-gray-50 text-gray-600 hover:bg-pink-50 hover:text-pink-600"
+
+
         >
           <Menu
             className="h-5 w-5"
@@ -298,10 +301,11 @@ export default function Topbar({
             }
             placeholder="İsim, şehir veya kullanıcı adı ara..."
             aria-label="Üye ara"
-            className="h-11 w-full rounded-2xl border border-white/[0.07] bg-white/[0.035] pl-11 pr-20 text-base font-medium text-white outline-none transition-all duration-300 placeholder:text-slate-600 hover:border-white/10 focus:border-pink-400/25 focus:bg-white/[0.055] focus:shadow-[0_0_0_4px_rgba(244,114,182,0.05)]"
+           className="h-11 w-full rounded-2xl border border-zinc-200 bg-zinc-50 pl-11 pr-20 text-base font-normal text-zinc-800 placeholder-zinc-400 outline-none transition-all focus:border-pink-300 focus:bg-white focus:ring-2 focus:ring-pink-100"
+
           />
 
-          <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-lg border border-white/[0.07] bg-white/[0.035] px-2 py-1 text-[9px] font-bold text-slate-600 xl:block">
+          <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-lg border border-white/[0.07] bg-white px-2 py-1 text-[9px] font-bold text-slate-600 xl:block">
             ENTER
           </span>
         </form>
@@ -310,7 +314,7 @@ export default function Topbar({
         <Link
           href="/search"
           aria-label="Üye ara"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.035] text-slate-400 transition-all duration-300 hover:border-pink-400/20 hover:bg-pink-400/[0.07] hover:text-pink-300 md:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white text-[#7A5363] transition-all duration-300 hover:border-pink-400/20 hover:bg-pink-400/[0.07] hover:text-pink-300 md:hidden"
         >
           <Search
             className="h-[19px] w-[19px]"
@@ -337,9 +341,10 @@ export default function Topbar({
         className={[
           "flex h-9 min-w-[38px] items-center justify-center rounded-xl px-2",
           "text-[11px] font-extrabold transition-all duration-200",
-          isSelected
-            ? "border border-pink-400/30 bg-pink-400/[0.12] text-pink-300"
-            : "border border-transparent text-slate-500 hover:border-white/[0.08] hover:bg-white/[0.05] hover:text-white",
+         isSelected
+  ? "border border-pink-300 bg-pink-500 text-white font-semibold"
+  : "border border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-pink-200 hover:bg-pink-50 hover:text-pink-600"
+
         ].join(" ")}
       >
         {language.shortLabel}
@@ -361,8 +366,9 @@ export default function Topbar({
               className={[
                 "relative flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border px-3 transition-all duration-300",
                 activePanel === "messages"
-                  ? "border-blue-400/25 bg-blue-400/[0.08] text-blue-300"
-                  : "border-white/[0.07] bg-white/[0.035] text-slate-400 hover:border-blue-400/20 hover:bg-blue-400/[0.07] hover:text-blue-300",
+                 ? "border-pink-300 bg-pink-100 text-pink-600 font-semibold"
+: "border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-pink-200 hover:bg-pink-50 hover:text-pink-600"
+
               ].join(" ")}
             >
               <MessageCircle
@@ -374,8 +380,8 @@ export default function Topbar({
                 Mesajlar
               </span>
 
-              {unreadMessages > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#0b0e18] bg-blue-500 px-1 text-[9px] font-black text-white">
+             {unreadMessages > 0 && (
+                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-white bg-pink-500 px-1 text-[9px] font-black text-white">
                   {unreadMessages > 99
                     ? "99+"
                     : unreadMessages}
@@ -387,7 +393,7 @@ export default function Topbar({
               <div className="absolute right-0 top-[calc(100%+12px)] w-[320px] max-w-[calc(100vw-24px)] overflow-hidden rounded-[24px] border border-white/[0.09] bg-[#0d101b]/95 shadow-[0_28px_90px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
                 <div className="flex items-center justify-between border-b border-white/[0.065] px-4 py-4">
                   <div>
-                    <p className="text-base font-extrabold text-white">
+                    <p className="text-base font-extrabold text-[#2D1721]">
                       Mesajlar
                     </p>
 
@@ -401,21 +407,21 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-600 transition hover:bg-white/[0.05] hover:text-white"
+                    className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-600 transition hover:bg-white/[0.05] hover:text-[#2D1721]"
                   >
                     <X className="h-4 w-4" />
                   </button>
                 </div>
 
                 <div className="px-5 py-8 text-center">
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/[0.08] text-blue-300">
+                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-400/[0.08] text-pink-300">
                     <MessageCircle
                       className="h-5 w-5"
                       strokeWidth={1.8}
                     />
                   </span>
 
-                  <p className="mt-4 text-xs font-bold text-slate-300">
+                  <p className="mt-4 text-xs font-bold text-[#6B4454]">
                     Mesaj önizlemeleri hazırlanıyor
                   </p>
 
@@ -432,7 +438,7 @@ export default function Topbar({
                   onClick={() =>
                     setActivePanel(null)
                   }
-                  className="flex min-h-11 items-center justify-center border-t border-white/[0.065] text-xs font-bold text-blue-300 transition hover:bg-blue-400/[0.05]"
+                  className="flex min-h-11 items-center justify-center border-t border-white/[0.065] text-xs font-bold text-pink-300 transition hover:bg-pink-400/[0.05]"
                 >
                   Tüm mesajları aç
                 </Link>
@@ -456,8 +462,9 @@ export default function Topbar({
                 "relative flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border px-3 transition-all duration-300",
                 activePanel ===
                 "notifications"
-                  ? "border-pink-400/25 bg-pink-400/[0.08] text-pink-300"
-                  : "border-white/[0.07] bg-white/[0.035] text-slate-400 hover:border-pink-400/20 hover:bg-pink-400/[0.07] hover:text-pink-300",
+                  ? "border-pink-300 bg-pink-100 text-pink-600 font-semibold"
+: "border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-pink-200 hover:bg-pink-50 hover:text-pink-600"
+
               ].join(" ")}
             >
               <Bell
@@ -470,7 +477,7 @@ export default function Topbar({
               </span>
 
               {unreadNotifications > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#0b0e18] bg-pink-500 px-1 text-[9px] font-black text-white">
+                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#0b0e18] bg-pink-500 px-1 text-[9px] font-black text-[#2D1721]">
                   {unreadNotifications >
                   99
                     ? "99+"
@@ -484,7 +491,7 @@ export default function Topbar({
               <div className="absolute right-0 top-[calc(100%+12px)] w-[340px] max-w-[calc(100vw-24px)] overflow-hidden rounded-[24px] border border-white/[0.09] bg-[#0d101b]/95 shadow-[0_28px_90px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
                 <div className="flex items-center justify-between border-b border-white/[0.065] px-4 py-4">
                   <div>
-                    <p className="text-base font-extrabold text-white">
+                    <p className="text-base font-extrabold text-[#2D1721]">
                       Bildirimler
                     </p>
 
@@ -499,7 +506,7 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-600 transition hover:bg-white/[0.05] hover:text-white"
+                    className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-600 transition hover:bg-white/[0.05] hover:text-[#2D1721]"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -513,7 +520,7 @@ export default function Topbar({
                     />
                   </span>
 
-                  <p className="mt-4 text-xs font-bold text-slate-300">
+                  <p className="mt-4 text-xs font-bold text-[#6B4454]">
                     Yeni bildirimin
                     bulunmuyor
                   </p>
@@ -551,11 +558,12 @@ export default function Topbar({
               className={[
                 "flex h-11 shrink-0 items-center gap-2 rounded-2xl border p-1.5 pr-2.5 transition-all duration-300",
                 activePanel === "profile"
-                  ? "border-pink-400/25 bg-pink-400/[0.08]"
-                  : "border-white/[0.07] bg-white/[0.035] hover:border-white/15 hover:bg-white/[0.06]",
+                 ? "border-pink-300 bg-pink-100 text-pink-600"
+: "border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-pink-200 hover:bg-pink-50 hover:text-pink-600",
+
               ].join(" ")}
             >
-              <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-pink-500 via-rose-500 to-orange-400">
+              <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600">
                 {profilePhoto ? (
                   <img
                     src={profilePhoto}
@@ -564,7 +572,8 @@ export default function Topbar({
                   />
                 ) : (
                   <UserRound
-                    className="h-[17px] w-[17px] text-white"
+                   className="h-[17px] w-[17px] text-zinc-500 group-hover:text-pink-600"
+
                     strokeWidth={1.9}
                   />
                 )}
@@ -573,11 +582,11 @@ export default function Topbar({
               </span>
 
               <div className="hidden min-w-0 pr-1 text-left sm:flex sm:flex-col">
-                <span className="block max-w-28 truncate text-xs font-black text-slate-200">
+                <span className="block max-w-28 truncate text-xs font-black text-[#4A2835]">
                   {userName}
                 </span>
 
-                <span className="block max-w-28 truncate text-[10px] font-medium text-purple-400">
+                <span className="block max-w-28 truncate text-[10px] font-medium text-pink-400">
                   {userCity}
                 </span>
               </div>
@@ -594,9 +603,9 @@ export default function Topbar({
 
             {activePanel === "profile" && (
               <div className="absolute right-0 top-[calc(100%+12px)] w-72 overflow-hidden rounded-[24px] border border-white/[0.09] bg-[#0d101b]/95 p-2 shadow-[0_28px_90px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-                <div className="relative overflow-hidden rounded-[19px] border border-white/[0.06] bg-gradient-to-br from-pink-500/[0.12] via-violet-500/[0.07] to-transparent p-4">
+                <div className="relative overflow-hidden rounded-[19px] border border-pink-100 bg-gradient-to-br from-pink-500/[0.12] via-pink-400/[0.07] to-transparent p-4">
                   <div className="flex items-center gap-3">
-                    <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-pink-500 via-rose-500 to-orange-400 shadow-[0_10px_30px_rgba(236,72,153,0.2)]">
+                    <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 shadow-[0_10px_30px_rgba(236,72,153,0.2)]">
                       {profilePhoto ? (
                         <img
                           src={profilePhoto}
@@ -605,7 +614,7 @@ export default function Topbar({
                         />
                       ) : (
                         <UserRound
-                          className="h-6 w-6 text-white"
+                          className="h-6 w-6 text-[#2D1721]"
                           strokeWidth={1.8}
                         />
                       )}
@@ -613,16 +622,16 @@ export default function Topbar({
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <p className="truncate text-base font-extrabold text-white">
+                        <p className="truncate text-base font-extrabold text-[#2D1721]">
                           {userName}
                         </p>
 
                         {isPremium && (
-                          <Crown className="h-3.5 w-3.5 text-amber-300" />
+                          <Crown className="h-3.5 w-3.5 text-pink-500" />
                         )}
                       </div>
 
-                      <p className="mt-1 truncate text-[10px] text-slate-500">
+                      <p className="mt-1 truncate text-[10px] text-[#8A6372]">
                         {userCity}
                       </p>
 
@@ -640,7 +649,7 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-slate-400 transition hover:bg-white/[0.05] hover:text-white"
+                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-[#7A5363] transition hover:bg-white/[0.05] hover:text-[#2D1721]"
                   >
                     <UserRound className="h-4 w-4 text-pink-300" />
                     Profilimi görüntüle
@@ -651,9 +660,9 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-slate-400 transition hover:bg-white/[0.05] hover:text-white"
+                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-[#7A5363] transition hover:bg-white/[0.05] hover:text-[#2D1721]"
                   >
-                    <Settings className="h-4 w-4 text-blue-300" />
+                    <Settings className="h-4 w-4 text-pink-300" />
                     Profili düzenle
                   </Link>
 
@@ -662,9 +671,9 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-slate-400 transition hover:bg-amber-300/[0.06] hover:text-amber-200"
+                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-[#7A5363] transition hover:bg-pink-300/[0.06] hover:text-pink-600"
                   >
-                    <Crown className="h-4 w-4 text-amber-300" />
+                    <Crown className="h-4 w-4 text-pink-500" />
                     Premium özellikler
                   </Link>
 
@@ -673,7 +682,7 @@ export default function Topbar({
                     onClick={() =>
                       setActivePanel(null)
                     }
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-slate-400 transition hover:bg-emerald-300/[0.05] hover:text-emerald-200"
+                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-[#7A5363] transition hover:bg-emerald-300/[0.05] hover:text-emerald-200"
                   >
                     <ShieldCheck className="h-4 w-4 text-emerald-300" />
                     Güvenlik merkezi
@@ -688,16 +697,16 @@ export default function Topbar({
                     }
                     className="mt-2 flex items-center gap-3 rounded-2xl border border-amber-300/[0.11] bg-gradient-to-r from-amber-300/[0.08] via-orange-400/[0.06] to-pink-500/[0.07] px-3 py-3 transition hover:border-amber-300/20"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-300/[0.1] text-amber-300">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-pink-300/[0.1] text-pink-500">
                       <Sparkles className="h-4 w-4" />
                     </span>
 
                     <span className="min-w-0">
-                      <span className="block text-[11px] font-extrabold text-white">
+                      <span className="block text-[11px] font-extrabold text-[#2D1721]">
                         Premium’a yükselt
                       </span>
 
-                      <span className="mt-0.5 block text-[9px] text-slate-500">
+                      <span className="mt-0.5 block text-[9px] text-[#8A6372]">
                         Daha fazla görünürlük
                         kazan
                       </span>
@@ -705,12 +714,12 @@ export default function Topbar({
                   </Link>
                 )}
 
-                <div className="my-2 h-px bg-white/[0.06]" />
+                <div className="my-2 h-px bg-white" />
 
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left text-xs font-bold text-slate-500 transition hover:bg-red-400/[0.06] hover:text-red-300"
+                  className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left text-xs font-bold text-[#8A6372] transition hover:bg-red-400/[0.06] hover:text-red-300"
                 >
                   <LogOut className="h-4 w-4" />
                   Güvenli çıkış yap
@@ -723,3 +732,8 @@ export default function Topbar({
     </div>
   );
 }
+
+
+
+
+

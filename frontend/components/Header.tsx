@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -19,7 +19,7 @@ type MeResponse = {
 };
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://egelove-backend.onrender.com";
+  process.env.NEXT_PUBLIC_API_URL || "https://senveben-backend.onrender.com";
 
 const languages: { code: Lang; label: string }[] = [
   { code: "TR", label: "Türkçe" },
@@ -111,12 +111,12 @@ setUserName(getFirstName(user));
 ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FFC000] text-black shadow-md border-b border-black/10 font-sans">
+    <header className="sticky top-0 z-50 bg-[#EC4899] text-black shadow-md border-b border-black/10 font-sans">
       <div className="mx-auto max-w-7xl px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 no-underline">
           <Heart className="w-7 h-7 text-black fill-black" />
           <span className="text-xl font-black tracking-tighter text-black lowercase">
-            egelove
+            senveben
           </span>
         </Link>
 
@@ -158,7 +158,7 @@ setUserName(getFirstName(user));
             <>
               <Link
                 href="/profile"
-                className="bg-black text-[#FFC000] font-bold text-xs h-8 px-4 rounded flex items-center no-underline max-w-[220px] truncate"
+                className="bg-black text-pink-600 font-bold text-xs h-8 px-4 rounded flex items-center no-underline max-w-[220px] truncate"
               >
                 {loggedInLabel}
               </Link>
@@ -182,7 +182,7 @@ setUserName(getFirstName(user));
 
               {onOpenRegister && (
                 <Button
-                  className="bg-black text-[#FFC000] hover:bg-black/80 font-bold text-xs h-8 px-4 shadow-sm"
+                  className="bg-black text-pink-600 hover:bg-black/80 font-bold text-xs h-8 px-4 shadow-sm"
                   onClick={onOpenRegister}
                 >
                   {t.auth.register}
@@ -203,7 +203,7 @@ setUserName(getFirstName(user));
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#FFC000] border-t border-black/10 p-4">
+        <div className="lg:hidden bg-[#EC4899] border-t border-black/10 p-4">
           <nav className="flex flex-col gap-3">
             {navItems.map((item) => (
               <Link
@@ -239,7 +239,7 @@ setUserName(getFirstName(user));
               <>
                 <Link
                  href="/profile"
-                  className="bg-black text-[#FFC000] w-full font-bold text-center rounded px-4 py-2 no-underline truncate"
+                  className="bg-black text-pink-600 w-full font-bold text-center rounded px-4 py-2 no-underline truncate"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {loggedInLabel}
@@ -270,7 +270,7 @@ setUserName(getFirstName(user));
 
                 {onOpenRegister && (
                   <Button
-                    className="bg-black text-[#FFC000] w-full font-bold"
+                    className="bg-black text-pink-600 w-full font-bold"
                     onClick={() => {
                       onOpenRegister();
                       setMobileMenuOpen(false);
@@ -287,3 +287,6 @@ setUserName(getFirstName(user));
     </header>
   );
 }
+
+
+

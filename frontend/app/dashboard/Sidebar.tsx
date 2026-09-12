@@ -37,7 +37,8 @@ function isRouteActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {
+
   const pathname = usePathname();
   const router = useRouter();
   const { lang } = useI18n();
@@ -52,7 +53,8 @@ export default function Sidebar() {
       profile: "Profilim",
       settings: "Ayarlar",
       help: "Yardım Merkezi",
-      platform: "EGELOVE.TR KALİTESİNDE GÜVENLİ DENEYİM",
+      platform: "SenVeBen.TR KALİTESİNDE GÜVENLİ DENEYİM",
+
       menu: "Kumanda Merkezi",
       account: "Hesabım",
       special: "Özel",
@@ -75,7 +77,7 @@ export default function Sidebar() {
       profile: "My Profile",
       settings: "Settings",
       help: "Help Center",
-      platform: "SECURE EGELOVE.TR EXPERIENCE",
+      platform: "SECURE SenVeBen.TR EXPERIENCE",
       menu: "Control Center",
       account: "My Account",
       special: "Special",
@@ -98,7 +100,7 @@ export default function Sidebar() {
       profile: "Мой профиль",
       settings: "Настройки",
       help: "Центр помощи",
-      platform: "БЕЗОПАСНЫЙ ОПЫТ EGELOVE.TR",
+      platform: "БЕЗОПАСНЫЙ ОПЫТ SenVeBen.TR",
       menu: "Центр управления",
       account: "Мой аккаунт",
       special: "Особое",
@@ -121,7 +123,7 @@ export default function Sidebar() {
       profile: "ملفي الشخصي",
       settings: "الإعدادات",
       help: "مركز المساعدة",
-      platform: "تجربة EGELOVE.TR الآمنة",
+      platform: "تجربة SenVeBen.TR الآمنة",
       menu: "مركز التحكم",
       account: "حسابي",
       special: "مميز",
@@ -142,11 +144,7 @@ export default function Sidebar() {
       href: "/dashboard",
       icon: Gauge,
     },
-    {
-      label: copy.discover,
-      href: "/search",
-      icon: Compass,
-    },
+  
     {
       label: copy.likes,
       href: "/likes",
@@ -207,7 +205,7 @@ export default function Sidebar() {
       document.cookie =
         "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     } finally {
-      router.push("/auth");
+      router.push("/");
       router.refresh();
     }
   };
@@ -276,7 +274,8 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="relative flex h-full min-h-screen w-full flex-col overflow-hidden border-r border-white/[0.07] bg-[#080b14]/95 text-white backdrop-blur-2xl lg:w-[286px]">
+   <aside className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col overflow-hidden border-r border-white/[0.07] bg-slate-950 transition-all duration-300 md:sticky md:top-0 md:flex ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+
       {/* Arka plan ışıkları */}
       <div
         aria-hidden="true"
@@ -316,11 +315,11 @@ export default function Sidebar() {
             <div className="min-w-0">
               <div className="flex items-center gap-1">
                 <span className="text-[20px] font-black tracking-[-0.04em] text-white">
-                  EGE
+                  SEN
                 </span>
 
                 <span className="bg-gradient-to-r from-pink-400 via-rose-400 to-orange-300 bg-clip-text text-[20px] font-black tracking-[-0.04em] text-transparent">
-                  LOVE
+                  VEBEN
                 </span>
               </div>
 
@@ -380,7 +379,7 @@ export default function Sidebar() {
               </div>
 
               <h3 className="text-base font-extrabold tracking-tight text-white">
-                EGELOVE Premium
+                SenVeBen Premium
               </h3>
 
               <p className="mt-1.5 text-[11px] leading-5 text-slate-400">
@@ -456,7 +455,7 @@ export default function Sidebar() {
           </button>
 
           <p className="mt-3 text-center text-[9px] font-medium tracking-[0.08em] text-slate-700">
-            EGELOVE © 2026
+            SenVeBen � 2026
           </p>
         </div>
       </div>

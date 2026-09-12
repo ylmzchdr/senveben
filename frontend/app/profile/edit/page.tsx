@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -40,7 +40,7 @@ type Option = {
 const TEXT = {
   TR: {
     loading: "Profilin hazırlanıyor...",
-    badge: "EGELOVE PROFİL V2",
+    badge: "SENVEBEN PROFİL V2",
     title: "Profilini Düzenle",
     subtitle:
       "Profil bilgilerini güncel tutarak daha güvenilir ve doğru eşleşmeler elde et.",
@@ -98,7 +98,7 @@ name: "İsim / Rumuz",
   },
   EN: {
     loading: "Preparing your profile...",
-    badge: "EGELOVE PROFILE V2",
+    badge: "SENVEBEN PROFILE V2",
     title: "Edit Your Profile",
     subtitle:
       "Keep your profile up to date to receive more accurate and trustworthy matches.",
@@ -156,7 +156,7 @@ name: "İsim / Rumuz",
   },
   RU: {
     loading: "Подготовка профиля...",
-    badge: "ПРОФИЛЬ EGELOVE V2",
+    badge: "ПРОФИЛЬ SENVEBEN V2",
     title: "Редактировать профиль",
     subtitle:
       "Поддерживайте профиль в актуальном состоянии для более точных и надёжных совпадений.",
@@ -214,7 +214,7 @@ name: "İsim / Rumuz",
   },
   AR: {
     loading: "جارٍ تجهيز ملفك الشخصي...",
-    badge: "ملف EGELOVE V2",
+    badge: "ملف SENVEBEN V2",
     title: "تعديل الملف الشخصي",
     subtitle:
       "حافظ على تحديث ملفك للحصول على اقتراحات أكثر دقة وموثوقية.",
@@ -645,32 +645,32 @@ const currentLang: LangKey = (
   if (loading) {
     return (
       <div
-        className="flex min-h-screen items-center justify-center bg-[#090914] text-white"
+        className="flex min-h-screen items-center justify-center bg-[#FFF7FA] text-[#2D1721]"
         dir={isRtl ? "rtl" : "ltr"}
       >
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-10 w-10 animate-spin text-pink-400" />
-          <p className="text-base text-white/60">{tx.loading}</p>
+          <p className="text-base text-[#6B4454]">{tx.loading}</p>
         </div>
       </div>
     );
   }
 
   const glassCard =
-    "rounded-[28px] border border-white/10 bg-white/[0.055] shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl";
+    "rounded-[28px] border border-pink-200 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl";
   const fieldClass =
-    "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/30 focus-visible:ring-pink-500";
+    "h-12 rounded-2xl border-pink-200 bg-pink-50 text-[#2D1721] placeholder:text-[#9B7483] focus-visible:ring-pink-500";
   const textareaClass =
-    "min-h-[130px] w-full resize-y rounded-2xl border border-white/10 bg-black/20 p-4 text-base text-white outline-none placeholder:text-white/30 focus:border-pink-400/50 focus:ring-2 focus:ring-pink-500/20";
+    "min-h-[130px] w-full resize-y rounded-2xl border border-pink-200 bg-pink-50 p-4 text-base text-[#2D1721] outline-none placeholder:text-[#9B7483] focus:border-pink-400/50 focus:ring-2 focus:ring-pink-500/20";
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-[#090914] text-white"
+      className="relative min-h-screen overflow-hidden bg-[#FFF7FA] text-[#2D1721]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -left-24 top-20 h-80 w-80 rounded-full bg-fuchsia-600/20 blur-[110px]" />
-        <div className="absolute right-[-120px] top-[28%] h-96 w-96 rounded-full bg-violet-600/15 blur-[130px]" />
+        <div className="absolute -left-24 top-20 h-80 w-80 rounded-full bg-pink-500/20 blur-[110px]" />
+        <div className="absolute right-[-120px] top-[28%] h-96 w-96 rounded-full bg-pink-500/15 blur-[130px]" />
         <div className="absolute bottom-[-160px] left-[35%] h-[420px] w-[420px] rounded-full bg-pink-500/10 blur-[150px]" />
       </div>
 
@@ -685,7 +685,7 @@ const currentLang: LangKey = (
             <section
               className={`${glassCard} relative overflow-hidden p-5 sm:p-7 lg:p-9`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 via-transparent to-violet-600/15" />
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 via-transparent to-pink-600/15" />
 
               <div className="relative flex flex-col gap-7 xl:flex-row xl:items-center xl:justify-between">
                 <div className="max-w-3xl">
@@ -698,14 +698,14 @@ const currentLang: LangKey = (
                     {tx.title}
                   </h1>
 
-                  <p className="mt-4 max-w-2xl text-base leading-7 text-white/60 sm:text-base">
+                  <p className="mt-4 max-w-2xl text-base leading-7 text-[#6B4454] sm:text-base">
                     {tx.subtitle}
                   </p>
 
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <Link
                       href="/profile"
-                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 text-base font-bold text-white/80 transition hover:bg-white/10"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-pink-200 bg-pink-50 px-5 text-base font-bold text-[#4A2835] transition hover:bg-pink-50"
                     >
                       <ArrowLeft
                         className={`h-4 w-4 ${isRtl ? "rotate-180" : ""}`}
@@ -723,11 +723,11 @@ const currentLang: LangKey = (
                   </div>
                 </div>
 
-                <div className="w-full max-w-sm rounded-[26px] border border-white/10 bg-black/20 p-5 backdrop-blur-xl">
+                <div className="w-full max-w-sm rounded-[26px] border border-pink-200 bg-pink-50 p-5 backdrop-blur-xl">
                   <div className="flex items-end justify-between gap-4">
                     <div>
                       <p className="text-base font-bold">{tx.completion}</p>
-                      <p className="mt-1 text-xs leading-5 text-white/45">
+                      <p className="mt-1 text-xs leading-5 text-[#7A5363]">
                         {tx.completionDesc}
                       </p>
                     </div>
@@ -736,9 +736,9 @@ const currentLang: LangKey = (
                     </span>
                   </div>
 
-                  <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-pink-50">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 transition-all duration-500"
+                      className="h-full rounded-full bg-gradient-to-r from-pink-500 via-pink-400 to-violet-500 transition-all duration-500"
                       style={{ width: `${completion}%` }}
                     />
                   </div>
@@ -1097,7 +1097,7 @@ const currentLang: LangKey = (
                     {tx.recommendation}
                   </h2>
 
-                  <p className="mt-3 text-base leading-7 text-white/55">
+                  <p className="mt-3 text-base leading-7 text-[#7A5363]">
                     {tx.recommendationDesc}
                   </p>
 
@@ -1109,7 +1109,7 @@ const currentLang: LangKey = (
 
                 <Button
                   type="button"
-                  className="h-14 w-full rounded-2xl bg-gradient-to-r from-pink-600 via-fuchsia-600 to-violet-600 text-base font-black text-white shadow-[0_18px_45px_rgba(219,39,119,0.28)] transition hover:scale-[1.01]"
+                  className="h-14 w-full rounded-2xl bg-gradient-to-r from-pink-600 via-fuchsia-600 to-pink-600 text-base font-black text-[#2D1721] shadow-[0_18px_45px_rgba(219,39,119,0.28)] transition hover:scale-[1.01]"
                   onClick={handleSubmit}
                   disabled={saving}
                 >
@@ -1130,11 +1130,11 @@ const currentLang: LangKey = (
           </div>
         </main>
 
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#090914]/90 p-3 backdrop-blur-2xl xl:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-pink-200 bg-[#FFF7FA]/90 p-3 backdrop-blur-2xl xl:hidden">
           <div className="mx-auto max-w-[1380px]">
             <Button
               type="button"
-              className="h-13 w-full rounded-2xl bg-gradient-to-r from-pink-600 via-fuchsia-600 to-violet-600 font-black text-white"
+              className="h-13 w-full rounded-2xl bg-gradient-to-r from-pink-600 via-fuchsia-600 to-pink-600 font-black text-[#2D1721]"
               onClick={handleSubmit}
               disabled={saving}
             >
@@ -1178,7 +1178,7 @@ function SectionCard({
     <section className={`${className} p-5 sm:p-7`}>
       <div className="mb-6">
         <h2 className="text-xl font-black sm:text-2xl">{title}</h2>
-        <p className="mt-2 text-base leading-6 text-white/50">
+        <p className="mt-2 text-base leading-6 text-[#7A5363]">
           {description}
         </p>
       </div>
@@ -1198,9 +1198,9 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <Label className="text-base font-bold text-white/80">{label}</Label>
+      <Label className="text-base font-bold text-[#4A2835]">{label}</Label>
       {children}
-      {hint && <p className="text-xs text-white/35">{hint}</p>}
+      {hint && <p className="text-xs text-[#8A6372]">{hint}</p>}
     </div>
   );
 }

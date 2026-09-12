@@ -44,7 +44,7 @@ export default function LansmanCards() {
               <span className="text-[10px] font-bold bg-pink-500/20 text-pink-300 px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">Geliştiriliyor</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Egelove cebine geliyor! Bildirimleri anında ekrana düşen, jeton/kredi sistemiyle canavar gibi akıcı yerel (native) Android ve iOS mobil uygulamalarımız yakında mağazalarda.
+              SenVeBen cebine geliyor! Bildirimleri anında ekrana düşen, jeton/kredi sistemiyle canavar gibi akıcı yerel (native) Android ve iOS mobil uygulamalarımız yakında mağazalarda.
             </p>
           </div>
         </div>

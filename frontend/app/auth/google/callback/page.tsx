@@ -34,7 +34,7 @@ function GoogleCallbackContent() {
 
         window.dispatchEvent(new Event("auth-changed"));
 
-        console.log("Google kullanıcı kaydedildi:", user);
+        console.log("Google kullan�c� kaydedildi:", user);
 
      } catch (error) {
   console.error(
@@ -54,10 +54,10 @@ function GoogleCallbackContent() {
     <main className="min-h-screen bg-[#08324a] text-white flex items-center justify-center">
       <div className="text-center">
         <h1 className="text-2xl font-bold">
-          Giriş tamamlanıyor...
+          Giri� tamamlan�yor...
         </h1>
         <p className="mt-2 text-white/70">
-          Lütfen bekleyin.
+          L�tfen bekleyin.
         </p>
       </div>
     </main>
@@ -71,10 +71,10 @@ export default function GoogleCallbackPage() {
         <main className="min-h-screen bg-[#08324a] text-white flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold">
-              Giriş tamamlanıyor...
+              Giri� tamamlan�yor...
             </h1>
             <p className="mt-2 text-white/70">
-              Lütfen bekleyin.
+              L�tfen bekleyin.
             </p>
           </div>
         </main>

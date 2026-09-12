@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { X } from "lucide-react";
 
@@ -31,7 +31,7 @@ export default function PhotoLightbox({
       {/* CLOSE */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-white bg-white/10 p-2 rounded-full cursor-pointer"
+        className="absolute top-4 right-4 text-[#2D1721] bg-pink-50 p-2 rounded-full cursor-pointer"
       >
         <X />
       </button>
@@ -40,9 +40,9 @@ export default function PhotoLightbox({
       {index > 0 && (
         <button
           onClick={() => onChangeIndex(index - 1)}
-          className="absolute left-4 text-white text-4xl cursor-pointer"
+          className="absolute left-4 text-[#2D1721] text-4xl cursor-pointer"
         >
-          ‹
+          â€¹
         </button>
       )}
 
@@ -57,9 +57,9 @@ export default function PhotoLightbox({
       {index < photos.length - 1 && (
         <button
           onClick={() => onChangeIndex(index + 1)}
-          className="absolute right-4 text-white text-4xl cursor-pointer"
+          className="absolute right-4 text-[#2D1721] text-4xl cursor-pointer"
         >
-          ›
+          â€º
         </button>
       )}
     </div>

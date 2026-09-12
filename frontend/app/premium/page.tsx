@@ -255,7 +255,7 @@ export default function PremiumPage() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-950 text-white">
+    <div className="min-h-screen bg-pink-950 text-[#2D1721]">
       <Header onOpenLogin={() => setAuthTab("login")} onOpenRegister={() => setAuthTab("register")} />
 
       <section className="py-20">
@@ -264,7 +264,7 @@ export default function PremiumPage() {
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
 
-          <p className="text-white/60 max-w-xl mx-auto mb-12">{subtitle}</p>
+          <p className="text-[#6B4454] max-w-xl mx-auto mb-12">{subtitle}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {plans.map((plan) => {
@@ -276,17 +276,17 @@ export default function PremiumPage() {
                   className={`relative p-6 cursor-pointer transition-all duration-300 ${
                     selected === plan.id
                       ? "border-pink-500 bg-pink-900/60 scale-105"
-                      : "border-white/10 bg-white/5 hover:border-pink-400/30"
+                      : "border-pink-200 bg-pink-50 hover:border-pink-400/30"
                   }`}
                   onClick={() => setSelected(plan.id)}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-600 text-white text-xs font-bold px-4 py-1 rounded-full">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-600 text-[#2D1721] text-xs font-bold px-4 py-1 rounded-full">
                       {popularText}
                     </div>
                   )}
 
-                  <Icon className={`w-8 h-8 mx-auto mb-3 ${selected === plan.id ? "text-pink-300" : "text-white/50"}`} />
+                  <Icon className={`w-8 h-8 mx-auto mb-3 ${selected === plan.id ? "text-pink-300" : "text-[#7A5363]"}`} />
 
                   <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
 
@@ -295,10 +295,10 @@ export default function PremiumPage() {
                       {formatPrice(plan.price)}
                     </span>
 
-                    <span className="text-white/40 text-base"> {plan.currency}</span>
+                    <span className="text-[#8A6372] text-base"> {plan.currency}</span>
 
                     {plan.originalPrice && (
-                      <span className="block text-white/30 text-xs line-through">
+                      <span className="block text-[#9B7483] text-xs line-through">
                         {formatPrice(plan.originalPrice)} {plan.currency}
                       </span>
                     )}
@@ -306,7 +306,7 @@ export default function PremiumPage() {
 
                   <ul className="text-left text-base space-y-2 mb-6">
                     {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-2 text-white/70">
+                      <li key={index} className="flex items-center gap-2 text-[#6B4454]">
                         <Check className="w-4 h-4 text-pink-400" />
                         {feature}
                       </li>
@@ -317,8 +317,8 @@ export default function PremiumPage() {
                     className={`w-full ${
                       selected === plan.id
                         ? "bg-pink-600 hover:bg-pink-700"
-                        : "bg-white/10 hover:bg-white/20"
-                    } text-white`}
+                        : "bg-pink-50 hover:bg-white/20"
+                    } text-[#2D1721]`}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleBuy(plan.id);

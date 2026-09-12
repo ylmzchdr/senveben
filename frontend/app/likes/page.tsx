@@ -96,7 +96,7 @@ function getFullName(user: any): string {
   const name = user?.name || "";
   const surname = user?.surname || "";
 
-  return `${name} ${surname}`.trim() || "EgeLove Üyesi";
+  return `${name} ${surname}`.trim() || "SenVeBen Üyesi";
 }
 
 function getCity(user: any): string {
@@ -135,7 +135,7 @@ export default function LikesPage() {
         youLiked: "Beğendiklerin",
         noOneLiked: "Henüz seni beğenen yok",
         noOneLikedDesc:
-          "Profilini tamamla ve EgeLove'da daha fazla kişiye görün.",
+          "Profilini tamamla ve SenVeBen'da daha fazla kişiye görün.",
         youLikedNobody: "Henüz kimseyi beğenmedin",
         youLikedNobodyDesc:
           "Sana uygun kişileri bul ve ilgini çeken profillere göz at.",
@@ -174,7 +174,7 @@ export default function LikesPage() {
         youLiked: "You Liked",
         noOneLiked: "No one has liked you yet",
         noOneLikedDesc:
-          "Complete your profile and become more visible on EgeLove.",
+          "Complete your profile and become more visible on SenVeBen.",
         youLikedNobody: "You haven't liked anyone yet",
         youLikedNobodyDesc:
           "Discover new people and explore profiles that interest you.",
@@ -212,7 +212,7 @@ export default function LikesPage() {
         likedYou: "Лайкнули вас",
         youLiked: "Вы лайкнули",
         noOneLiked: "Вас пока никто не лайкнул",
-        noOneLikedDesc: "Заполните профиль и станьте заметнее на EgeLove.",
+        noOneLikedDesc: "Заполните профиль и станьте заметнее на SenVeBen.",
         youLikedNobody: "Вы пока никого не лайкнули",
         youLikedNobodyDesc:
           "Откройте для себя новых людей и интересные профили.",
@@ -250,7 +250,7 @@ export default function LikesPage() {
         likedYou: "من أعجبوا بك",
         youLiked: "من أعجبت بهم",
         noOneLiked: "لم يعجب بك أحد بعد",
-        noOneLikedDesc: "أكمل ملفك الشخصي وكن أكثر ظهورًا على EgeLove.",
+        noOneLikedDesc: "أكمل ملفك الشخصي وكن أكثر ظهورًا على SenVeBen.",
         youLikedNobody: "لم تعجب بأحد بعد",
         youLikedNobodyDesc: "اكتشف أشخاصًا جدد وتصفح الملفات التي تهمك.",
         explore: "اكتشف الأعضاء",
@@ -371,20 +371,20 @@ setIsPremium(premiumStatus);
   };
 
   return (
-    <div className="min-h-screen bg-[#070b15] text-white">
+    <div className="min-h-screen bg-[#070b15] text-[#2D1721]">
       {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-[100] bg-white backdrop-blur-sm md:hidden"
           onClick={() => setMobileMenuOpen(false)}
         >
           <aside
-            className="h-full w-[280px] bg-[#090d19] border-r border-white/10 p-5"
+            className="h-full w-[280px] bg-[#090d19] border-r border-pink-200 p-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center">
                   <Heart className="w-5 h-5 fill-white" />
                 </div>
 
@@ -393,7 +393,7 @@ setIsPremium(premiumStatus);
                     EGE<span className="text-pink-400">LOVE</span>
                   </div>
 
-                  <div className="text-[8px] tracking-[3px] text-white/30">
+                  <div className="text-[8px] tracking-[3px] text-[#2D1721]/30">
                     EGE & AKDENİZ
                   </div>
                 </div>
@@ -401,7 +401,7 @@ setIsPremium(premiumStatus);
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-white/50 hover:text-white"
+                className="text-[#7A5363] hover:text-[#2D1721]"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -414,13 +414,13 @@ setIsPremium(premiumStatus);
 
       <div className="flex min-h-screen">
         {/* DESKTOP SIDEBAR */}
-        <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-50 w-[282px] flex-col bg-[#080c17] border-r border-white/10">
+        <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-50 w-[282px] flex-col bg-[#080c17] border-r border-pink-200">
           {/* LOGO */}
-          <div className="h-[134px] flex items-center px-7 border-b border-white/10">
+          <div className="h-[134px] flex items-center px-7 border-b border-pink-200">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 via-rose-500 to-orange-400 flex items-center justify-center shadow-lg shadow-pink-500/20">
-                  <Heart className="w-6 h-6 fill-white text-white" />
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 flex items-center justify-center shadow-lg shadow-pink-500/20">
+                  <Heart className="w-6 h-6 fill-white text-[#2D1721]" />
                 </div>
 
                 <span className="absolute -right-1 -top-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#080c17]" />
@@ -431,7 +431,7 @@ setIsPremium(premiumStatus);
                   EGE<span className="text-pink-400">LOVE</span>
                 </div>
 
-                <div className="text-[9px] tracking-[3px] text-white/25 mt-1">
+                <div className="text-[9px] tracking-[3px] text-[#2D1721]/25 mt-1">
                   EGE & AKDENİZ
                 </div>
               </div>
@@ -440,19 +440,19 @@ setIsPremium(premiumStatus);
 
           {/* MENU */}
           <div className="flex-1 px-4 py-7 overflow-y-auto">
-            <div className="px-4 mb-4 text-[10px] tracking-[3px] text-white/25 uppercase">
+            <div className="px-4 mb-4 text-[10px] tracking-[3px] text-[#2D1721]/25 uppercase">
               Menü
             </div>
 
             <SidebarLinks t={t} active="likes" navigate={navigate} />
 
-            <div className="px-4 mt-9 mb-4 text-[10px] tracking-[3px] text-white/25 uppercase">
+            <div className="px-4 mt-9 mb-4 text-[10px] tracking-[3px] text-[#2D1721]/25 uppercase">
               Hesabım
             </div>
 
             <button
               onClick={() => navigate("/profile")}
-              className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition"
+              className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-[#6B4454] hover:text-[#2D1721] hover:bg-pink-50 transition"
             >
               <User className="w-5 h-5" />
               <span className="text-sm font-medium">{t.myProfile}</span>
@@ -460,7 +460,7 @@ setIsPremium(premiumStatus);
 
             <button
               onClick={() => navigate("/settings")}
-              className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition"
+              className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-[#6B4454] hover:text-[#2D1721] hover:bg-pink-50 transition"
             >
               <Settings className="w-5 h-5" />
               <span className="text-sm font-medium">{t.settings}</span>
@@ -468,20 +468,20 @@ setIsPremium(premiumStatus);
           </div>
 
           {/* LOGOUT */}
-          <div className="p-4 border-t border-white/10">
+          <div className="p-4 border-t border-pink-200">
             <button
               onClick={() => {
                 localStorage.removeItem("accessToken");
                 navigate("/");
               }}
-              className="w-full flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] py-3 text-sm text-white/60 hover:text-white transition"
+              className="w-full flex items-center justify-center gap-3 rounded-xl border border-pink-200 bg-white/[0.02] hover:bg-white py-3 text-sm text-[#6B4454] hover:text-[#2D1721] transition"
             >
               <ChevronRight className="w-4 h-4 rotate-180" />
               {t.logout}
             </button>
 
-            <div className="text-center text-[9px] text-white/20 mt-4 tracking-widest">
-              EGELOVE © 2026
+            <div className="text-center text-[9px] text-[#2D1721]/20 mt-4 tracking-widest">
+              SENVEBEN © 2026
             </div>
           </div>
         </aside>
@@ -490,11 +490,11 @@ setIsPremium(premiumStatus);
         <main className="flex-1 md:ml-[282px] min-w-0">
           {/* TOP BAR */}
           <header className="sticky top-0 z-[100] px-4 md:px-8 pt-4 pointer-events-auto">
-            <div className="h-[70px] rounded-2xl border border-white/15 bg-[#0c111d]/90 backdrop-blur-xl flex items-center gap-3 px-3 md:px-5 shadow-2xl shadow-black/20">
+            <div className="h-[70px] rounded-2xl border border-pink-200 bg-[#0c111d]/90 backdrop-blur-xl flex items-center gap-3 px-3 md:px-5 shadow-2xl shadow-black/20">
               {/* MOBILE MENU */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden shrink-0 w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/60 hover:text-white"
+                className="md:hidden shrink-0 w-10 h-10 rounded-xl border border-pink-200 flex items-center justify-center text-[#6B4454] hover:text-[#2D1721]"
               >
                 <Users className="w-5 h-5" />
               </button>
@@ -508,7 +508,7 @@ setIsPremium(premiumStatus);
                     className={`h-10 px-3 rounded-xl border text-xs font-bold transition ${
                       lang === "TR"
                         ? "border-pink-400/40 bg-pink-500/15 text-pink-300"
-                        : "border-white/10 bg-white/[0.02] text-white/50 hover:text-white hover:bg-white/5"
+                        : "border-pink-200 bg-white/[0.02] text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50"
                     }`}
                   >
                     🇹🇷 TR
@@ -520,7 +520,7 @@ setIsPremium(premiumStatus);
                     className={`h-10 px-3 rounded-xl border text-xs font-bold transition ${
                       lang === "EN"
                         ? "border-pink-400/40 bg-pink-500/15 text-pink-300"
-                        : "border-white/10 bg-white/[0.02] text-white/50 hover:text-white hover:bg-white/5"
+                        : "border-pink-200 bg-white/[0.02] text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50"
                     }`}
                   >
                     🇬🇧 EN
@@ -532,7 +532,7 @@ setIsPremium(premiumStatus);
                     className={`h-10 px-3 rounded-xl border text-xs font-bold transition ${
                       lang === "RU"
                         ? "border-pink-400/40 bg-pink-500/15 text-pink-300"
-                        : "border-white/10 bg-white/[0.02] text-white/50 hover:text-white hover:bg-white/5"
+                        : "border-pink-200 bg-white/[0.02] text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50"
                     }`}
                   >
                     🇷🇺 RU
@@ -544,7 +544,7 @@ setIsPremium(premiumStatus);
                     className={`h-10 px-3 rounded-xl border text-xs font-bold transition ${
                       lang === "AR"
                         ? "border-pink-400/40 bg-pink-500/15 text-pink-300"
-                        : "border-white/10 bg-white/[0.02] text-white/50 hover:text-white hover:bg-white/5"
+                        : "border-pink-200 bg-white/[0.02] text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50"
                     }`}
                   >
                     🇸🇦 AR
@@ -554,7 +554,7 @@ setIsPremium(premiumStatus);
                 {/* NOTIFICATION */}
                 <button
                   onClick={() => navigate("/notifications")}
-                  className="relative w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-white/55 hover:text-white hover:bg-white/5 transition"
+                  className="relative w-11 h-11 rounded-xl border border-pink-200 flex items-center justify-center text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50 transition"
                 >
                   <Bell className="w-5 h-5" />
 
@@ -564,9 +564,9 @@ setIsPremium(premiumStatus);
                 {/* PROFILE */}
                 <button
                   onClick={() => navigate("/profile")}
-                  className="flex items-center gap-2 h-11 rounded-xl border border-white/10 px-2 md:px-3 hover:bg-white/5 transition"
+                  className="flex items-center gap-2 h-11 rounded-xl border border-pink-200 px-2 md:px-3 hover:bg-pink-50 transition"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-xs font-bold">
                     {getInitials({
                       name: "y",
                       surname: "l",
@@ -577,7 +577,7 @@ setIsPremium(premiumStatus);
                     yılmaz
                   </span>
 
-                  <ChevronRight className="hidden md:block w-4 h-4 rotate-90 text-white/40" />
+                  <ChevronRight className="hidden md:block w-4 h-4 rotate-90 text-[#8A6372]" />
                 </button>
               </div>
             </div>
@@ -598,13 +598,13 @@ setIsPremium(premiumStatus);
                       {t.likes}
                     </h1>
 
-                    <p className="text-sm text-white/40 mt-1">{t.subtitle}</p>
+                    <p className="text-sm text-[#8A6372] mt-1">{t.subtitle}</p>
                   </div>
                 </div>
               </div>
 
               {/* STAT / INTRO CARD */}
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#15182a] via-[#101524] to-[#171126] p-6 md:p-7 mb-7">
+              <div className="relative overflow-hidden rounded-3xl border border-pink-200 bg-gradient-to-br from-[#15182a] via-[#101524] to-[#171126] p-6 md:p-7 mb-7">
                 <div className="absolute -right-20 -top-24 w-72 h-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
                 <div className="absolute -left-20 -bottom-28 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl" />
 
@@ -612,14 +612,14 @@ setIsPremium(premiumStatus);
                   <div>
                     <div className="inline-flex items-center gap-2 rounded-full border border-pink-400/20 bg-pink-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-pink-300">
                       <Sparkles className="w-3.5 h-3.5" />
-                      EgeLove
+                      SenVeBen
                     </div>
 
                     <h2 className="mt-4 text-xl md:text-2xl font-bold">
                       {tab === "received" ? t.likedYou : t.youLiked}
                     </h2>
 
-                    <p className="text-sm text-white/40 mt-1">
+                    <p className="text-sm text-[#8A6372] mt-1">
                       {tab === "received"
                         ? `${received.length} ${t.members}`
                         : `${sent.length} ${t.members}`}
@@ -649,10 +649,10 @@ setIsPremium(premiumStatus);
                       <Crown className="w-7 h-7 text-yellow-300" />
                     </div>
                     <div className="flex-1">
-                      <div className="text-base md:text-lg font-black text-white">
+                      <div className="text-base md:text-lg font-black text-[#2D1721]">
                         {t.premiumTitle}
                       </div>
-                      <div className="mt-1 text-sm leading-6 text-white/55">
+                      <div className="mt-1 text-sm leading-6 text-[#7A5363]">
                         {t.premiumDesc}
                       </div>
                     </div>
@@ -665,14 +665,14 @@ setIsPremium(premiumStatus);
               )}
 
               {/* TABS */}
-              <div className="border-b border-white/10 mb-8">
+              <div className="border-b border-pink-200 mb-8">
                 <div className="flex gap-7">
                   <button
                     onClick={() => setTab("received")}
                     className={`relative flex items-center gap-2 pb-4 text-sm font-semibold transition ${
                       tab === "received"
-                        ? "text-white"
-                        : "text-white/35 hover:text-white/70"
+                        ? "text-[#2D1721]"
+                        : "text-[#8A6372] hover:text-[#6B4454]"
                     }`}
                   >
                     <Heart
@@ -687,7 +687,7 @@ setIsPremium(premiumStatus);
                       className={`rounded-full px-2 py-0.5 text-[10px] ${
                         tab === "received"
                           ? "bg-pink-500/15 text-pink-300"
-                          : "bg-white/5 text-white/30"
+                          : "bg-pink-50 text-[#2D1721]/30"
                       }`}
                     >
                       {received.length}
@@ -702,13 +702,13 @@ setIsPremium(premiumStatus);
                     onClick={() => setTab("sent")}
                     className={`relative flex items-center gap-2 pb-4 text-sm font-semibold transition ${
                       tab === "sent"
-                        ? "text-white"
-                        : "text-white/35 hover:text-white/70"
+                        ? "text-[#2D1721]"
+                        : "text-[#8A6372] hover:text-[#6B4454]"
                     }`}
                   >
                     <ThumbsUp
                       className={`w-4 h-4 ${
-                        tab === "sent" ? "text-cyan-400" : ""
+                        tab === "sent" ? "text-pink-500" : ""
                       }`}
                     />
 
@@ -717,8 +717,8 @@ setIsPremium(premiumStatus);
                     <span
                       className={`rounded-full px-2 py-0.5 text-[10px] ${
                         tab === "sent"
-                          ? "bg-cyan-500/15 text-cyan-300"
-                          : "bg-white/5 text-white/30"
+                          ? "bg-cyan-500/15 text-pink-500"
+                          : "bg-pink-50 text-[#2D1721]/30"
                       }`}
                     >
                       {sent.length}
@@ -738,7 +738,7 @@ setIsPremium(premiumStatus);
                     <Loader2 className="w-7 h-7 text-pink-400 animate-spin" />
                   </div>
 
-                  <p className="text-sm text-white/30">
+                  <p className="text-sm text-[#2D1721]/30">
                     {lang === "TR"
                       ? "Beğeniler yükleniyor..."
                       : lang === "EN"
@@ -794,7 +794,7 @@ setIsPremium(premiumStatus);
               {/* EMPTY SENT */}
               {!loading && myId && tab === "sent" && sent.length === 0 && (
                 <EmptyState
-                  icon={<Search className="w-10 h-10 text-cyan-400" />}
+                  icon={<Search className="w-10 h-10 text-pink-500" />}
                   title={t.youLikedNobody}
                   description={t.youLikedNobodyDesc}
                   buttonText={t.explore}
@@ -830,7 +830,7 @@ setIsPremium(premiumStatus);
                     return (
                       <article
                         key={match.id}
-                        className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0d1422] hover:border-pink-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-pink-500/10"
+                        className="group relative overflow-hidden rounded-3xl border border-pink-200 bg-[#0d1422] hover:border-pink-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-pink-500/10"
                       >
                         {/* IMAGE */}
                        <button
@@ -853,8 +853,8 @@ setIsPremium(premiumStatus);
 }`}
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pink-500/20 via-purple-500/10 to-cyan-500/10">
-                              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center text-3xl font-black shadow-xl">
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-pink-500/20 via-pink-400/10 to-cyan-500/10">
+                              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-3xl font-black shadow-xl">
                                 {getInitials(other)}
                               </div>
                             </div>
@@ -864,7 +864,7 @@ setIsPremium(premiumStatus);
                             <div className="absolute inset-0 flex items-center justify-center bg-black/15">
                               <div className="rounded-2xl border border-yellow-300/25 bg-black/55 backdrop-blur-md px-5 py-4 text-center shadow-2xl">
                                 <Crown className="w-7 h-7 text-yellow-300 mx-auto mb-2" />
-                                <div className="text-sm font-black text-white">{t.premiumPhoto}</div>
+                                <div className="text-sm font-black text-[#2D1721]">{t.premiumPhoto}</div>
                                 <div className="text-[10px] text-yellow-200/70 mt-1">{t.premiumButton}</div>
                               </div>
                             </div>
@@ -876,16 +876,16 @@ setIsPremium(premiumStatus);
                           {/* VERIFIED */}
                           {other?.isVerified && (
                             <div className="absolute top-4 left-4 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center border-2 border-white/30 shadow-lg">
-                              <Check className="w-4 h-4 text-white" />
+                              <Check className="w-4 h-4 text-[#2D1721]" />
                             </div>
                           )}
 
                           {/* ONLINE */}
                           {other?.isOnline && (
-                            <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur-md px-2.5 py-1.5 border border-white/10">
+                            <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-pink-50 backdrop-blur-md px-2.5 py-1.5 border border-pink-200">
                               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
 
-                              <span className="text-[9px] font-semibold text-white/80">
+                              <span className="text-[9px] font-semibold text-[#4A2835]">
                                 {t.online}
                               </span>
                             </div>
@@ -899,15 +899,15 @@ setIsPremium(premiumStatus);
                               <h3 className="text-lg font-bold truncate">
                                 {name}
                                 {age !== undefined && (
-                                  <span className="text-cyan-400 ml-1">
+                                  <span className="text-pink-500 ml-1">
                                     {age}
                                   </span>
                                 )}
                               </h3>
 
                               {location && (
-                                <div className="flex items-center gap-1.5 mt-1.5 text-xs text-white/35">
-                                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                                <div className="flex items-center gap-1.5 mt-1.5 text-xs text-[#8A6372]">
+                                  <MapPin className="w-3.5 h-3.5 text-pink-500" />
                                   <span className="truncate">{location}</span>
                                 </div>
                               )}
@@ -915,7 +915,7 @@ setIsPremium(premiumStatus);
                           </div>
 
                           {other?.bio && (
-                            <p className="text-xs text-white/35 line-clamp-2 mt-3 min-h-[32px]">
+                            <p className="text-xs text-[#8A6372] line-clamp-2 mt-3 min-h-[32px]">
                               {other.bio}
                             </p>
                           )}
@@ -931,7 +931,7 @@ setIsPremium(premiumStatus);
 
     navigate(`/profile/${other.id}`);
   }}
-  className="flex-1 h-10 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] text-xs font-semibold text-white/70 hover:text-white transition"
+  className="flex-1 h-10 rounded-xl border border-pink-200 bg-white/[0.03] hover:bg-white/[0.07] text-xs font-semibold text-[#6B4454] hover:text-[#2D1721] transition"
 >
   {t.profile}
 </button>
@@ -958,7 +958,7 @@ setIsPremium(premiumStatus);
                                 navigate(`/messages/direct?userId=${other.id}`)
 
                                 }
-                                className="flex-1 h-10 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-xs font-bold transition shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-1.5"
+                                className="flex-1 h-10 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-pink-500 text-xs font-bold transition shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-1.5"
                               >
                                 <MessageCircle className="w-3.5 h-3.5" />
                                 {t.sendMessage}
@@ -1047,8 +1047,8 @@ function SidebarLinks({
             onClick={() => navigate(item.url)}
             className={`relative w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${
               isActive
-                ? "bg-gradient-to-r from-pink-500/15 via-purple-500/10 to-transparent text-white"
-                : "text-white/50 hover:text-white hover:bg-white/5"
+                ? "bg-gradient-to-r from-pink-500/15 via-pink-400/10 to-transparent text-[#2D1721]"
+                : "text-[#7A5363] hover:text-[#2D1721] hover:bg-pink-50"
             }`}
           >
             {isActive && (
@@ -1087,17 +1087,17 @@ function EmptyState({
   onClick: () => void;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#101827] to-[#0b111d] min-h-[360px] flex items-center justify-center px-6">
+    <div className="relative overflow-hidden rounded-3xl border border-pink-200 bg-gradient-to-br from-[#101827] to-[#0b111d] min-h-[360px] flex items-center justify-center px-6">
       <div className="absolute w-80 h-80 rounded-full bg-pink-500/5 blur-3xl -top-40 left-1/2 -translate-x-1/2" />
 
       <div className="relative text-center max-w-md">
-        <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/10 flex items-center justify-center mx-auto mb-6">
+        <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-pink-200 flex items-center justify-center mx-auto mb-6">
           {icon}
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+        <h3 className="text-xl font-bold text-[#2D1721] mb-2">{title}</h3>
 
-        <p className="text-sm leading-6 text-white/35 mb-7">{description}</p>
+        <p className="text-sm leading-6 text-[#8A6372] mb-7">{description}</p>
 
         <button
           onClick={onClick}
@@ -1110,3 +1110,6 @@ function EmptyState({
     </div>
   );
 }
+
+
+

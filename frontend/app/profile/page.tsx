@@ -94,7 +94,7 @@ const TEXT: Record<LangKey, Record<string, string>> = {
     favorite: "Favori Yap",
     wink: "Göz Kırp",
     visitors: "Profil Ziyaretleri",
-    member: "Egelove Üyesi",
+    member: "SenVeBen Üyesi",
     visitedProfile: "Profilini ziyaret etti",
     premium: "Premium",
     premiumDescription:
@@ -132,7 +132,7 @@ const TEXT: Record<LangKey, Record<string, string>> = {
     favorite: "Add Favorite",
     wink: "Wink",
     visitors: "Profile Visitors",
-    member: "Egelove Member",
+    member: "SenVeBen Member",
     visitedProfile: "Visited your profile",
     premium: "Premium",
     premiumDescription: "Highlight profile visits, favorites and more.",
@@ -169,7 +169,7 @@ const TEXT: Record<LangKey, Record<string, string>> = {
     favorite: "В избранное",
     wink: "Подмигнуть",
     visitors: "Посетители профиля",
-    member: "Участник Egelove",
+    member: "Участник SenVeBen",
     visitedProfile: "Посетил ваш профиль",
     premium: "Премиум",
     premiumDescription:
@@ -207,7 +207,7 @@ const TEXT: Record<LangKey, Record<string, string>> = {
     favorite: "إضافة للمفضلة",
     wink: "غمزة",
     visitors: "زوار الملف",
-    member: "عضو Egelove",
+    member: "عضو SenVeBen",
     visitedProfile: "قام بزيارة ملفك الشخصي",
     premium: "بريميوم",
     premiumDescription: "قم بإبراز زيارات الملف الشخصي والمفضلة والمزيد.",
@@ -245,9 +245,9 @@ function InfoRow({
   value?: string | number | null;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-white/10 py-3">
-      <span className="text-base text-white/55">{label}</span>
-      <span className="text-base font-semibold text-white text-right">
+    <div className="flex items-center justify-between gap-4 border-b border-pink-200 py-3">
+      <span className="text-base text-[#7A5363]">{label}</span>
+      <span className="text-base font-semibold text-[#2D1721] text-right">
         {value || "-"}
       </span>
     </div>
@@ -605,16 +605,16 @@ export default function ProfilePage() {
     return optionMap[currentLang]?.[key] || value;
   }
   const glassCard =
-    "rounded-[28px] border border-white/10 bg-white/[0.055] shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl";
+    "rounded-[28px] border border-pink-200 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl";
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-[#090914] text-white"
+      className="relative min-h-screen overflow-hidden bg-[#FFF7FA] text-[#2D1721]"
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -left-24 top-20 h-80 w-80 rounded-full bg-fuchsia-600/20 blur-[110px]" />
-        <div className="absolute right-[-120px] top-[28%] h-96 w-96 rounded-full bg-violet-600/15 blur-[130px]" />
+        <div className="absolute -left-24 top-20 h-80 w-80 rounded-full bg-pink-300/25 blur-[110px]" />
+        <div className="absolute right-[-120px] top-[28%] h-96 w-96 rounded-full bg-pink-200/30 blur-[130px]" />
         <div className="absolute bottom-[-160px] left-[35%] h-[420px] w-[420px] rounded-full bg-pink-500/10 blur-[150px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.045),transparent_34%)]" />
       </div>
@@ -631,19 +631,19 @@ export default function ProfilePage() {
               <div>
                 <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-pink-400/20 bg-pink-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-pink-200">
                   <Sparkles className="h-3.5 w-3.5" />
-                  EGELOVE PROFILE V2
+                  SENVEBEN PROFILE V2
                 </div>
                 <h1 className="text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                   {tx.myProfile}
                 </h1>
-                <p className="mt-3 max-w-2xl text-base leading-6 text-white/55 sm:text-base">
+                <p className="mt-3 max-w-2xl text-base leading-6 text-[#7A5363] sm:text-base">
                   {tx.previewDesc}
                 </p>
               </div>
 
               {user && (
                 <Link href="/profile/edit" className="w-full sm:w-auto">
-                  <Button className="h-12 w-full rounded-2xl border border-pink-300/20 bg-gradient-to-r from-pink-600 to-fuchsia-600 px-6 font-bold shadow-[0_14px_35px_rgba(219,39,119,0.28)] transition hover:scale-[1.02] hover:from-pink-500 hover:to-fuchsia-500 sm:w-auto">
+                  <Button className="h-12 w-full rounded-2xl border border-pink-300/20 bg-gradient-to-r from-pink-600 to-pink-600 px-6 font-bold shadow-[0_14px_35px_rgba(219,39,119,0.28)] transition hover:scale-[1.02] hover:from-pink-500 hover:to-fuchsia-500 sm:w-auto">
                     <Pencil className="mr-2 h-4 w-4" />
                     {tx.editProfile}
                   </Button>
@@ -657,18 +657,18 @@ export default function ProfilePage() {
               >
                 <div className="text-center">
                   <Loader2 className="mx-auto h-11 w-11 animate-spin text-pink-400" />
-                  <p className="mt-4 text-base text-white/45">EGELOVE</p>
+                  <p className="mt-4 text-base text-[#7A5363]">SENVEBEN</p>
                 </div>
               </div>
             ) : !user ? (
               <div className={`${glassCard} py-24 text-center`}>
-                <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/5">
-                  <UserCircle className="h-16 w-16 text-white/35" />
+                <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl border border-pink-200 bg-pink-50">
+                  <UserCircle className="h-16 w-16 text-[#8A6372]" />
                 </div>
-                <p className="mb-6 text-white/60">{tx.mustLogin}</p>
+                <p className="mb-6 text-[#6B4454]">{tx.mustLogin}</p>
                 <Button
                   onClick={() => setAuthTab("login")}
-                  className="h-12 rounded-2xl bg-gradient-to-r from-pink-600 to-fuchsia-600 px-8 font-bold"
+                  className="h-12 rounded-2xl bg-gradient-to-r from-pink-600 to-pink-600 px-8 font-bold"
                 >
                   {tx.login}
                 </Button>
@@ -678,14 +678,14 @@ export default function ProfilePage() {
                 <div
                   className={`${glassCard} relative overflow-hidden p-4 sm:p-6 lg:p-8`}
                 >
-                  <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-pink-600/25 via-fuchsia-500/15 to-violet-600/20" />
+                  <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-r from-pink-600/25 via-pink-400/15 to-pink-600/20" />
                   <div className="absolute right-[-70px] top-[-90px] h-64 w-64 rounded-full bg-pink-500/20 blur-3xl" />
 
                   <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end">
                     <button
                       type="button"
                       onClick={() => setSelectedPhoto(avatar)}
-                      className="group relative mx-auto h-44 w-44 shrink-0 overflow-hidden rounded-[32px] border-4 border-[#11111d] bg-black/40 shadow-[0_24px_70px_rgba(0,0,0,0.5)] lg:mx-0 lg:h-52 lg:w-52"
+                      className="group relative mx-auto h-44 w-44 shrink-0 overflow-hidden rounded-[32px] border-4 border-[#FFFFFF] bg-pink-50 shadow-[0_24px_70px_rgba(0,0,0,0.5)] lg:mx-0 lg:h-52 lg:w-52"
                     >
                       <img
                         src={avatar}
@@ -710,7 +710,7 @@ export default function ProfilePage() {
                         )}
                       </div>
 
-                      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-base text-white/60 lg:justify-start rtl:lg:justify-end">
+                      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-base text-[#6B4454] lg:justify-start rtl:lg:justify-end">
                         <span className="inline-flex items-center gap-2">
                           <Calendar className="h-4 w-4 text-pink-300" />
                           {age ?? "-"}
@@ -727,20 +727,20 @@ export default function ProfilePage() {
                         </span>
                       </div>
 
-                      <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-white/65 lg:mx-0">
+                      <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-[#2D1721]/65 lg:mx-0">
                         {user.aboutMe || user.bio || tx.member}
                       </p>
                     </div>
 
                     <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:flex-col">
                       <Link href="/profile/edit" className="flex-1">
-                        <Button className="h-12 w-full rounded-2xl bg-white text-[#11111d] font-bold hover:bg-white/90">
+                        <Button className="h-12 w-full rounded-2xl bg-white text-[#FFFFFF] font-bold hover:bg-white/90">
                           <Pencil className="mr-2 h-4 w-4" />
                           {tx.editProfile}
                         </Button>
                       </Link>
                       <Link href="/premium" className="flex-1">
-                        <Button className="h-12 w-full rounded-2xl border border-amber-300/25 bg-amber-400/10 font-bold text-amber-200 hover:bg-amber-400/20">
+                        <Button className="h-12 w-full rounded-2xl border border-amber-300/25 bg-pink-400/10 font-bold text-pink-600 hover:bg-pink-400/20">
                           <Crown className="mr-2 h-4 w-4" />
                           {tx.premium}
                         </Button>
@@ -768,11 +768,11 @@ export default function ProfilePage() {
                         <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-pink-300/15 bg-pink-500/10 text-pink-300">
                           <Icon className="h-5 w-5" />
                         </div>
-                       <span className="text-2xl font-black text-white transition duration-300 group-hover:scale-110 group-hover:text-pink-200">
+                       <span className="text-2xl font-black text-[#2D1721] transition duration-300 group-hover:scale-110 group-hover:text-pink-200">
   {value}
 </span>
                       </div>
-                      <p className="mt-4 truncate text-xs font-semibold uppercase tracking-[0.12em] text-white/40 sm:text-base">
+                      <p className="mt-4 truncate text-xs font-semibold uppercase tracking-[0.12em] text-[#8A6372] sm:text-base">
                         {label}
                       </p>
                     </div>
@@ -787,7 +787,7 @@ export default function ProfilePage() {
                           <Images className="h-5 w-5 text-pink-300" />
                           {tx.photos}
                         </h3>
-                        <span className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-white/45">
+                        <span className="rounded-full bg-pink-50 px-2.5 py-1 text-xs text-[#7A5363]">
                           {sortedPhotos.length}
                         </span>
                       </div>
@@ -805,14 +805,14 @@ export default function ProfilePage() {
                                 type="button"
                                 key={photo.id || index}
                                 onClick={() => setSelectedPhoto(src)}
-                                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`}
+                                className={`group relative overflow-hidden rounded-2xl border border-pink-200 bg-pink-50 ${index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"}`}
                               >
                                 <img
                                   src={src}
                                   alt=""
                                   className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
+                                <div className="absolute inset-0 bg-black/0 transition group-hover:bg-pink-50" />
                               </button>
                             );
                           })}
@@ -821,7 +821,7 @@ export default function ProfilePage() {
                       <Link href="/profile/edit">
                         <Button
                           variant="outline"
-                          className="mt-4 h-11 w-full rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+                          className="mt-4 h-11 w-full rounded-2xl border-pink-200 bg-pink-50 text-[#2D1721] hover:bg-pink-50"
                         >
                           <Camera className="mr-2 h-4 w-4" />
                           {tx.addPhoto}
@@ -834,7 +834,7 @@ export default function ProfilePage() {
                         <Heart className="h-4 w-4" />
                         {tx.wink}
                       </button>
-                      <button className="flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 py-3 text-base font-bold text-white/75 transition hover:bg-white/10">
+                      <button className="flex items-center justify-center gap-2 rounded-2xl border border-pink-200 bg-pink-50 py-3 text-base font-bold text-[#2D1721]/75 transition hover:bg-pink-50">
                         <Star className="h-4 w-4" />
                         {tx.favorite}
                       </button>
@@ -849,8 +849,8 @@ export default function ProfilePage() {
                         </div>
                         <div>
                           <h3 className="font-bold">EgeMatch AI</h3>
-                          <p className="text-xs text-white/40">
-                            EGELOVE intelligent compatibility
+                          <p className="text-xs text-[#8A6372]">
+                            SENVEBEN intelligent compatibility
                           </p>
                         </div>
                       </div>
@@ -869,7 +869,7 @@ export default function ProfilePage() {
                     <div className="grid gap-6 lg:grid-cols-2">
                       <div className={`${glassCard} p-5 sm:p-7`}>
                         <h3 className="mb-5 text-lg font-black">{tx.about}</h3>
-                        <p className="whitespace-pre-line text-base leading-8 text-white/68 sm:text-base">
+                        <p className="whitespace-pre-line text-base leading-8 text-[#2D1721]/68 sm:text-base">
                           {user.aboutMe || user.bio || "-"}
                         </p>
                       </div>
@@ -878,7 +878,7 @@ export default function ProfilePage() {
                         <h3 className="mb-5 text-lg font-black">
                           {tx.lookingFor}
                         </h3>
-                        <p className="whitespace-pre-line text-base leading-8 text-white/68 sm:text-base">
+                        <p className="whitespace-pre-line text-base leading-8 text-[#2D1721]/68 sm:text-base">
                           {user.lookingFor || "-"}
                         </p>
                       </div>
@@ -952,16 +952,16 @@ export default function ProfilePage() {
                         {[1, 2, 3, 4].map((item) => (
                           <div
                             key={item}
-                            className="flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.035] p-3 transition hover:bg-white/[0.07]"
+                            className="flex items-center gap-3 rounded-2xl border border-pink-100 bg-white p-3 transition hover:bg-white/[0.07]"
                           >
                             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-pink-500/30 to-violet-500/20">
-                              <UserCircle className="h-6 w-6 text-white/55" />
+                              <UserCircle className="h-6 w-6 text-[#7A5363]" />
                             </div>
                             <div className="min-w-0">
                               <div className="truncate text-base font-bold">
                                 {tx.member}
                               </div>
-                              <div className="truncate text-xs text-white/40">
+                              <div className="truncate text-xs text-[#8A6372]">
                                 {tx.visitedProfile}
                               </div>
                             </div>
@@ -971,19 +971,19 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="relative overflow-hidden rounded-[28px] border border-amber-300/20 bg-gradient-to-br from-amber-400/15 via-orange-400/8 to-pink-500/10 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
-                      <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-300/20 blur-3xl" />
+                      <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-pink-300/20 blur-3xl" />
                       <div className="relative">
-                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-200/20 bg-amber-300/15 text-amber-200">
+                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-200/20 bg-pink-300/15 text-pink-600">
                           <Crown className="h-6 w-6" />
                         </div>
                         <h3 className="mb-2 text-xl font-black text-amber-100">
                           {tx.premium}
                         </h3>
-                        <p className="mb-5 text-base leading-6 text-white/60">
+                        <p className="mb-5 text-base leading-6 text-[#6B4454]">
                           {tx.premiumDescription}
                         </p>
                         <Link href="/premium">
-                          <Button className="h-11 w-full rounded-2xl bg-gradient-to-r from-amber-300 to-orange-400 font-black text-[#211300] hover:from-amber-200 hover:to-orange-300">
+                          <Button className="h-11 w-full rounded-2xl bg-gradient-to-r from-amber-300 to-pink-600 font-black text-[#211300] hover:from-pink-300 hover:to-pink-500">
                             <Crown className="mr-2 h-4 w-4" />
                             {tx.premium}
                           </Button>
@@ -1008,7 +1008,7 @@ export default function ProfilePage() {
           <button
             type="button"
             aria-label="Close"
-            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-2xl font-bold text-white transition hover:bg-white/20"
+            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-pink-200 bg-pink-50 text-2xl font-bold text-[#2D1721] transition hover:bg-white/20"
             onClick={() => setSelectedPhoto(null)}
           >
             ×
@@ -1026,3 +1026,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+

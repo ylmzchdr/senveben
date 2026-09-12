@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Premium Üyelik | EgeLove",
+  title: "Premium Üyelik | SenVeBen",
   description:
-    "EgeLove Premium ile Türkiye'nin 81 ilinden yeni insanlarla tanış, sınırsız mesajlaş, gelişmiş filtreleri kullan ve profilini öne çıkar.",
+    "SenVeBen Premium ile Türkiye'nin 81 ilinden yeni insanlarla tanış, sınırsız mesajlaş, gelişmiş filtreleri kullan ve profilini öne çıkar.",
   alternates: {
-    canonical: "https://egelove.tr/premium",
+    canonical: "https://senveben.com.tr/premium",
   },
   openGraph: {
-    title: "Premium Üyelik | EgeLove",
+    title: "Premium Üyelik | SenVeBen",
     description:
-      "EgeLove Premium ile Türkiye'nin 81 ilinden yeni insanlarla tanış ve daha fazla özelliğin keyfini çıkar.",
-    url: "https://egelove.tr/premium",
-    siteName: "EgeLove",
+      "SenVeBen Premium ile Türkiye'nin 81 ilinden yeni insanlarla tanış ve daha fazla özelliğin keyfini çıkar.",
+    url: "https://senveben.com.tr/premium",
+    siteName: "SenVeBen",
     type: "website",
   },
 };

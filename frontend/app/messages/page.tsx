@@ -1696,7 +1696,7 @@ function MessagesContent() {
 
     return (
       <div
-        className={`${size} shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 via-violet-500 to-blue-500 flex items-center justify-center font-black text-white ring-1 ring-white/20`}
+        className={`${size} shrink-0 rounded-full bg-gradient-to-br from-fuchsia-500 via-pink-400 to-blue-500 flex items-center justify-center font-black text-[#2D1721] ring-1 ring-white/20`}
       >
         {name.slice(0, 1).toUpperCase()}
       </div>
@@ -1704,9 +1704,9 @@ function MessagesContent() {
   };
 
   return (
-    <div dir={lang === "AR" ? "rtl" : "ltr"} className="min-h-screen bg-[#020817] text-white overflow-x-hidden">
+    <div dir={lang === "AR" ? "rtl" : "ltr"} className="min-h-screen bg-[#020817] text-[#2D1721] overflow-x-hidden">
       {/* ÜST NAV */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#020817]/95 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-pink-200 bg-[#020817]/95 backdrop-blur-xl">
         <div className="mx-auto flex min-h-[72px] max-w-[1450px] items-center gap-6 px-4 sm:px-6 lg:px-8">
           <button
             type="button"
@@ -1714,15 +1714,15 @@ function MessagesContent() {
             className="mr-auto flex items-center gap-2 text-xl font-black tracking-tight sm:text-2xl"
           >
             <span className="text-3xl text-pink-500">♥</span>
-            <span>egelove</span>
+            <span>senveben</span>
           </button>
 
           <nav className="hidden items-center gap-8 lg:flex">
-            <button type="button" onClick={goDashboard} className="font-semibold text-white/90 hover:text-white">{t.home}</button>
-            <button type="button" onClick={() => (window.location.href = "/profile")} className="font-semibold text-white/90 hover:text-white">{t.myPage}</button>
-            <button type="button" onClick={() => (window.location.href = "/likes")} className="font-semibold text-white/90 hover:text-white">{t.likes}</button>
+            <button type="button" onClick={goDashboard} className="font-semibold text-[#2D1721] hover:text-[#2D1721]">{t.home}</button>
+            <button type="button" onClick={() => (window.location.href = "/profile")} className="font-semibold text-[#2D1721] hover:text-[#2D1721]">{t.myPage}</button>
+            <button type="button" onClick={() => (window.location.href = "/likes")} className="font-semibold text-[#2D1721] hover:text-[#2D1721]">{t.likes}</button>
             <button type="button" className="relative font-semibold text-pink-400 after:absolute after:-bottom-6 after:left-0 after:right-0 after:h-0.5 after:bg-pink-500">{t.messages}</button>
-            <button type="button" onClick={goPremium} className="font-semibold text-white/90 hover:text-white">{t.premium} 👑</button>
+            <button type="button" onClick={goPremium} className="font-semibold text-[#2D1721] hover:text-[#2D1721]">{t.premium} 👑</button>
           </nav>
 
           <div className="hidden items-center gap-1 sm:flex">
@@ -1732,7 +1732,7 @@ function MessagesContent() {
                 type="button"
                 onClick={() => setLang(language)}
                 aria-pressed={lang === language}
-                className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition ${lang === language ? "border-purple-500 bg-purple-600 text-white shadow-lg shadow-purple-500/30" : "border-white/10 bg-black/20 text-white/80 hover:bg-white/10"}`}
+                className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition ${lang === language ? "border-purple-500 bg-pink-500 text-[#2D1721] shadow-lg shadow-purple-500/30" : "border-pink-200 bg-pink-50 text-[#4A2835] hover:bg-pink-50"}`}
               >
                 {language}
               </button>
@@ -1763,7 +1763,7 @@ function MessagesContent() {
         <button
           type="button"
           onClick={goDashboard}
-          className="mb-5 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-500 px-5 py-3 font-black shadow-lg shadow-purple-600/30 transition hover:scale-[1.01]"
+          className="mb-5 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 to-fuchsia-500 px-5 py-3 font-black shadow-lg shadow-purple-600/30 transition hover:scale-[1.01]"
         >
           <span className="text-xl">←</span>
           {t.backHome}
@@ -1776,12 +1776,12 @@ function MessagesContent() {
 
           <div className="relative grid items-center gap-7 lg:grid-cols-[330px_1fr_330px]">
             <div className="hidden min-h-[210px] items-center justify-center lg:flex">
-              <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-500 via-purple-500 to-blue-600 shadow-[0_0_70px_rgba(168,85,247,.65)]">
+              <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-500 via-pink-400 to-blue-600 shadow-[0_0_70px_rgba(168,85,247,.65)]">
                 <div className="absolute inset-4 rounded-full border border-white/30" />
-                <span className="relative text-7xl text-white drop-shadow-lg">▣</span>
+                <span className="relative text-7xl text-[#2D1721] drop-shadow-lg">▣</span>
                 <span className="absolute -left-10 top-6 text-2xl text-pink-400">♥</span>
                 <span className="absolute -right-9 top-16 text-2xl text-purple-400">♥</span>
-                <span className="absolute -left-4 bottom-2 text-lg text-fuchsia-300">✦</span>
+                <span className="absolute -left-4 bottom-2 text-lg text-pink-500">✦</span>
               </div>
             </div>
 
@@ -1789,7 +1789,7 @@ function MessagesContent() {
               <h1 className="text-2xl font-black leading-tight sm:text-3xl lg:text-[34px]">
                 {t.heroTitle} <span className="bg-gradient-to-r from-fuchsia-400 to-pink-500 bg-clip-text text-transparent">{t.heroTitleAccent}</span>
               </h1>
-              <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-[#2D1721]/85 sm:text-lg">
                 {t.heroDesc1}
                 <br className="hidden sm:block" />
                 {t.heroDesc2}
@@ -1804,8 +1804,8 @@ function MessagesContent() {
                 ].map(([icon, title, sub, color]) => (
                   <div key={title} className="px-2 py-2 sm:px-4">
                     <div className={`mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-current text-xl ${color}`}>{icon}</div>
-                    <div className="font-semibold text-white">{title}</div>
-                    <div className="text-sm text-white/80">{sub}</div>
+                    <div className="font-semibold text-[#2D1721]">{title}</div>
+                    <div className="text-sm text-[#4A2835]">{sub}</div>
                   </div>
                 ))}
               </div>
@@ -1824,7 +1824,7 @@ function MessagesContent() {
                 ))}
               </ul>
               <button type="button" onClick={goPremium} className="mt-5 w-full rounded-full bg-gradient-to-r from-[#ffc000] to-[#ffb000] px-5 py-3 font-black text-black shadow-lg shadow-yellow-500/20 transition hover:scale-[1.01]">👑 {t.goPremium}</button>
-              <p className="mt-2 text-center text-xs text-white/50">{t.premiumOnly}</p>
+              <p className="mt-2 text-center text-xs text-zinc-500 ">{t.premiumOnly}</p>
             </div>
           </div>
         </section>
@@ -1832,11 +1832,12 @@ function MessagesContent() {
         {/* MESAJLAR + AKTİF SOHBET */}
         <section className="mt-5 grid gap-5 lg:grid-cols-[420px_1fr]">
           {/* SOL PANEL */}
-          <aside className="flex min-h-[650px] flex-col overflow-hidden rounded-[26px] border border-purple-500/30 bg-[#050c20]/85 shadow-2xl shadow-black/20">
-            <div className="border-b border-white/10 p-5 sm:p-6">
+         <aside className="flex min-h-[650px] flex-col overflow-hidden rounded-[26px] border border-pink-100 bg-white shadow-sm">
+
+            <div className="border-b border-pink-200 p-5 sm:p-6">
               <div className="flex items-center justify-between">
                 <h2 className="text-3xl font-black">{t.chatTitle}</h2>
-                <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 text-2xl font-light shadow-lg shadow-purple-500/30">+</button>
+                <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-fuchsia-500 text-2xl font-light shadow-lg shadow-purple-500/30">+</button>
               </div>
 
               <div className="mt-5 grid grid-cols-4 gap-2">
@@ -1850,7 +1851,7 @@ function MessagesContent() {
                     key={`${value}-${label}`}
                     type="button"
                     onClick={() => setMessageFilter(value as any)}
-                    className={`rounded-full border px-2 py-2.5 text-xs font-bold sm:text-sm ${index === 0 && messageFilter === "all" ? "border-purple-500 bg-gradient-to-r from-purple-600 to-fuchsia-500" : "border-white/10 bg-white/[0.02] text-white/75 hover:bg-white/10"}`}
+                    className={`rounded-full border px-2 py-2.5 text-xs font-bold sm:text-sm ${index === 0 && messageFilter === "all" ? "border-purple-500 bg-gradient-to-r from-pink-500 to-fuchsia-500" : "border-pink-200 bg-white/[0.02] text-[#2D1721]/75 hover:bg-pink-50"}`}
                   >
                     {label}{label === t.new ? <span className="ml-1 text-pink-500">●</span> : label === t.online ? <span className="ml-1 text-emerald-400">●</span> : ""}
                   </button>
@@ -1858,20 +1859,20 @@ function MessagesContent() {
               </div>
 
               <div className="relative mt-4">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60">⌕</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B4454]">⌕</span>
                 <input
                   type="text"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder={t.search}
-                  className="h-12 w-full rounded-2xl border border-white/15 bg-black/35 pl-11 pr-4 text-white outline-none transition focus:border-purple-500"
+                  className="h-12 w-full rounded-2xl border border-pink-200 bg-black/35 pl-11 pr-4 text-[#2D1721] outline-none transition focus:border-purple-500"
                 />
               </div>
             </div>
 
             <div className="min-h-0 flex-1 overflow-y-auto">
               {loadingConversations ? (
-                <div className="flex h-64 items-center justify-center text-white/50">{t.loading}</div>
+                <div className="flex h-64 items-center justify-center text-zinc-400">{t.loading}</div>
               ) : filteredConversations.length ? (
                 filteredConversations.map((conversation) => {
                   const user = conversation.participant ?? conversation.user ?? null;
@@ -1882,15 +1883,15 @@ function MessagesContent() {
                       key={conversation.id}
                       type="button"
                       onClick={() => openConversation(conversation)}
-                      className={`flex w-full items-center gap-3 border-b border-white/[0.06] px-4 py-3 text-left transition ${isActive ? "bg-gradient-to-r from-purple-700/70 via-fuchsia-700/40 to-transparent ring-1 ring-inset ring-fuchsia-500" : "hover:bg-white/[0.05]"}`}
+                      className={`flex w-full items-center gap-3 border-b border-pink-100 px-4 py-3 text-left transition ${isActive ? "bg-gradient-to-r from-purple-700/70 via-fuchsia-700/40 to-transparent ring-1 ring-inset ring-fuchsia-500" : "hover:bg-white/[0.05]"}`}
                     >
                       {avatar(user, "h-12 w-12")}
                       <span className="min-w-0 flex-1">
                         <span className="flex items-center justify-between gap-2">
                           <span className="truncate font-black">{getUserName(user)}</span>
-                          <span className="text-xs text-white/45">{conversation.updatedAt ? formatTime(conversation.updatedAt) : ""}</span>
+                          <span className="text-xs text-zinc-400">{conversation.updatedAt ? formatTime(conversation.updatedAt) : ""}</span>
                         </span>
-                        <span className="mt-1 flex items-center gap-1 truncate text-sm text-white/55">
+                        <span className="mt-1 flex items-center gap-1 truncate text-sm text-zinc-400">
                           <span className="text-yellow-400">▮</span>{last}
                         </span>
                       </span>
@@ -1899,7 +1900,7 @@ function MessagesContent() {
                   );
                 })
               ) : (
-                <div className="flex h-64 flex-col items-center justify-center px-6 text-center text-white/50">
+                <div className="flex h-64 flex-col items-center justify-center px-6 text-center text-zinc-400">
                   <div className="mb-3 text-5xl">💬</div>
                   <p className="font-bold">{t.noMessage}</p>
                   <p className="mt-2 text-sm">{t.noMessageDesc}</p>
@@ -1907,7 +1908,7 @@ function MessagesContent() {
               )}
             </div>
 
-            <div className="border-t border-white/10 px-5 py-3 text-center text-sm text-white/60">
+            <div className="border-t border-pink-200 px-5 py-3 text-center text-sm text-[#6B4454]">
               <span className="text-pink-500">♥</span> {t.total} {filteredConversations.length || conversations.length} {t.conversations}
             </div>
           </aside>
@@ -1916,47 +1917,47 @@ function MessagesContent() {
           <section className="flex min-h-[650px] flex-col overflow-hidden rounded-[26px] border border-purple-500/30 bg-[#050b20]/85 shadow-2xl shadow-black/20">
             {activeConversation ? (
               <>
-                <div className="flex flex-wrap items-center gap-3 border-b border-white/10 p-4 sm:p-5">
+                <div className="flex flex-wrap items-center gap-3 border-b border-pink-200 p-4 sm:p-5">
                   {avatar(activeUser, "h-14 w-14")}
                   <div className="mr-auto min-w-[170px]">
                     <h2 className="text-xl font-black sm:text-2xl">{activeName}</h2>
-                    <p className="text-sm text-white/65">{activeUser?.city ? `24 • ${activeCity}` : activeCity}</p>
+                    <p className="text-sm text-zinc-400">{activeUser?.city ? `24 • ${activeCity}` : activeCity}</p>
                   </div>
                   <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-sm font-bold text-emerald-400">● {t.onlineStatus}</span>
-                  <button type="button" className="hidden h-11 w-11 items-center justify-center rounded-full border border-white/10 text-2xl text-pink-400 hover:bg-white/10 sm:flex">♡</button>
-                  <button type="button" className="px-1 text-xl text-white/60">⋮</button>
-                  <button type="button" onClick={openVideo} className="rounded-full bg-gradient-to-r from-fuchsia-500 to-purple-600 px-5 py-3 text-sm font-black shadow-lg shadow-purple-600/30 transition hover:scale-[1.01] sm:text-base">👑 {t.premiumVideo}</button>
+                  <button type="button" className="hidden h-11 w-11 items-center justify-center rounded-full border border-pink-200 text-2xl text-pink-400 hover:bg-pink-50 sm:flex">♡</button>
+                  <button type="button" className="px-1 text-xl text-[#6B4454]">⋮</button>
+                  <button type="button" onClick={openVideo} className="rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-600 px-5 py-3 text-sm font-black shadow-lg shadow-purple-600/30 transition hover:scale-[1.01] sm:text-base">👑 {t.premiumVideo}</button>
                 </div>
 
                 <div className="relative flex-1 overflow-y-auto bg-[radial-gradient(circle_at_60%_50%,rgba(79,70,229,.10),transparent_35%)] p-5 sm:p-8">
-                  <div className="mb-7 flex items-center gap-4 text-xs text-white/35"><span className="h-px flex-1 bg-white/10" />{t.today}<span className="h-px flex-1 bg-white/10" /></div>
+                  <div className="mb-7 flex items-center gap-4 text-xs text-[#8A6372]"><span className="h-px flex-1 bg-pink-50" />{t.today}<span className="h-px flex-1 bg-pink-50" /></div>
 
                   {loadingMessages ? (
-                    <div className="flex h-56 items-center justify-center text-white/45">{t.loading}</div>
+                    <div className="flex h-56 items-center justify-center text-zinc-400">{t.loading}</div>
                   ) : messages.length ? (
                     <div className="space-y-4">
                       {messages.map((message) => {
                         const mine = !!message.isMine;
                         return (
                           <div key={message.id} className={`flex ${mine ? "justify-end" : "justify-start"}`}>
-                            <div className={`max-w-[78%] rounded-[20px] px-5 py-3 ${mine ? "bg-gradient-to-br from-purple-600 to-fuchsia-600 shadow-lg shadow-purple-900/20" : "bg-[#17254b]"}`}>
+                            <div className={`max-w-[78%] rounded-[20px] px-5 py-3 ${mine ? "bg-gradient-to-br from-pink-500 to-pink-600 shadow-lg shadow-purple-900/20" : "bg-[#17254b]"}`}>
                               <div className="text-base leading-6">{message.content}</div>
-                              <div className="mt-1 text-right text-[11px] text-white/45">{message.createdAt ? formatTime(message.createdAt) : ""}{mine ? "  ✓✓" : ""}</div>
+                              <div className="mt-1 text-right text-[11px] text-zinc-400">{message.createdAt ? formatTime(message.createdAt) : ""}{mine ? "  ✓✓" : ""}</div>
                             </div>
                           </div>
                         );
                       })}
                     </div>
                   ) : (
-                    <div className="flex h-56 items-center justify-center text-white/40">{t.noConversationMessages}</div>
+                    <div className="flex h-56 items-center justify-center text-zinc-400">{t.noConversationMessages}</div>
                   )}
                 </div>
 
                 {error && <div className="border-t border-red-500/20 bg-red-500/10 px-5 py-3 text-sm text-red-300">{error}</div>}
 
-                <form onSubmit={handleSend} className="border-t border-white/10 bg-[#080e25] p-4 sm:p-5">
+                <form onSubmit={handleSend} className="border-t border-pink-200 bg-[#080e25] p-4 sm:p-5">
                   <div className="flex items-end gap-3">
-                    <button type="button" className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-black/20 text-2xl sm:flex">☺</button>
+                    <button type="button" className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-pink-200 bg-pink-50 text-2xl sm:flex">☺</button>
                     <textarea
                       value={draft}
                       onChange={(event) => setDraft(event.target.value)}
@@ -1969,11 +1970,11 @@ function MessagesContent() {
                       placeholder={t.messagePlaceholder}
                       rows={2}
                       disabled={sending}
-                      className="min-h-[58px] flex-1 resize-none rounded-2xl border border-white/15 bg-black/35 px-4 py-3 text-white outline-none transition focus:border-purple-500"
+                      className="min-h-[58px] flex-1 resize-none rounded-2xl border border-pink-200 bg-black/35 px-4 py-3 text-[#2D1721] outline-none transition focus:border-purple-500"
                     />
-                    <button type="submit" disabled={sending || !draft.trim()} className="h-14 shrink-0 rounded-2xl bg-gradient-to-r from-purple-600 to-fuchsia-500 px-6 font-black shadow-lg shadow-purple-700/20 disabled:cursor-not-allowed disabled:opacity-40">{sending ? t.sending : `➤ ${t.send}`}</button>
+                    <button type="submit" disabled={sending || !draft.trim()} className="h-14 shrink-0 rounded-2xl bg-gradient-to-r from-pink-500 to-fuchsia-500 px-6 font-black shadow-lg shadow-purple-700/20 disabled:cursor-not-allowed disabled:opacity-40">{sending ? t.sending : `➤ ${t.send}`}</button>
                   </div>
-                  <p className="mt-2 pl-1 text-[10px] text-white/35">{t.enterHint}</p>
+                  <p className="mt-2 pl-1 text-[10px] text-[#8A6372]">{t.enterHint}</p>
                 </form>
               </>
             ) : (
@@ -1981,7 +1982,7 @@ function MessagesContent() {
                 <div className="max-w-md">
                   <div className="mb-5 text-6xl">💬</div>
                   <h2 className="text-2xl font-black">{t.startChat}</h2>
-                  <p className="mt-3 text-white/50">{t.startChatDesc}</p>
+                  <p className="mt-3 text-zinc-400">{t.startChatDesc}</p>
                 </div>
               </div>
             )}
@@ -2000,16 +2001,16 @@ function MessagesContent() {
             <div>
               <h2 className="text-3xl font-black leading-tight">{t.moreFor}</h2>
               <h3 className="mt-1 text-4xl font-black text-transparent bg-gradient-to-r from-fuchsia-400 to-pink-500 bg-clip-text">{t.premiumGo}</h3>
-              <p className="mt-4 max-w-xl text-base leading-7 text-white/65">{t.premiumDesc}</p>
+              <p className="mt-4 max-w-xl text-base leading-7 text-zinc-400">{t.premiumDesc}</p>
             </div>
-            <ul className="space-y-3 text-base text-white/85">
+            <ul className="space-y-3 text-base text-zinc-400">
               {[t.unlimitedVideo, t.readReceipt, t.boostProfile, t.adFree, t.specialFilters].map((item) => (
-                <li key={item} className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-black">✓</span>{item}</li>
+                <li key={item} className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-pink-500 text-xs font-black">✓</span>{item}</li>
               ))}
             </ul>
             <div>
               <button type="button" onClick={goPremium} className="w-full rounded-full bg-gradient-to-r from-[#ffc000] to-[#ffb000] px-5 py-4 text-lg font-black text-black shadow-xl shadow-yellow-500/20 transition hover:scale-[1.01]">👑 {t.goPremium}</button>
-              <p className="mt-4 text-center text-sm text-white/55">♡ {t.securePayment}</p>
+              <p className="mt-4 text-center text-sm text-zinc-400">♡ {t.securePayment}</p>
             </div>
           </div>
         </section>
@@ -2026,8 +2027,8 @@ export default function MessagesPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-[#020817] text-white">
-          <div className="font-semibold text-white/50">Mesajlar yükleniyor...</div>
+        <div className="flex min-h-screen items-center justify-center bg-[#020817] text-[#2D1721]">
+          <div className="font-semibold text-zinc-400">Mesajlar yükleniyor...</div>
         </div>
       }
     >
@@ -2035,3 +2036,6 @@ export default function MessagesPage() {
     </Suspense>
   );
 }
+
+
+

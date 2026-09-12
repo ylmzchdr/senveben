@@ -57,7 +57,7 @@ function StyledInput({
 }: StyledInputProps) {
   return (
     <input
-      className={`h-11 w-full rounded-xl border border-white/12 bg-white/[0.05] px-3 text-base text-white outline-none transition focus:ring-2 focus:ring-cyan-400 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+      className={`h-11 w-full rounded-xl border border-white/12 bg-white/[0.05] px-3 text-base text-[#2D1721] outline-none transition focus:ring-2 focus:ring-cyan-400 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
       {...props}
     />
   );
@@ -91,7 +91,7 @@ function RangeInputs({
         onChange={(event) => onMinChange(event.target.value)}
       />
 
-      <span className="text-white/50">-</span>
+      <span className="text-[#7A5363]">-</span>
 
       <StyledInput
         type="number"
@@ -128,18 +128,18 @@ function FilterCheckbox({
     <label
       className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition select-none ${
         checked
-          ? "border-cyan-300/50 bg-cyan-300/10 text-white"
-          : "border-white/10 bg-white/[0.04] text-white/60 hover:bg-white/[0.07] hover:text-white"
+          ? "border-pink-300/50 bg-pink-400/10 text-[#2D1721]"
+          : "border-pink-200 bg-white/[0.04] text-[#6B4454] hover:bg-white/[0.07] hover:text-[#2D1721]"
       }`}
     >
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onCheckedChange(e.target.checked)}
-        className="h-4 w-4 rounded border-white/30 bg-transparent text-cyan-400 focus:ring-0 accent-cyan-400"
+        className="h-4 w-4 rounded border-white/30 bg-transparent text-pink-500 focus:ring-0 accent-cyan-400"
       />
 
-      <span className="relative text-cyan-300">
+      <span className="relative text-pink-500">
         {icon}
 
         {pulse && checked && (
@@ -165,13 +165,13 @@ function UserCard({ user }: { user: SearchUser }) {
   return (
     <Link
       href={`/profile/${user.id}`}
-      className="group block cursor-pointer rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-400/40 hover:bg-white/[0.07]"
+      className="group block cursor-pointer rounded-2xl border border-pink-200 bg-white/[0.04] p-4 transition hover:border-pink-400/40 hover:bg-white/[0.07]"
     >
       <div className="flex items-center gap-4">
 
         {/* FOTOĞRAF */}
         <div className="relative shrink-0">
-          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-white/15 bg-slate-800">
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-pink-200 bg-slate-800">
             {image ? (
               <img
                 src={image}
@@ -179,7 +179,7 @@ function UserCard({ user }: { user: SearchUser }) {
                 className="h-full w-full object-cover"
               />
             ) : (
-              <UserRound className="h-7 w-7 text-white/40" />
+              <UserRound className="h-7 w-7 text-[#8A6372]" />
             )}
           </div>
 
@@ -193,28 +193,28 @@ function UserCard({ user }: { user: SearchUser }) {
         <div className="min-w-0 flex-1">
 
           <div className="flex items-center gap-2">
-            <h3 className="truncate text-lg font-bold text-white">
+            <h3 className="truncate text-lg font-bold text-[#2D1721]">
               {user.name}
             </h3>
 
             {user.verified && (
-              <span className="rounded-full bg-cyan-400/10 px-2 py-0.5 text-xs font-semibold text-cyan-300">
+              <span className="rounded-full bg-pink-500/10 px-2 py-0.5 text-xs font-semibold text-pink-500">
                 ✓
               </span>
             )}
 
             {user.premium && (
-              <span className="rounded-full bg-purple-400/10 px-2 py-0.5 text-xs font-semibold text-purple-300">
+              <span className="rounded-full bg-purple-400/10 px-2 py-0.5 text-xs font-semibold text-pink-500">
                 VIP
               </span>
             )}
           </div>
 
-          <p className="truncate text-sm text-white/40">
+          <p className="truncate text-sm text-[#8A6372]">
             @{user.username}
           </p>
 
-          <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-white/50">
+          <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-[#7A5363]">
 
             {user.age !== null && (
               <span>{user.age} yaş</span>
@@ -408,7 +408,7 @@ setHasSearched(true);
   }
 
   return (
-    <div className="min-h-screen bg-[#121420] px-4 py-6 text-white sm:px-6">
+    <div className="min-h-screen bg-[#121420] px-4 py-6 text-[#2D1721] sm:px-6">
 
       {/* ------------------------------------------------ */}
       {/* LOGO */}
@@ -418,29 +418,29 @@ setHasSearched(true);
 
         <div className="flex select-none items-center gap-2">
 
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-500 shadow-lg shadow-purple-500/20">
-            <span className="text-xl font-black tracking-tighter text-white">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-pink-500 to-cyan-500 shadow-lg shadow-purple-500/20">
+            <span className="text-xl font-black tracking-tighter text-[#2D1721]">
               E
             </span>
           </div>
 
-          <h1 className="bg-gradient-to-r from-white via-purple-200 to-cyan-300 bg-clip-text text-3xl font-black tracking-tight text-transparent">
-            EGELOVE
-            <span className="text-xl font-bold text-cyan-400">
+          <h1 className="bg-gradient-to-r from-white via-purple-200 to-pink-500 bg-clip-text text-3xl font-black tracking-tight text-transparent">
+            SENVEBEN
+            <span className="text-xl font-bold text-pink-500">
               .TR
             </span>
           </h1>
 
         </div>
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md">
+        <div className="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md">
 
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
           </span>
 
-          <p className="text-xs font-bold tracking-wide text-cyan-400">
+          <p className="text-xs font-bold tracking-wide text-pink-500">
             81 İLDEN CANLI VE GÜVENLİ BAĞLANTI MERKEZİ
           </p>
 
@@ -457,7 +457,7 @@ setHasSearched(true);
 
           <div className="relative flex-1">
 
-            <Search className="absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40" />
+            <Search className="absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-[#8A6372]" />
 
             <input
               type="text"
@@ -465,13 +465,13 @@ setHasSearched(true);
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="h-12 w-full rounded-xl border border-white/12 bg-white/[0.05] pl-11 pr-4 text-base text-white outline-none transition focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/20"
+              className="h-12 w-full rounded-xl border border-white/12 bg-white/[0.05] pl-11 pr-4 text-base text-[#2D1721] outline-none transition focus:border-pink-400/50 focus:ring-2 focus:ring-cyan-400/20"
             />
 
           </div>
                 <Link
         href="/dashboard"
-        className="mx-auto mt-3 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/70 transition-all duration-200 hover:border-cyan-400/30 hover:bg-cyan-400/[0.06] hover:text-cyan-300"
+        className="mx-auto mt-3 inline-flex items-center gap-2 rounded-xl border border-pink-200 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-[#6B4454] transition-all duration-200 hover:border-pink-400/30 hover:bg-pink-500/[0.06] hover:text-pink-500"
       >
         ← Anasayfaya Dön
       </Link>
@@ -482,7 +482,7 @@ setHasSearched(true);
             type="button"
             onClick={performSearch}
             disabled={loading}
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/10 text-cyan-300 transition hover:bg-cyan-400/20 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-pink-400/40 bg-pink-500/10 text-pink-500 transition hover:bg-pink-500/20 disabled:cursor-not-allowed disabled:opacity-50"
             title="Ara"
           >
             {loading ? (
@@ -499,8 +499,8 @@ setHasSearched(true);
             onClick={() => setShowFilters(!showFilters)}
             className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border transition ${
               showFilters
-                ? "border-cyan-400 bg-cyan-400/10 text-cyan-400"
-                : "border-white/12 bg-white/[0.05] text-white/60 hover:bg-white/[0.08]"
+                ? "border-pink-400 bg-pink-500/10 text-pink-500"
+                : "border-white/12 bg-white/[0.05] text-[#6B4454] hover:bg-white/[0.08]"
             }`}
             title="Filtreler"
           >
@@ -514,12 +514,12 @@ setHasSearched(true);
         {/* ------------------------------------------------ */}
 
         {showFilters && (
-          <div className="space-y-5 rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-xl">
+          <div className="space-y-5 rounded-2xl border border-pink-200 bg-white/40 p-5 backdrop-blur-xl">
 
             <div className="space-y-2">
 
-              <label className="flex items-center gap-2 text-sm font-semibold text-white/60">
-                <Users className="h-4 w-4 text-cyan-400" />
+              <label className="flex items-center gap-2 text-sm font-semibold text-[#6B4454]">
+                <Users className="h-4 w-4 text-pink-500" />
                 Yaş Aralığı
               </label>
 
@@ -571,14 +571,14 @@ setHasSearched(true);
         {hasSearched && !loading && !error && (
           <div className="flex items-center justify-between px-1 pt-3">
 
-            <span className="text-sm text-white/40">
+            <span className="text-sm text-[#8A6372]">
               {total === 0
                 ? "Sonuç bulunamadı"
                 : `${total} sonuç bulundu`}
             </span>
 
             {searchQuery.trim() && (
-              <span className="text-sm font-semibold text-cyan-400">
+              <span className="text-sm font-semibold text-pink-500">
                 "{searchQuery.trim()}"
               </span>
             )}
@@ -593,9 +593,9 @@ setHasSearched(true);
         {loading && (
           <div className="flex flex-col items-center justify-center py-12 text-center">
 
-            <Loader2 className="mb-3 h-8 w-8 animate-spin text-cyan-400" />
+            <Loader2 className="mb-3 h-8 w-8 animate-spin text-pink-500" />
 
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-[#7A5363]">
               Kullanıcılar aranıyor...
             </p>
 
@@ -627,15 +627,15 @@ setHasSearched(true);
           hasSearched &&
           !error &&
           results.length === 0 && (
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-12 text-center">
+            <div className="rounded-2xl border border-pink-200 bg-white/[0.03] px-6 py-12 text-center">
 
-              <Search className="mx-auto mb-4 h-10 w-10 text-white/20" />
+              <Search className="mx-auto mb-4 h-10 w-10 text-[#2D1721]/20" />
 
-              <h2 className="text-lg font-bold text-white/70">
+              <h2 className="text-lg font-bold text-[#6B4454]">
                 Kullanıcı bulunamadı
               </h2>
 
-              <p className="mt-2 text-sm text-white/40">
+              <p className="mt-2 text-sm text-[#8A6372]">
                 Arama kriterlerini değiştirip tekrar deneyebilirsin.
               </p>
 
@@ -649,9 +649,9 @@ setHasSearched(true);
         {!hasSearched && !loading && (
           <div className="pt-8 text-center">
 
-            <Search className="mx-auto mb-3 h-8 w-8 text-white/15" />
+            <Search className="mx-auto mb-3 h-8 w-8 text-[#2D1721]/15" />
 
-            <p className="text-sm text-white/40">
+            <p className="text-sm text-[#8A6372]">
               Bir isim, kullanıcı adı veya şehir yazıp
               <br />
               Enter'a basarak arama yap.
@@ -664,3 +664,5 @@ setHasSearched(true);
     </div>
   );
 }
+
+

@@ -43,7 +43,7 @@ function Toggle({ checked, onChange, label }: ToggleProps) {
         "relative h-7 w-12 shrink-0 rounded-full border transition-all duration-300",
         checked
           ? "border-pink-400/40 bg-gradient-to-r from-fuchsia-500 to-blue-500 shadow-[0_0_24px_rgba(217,70,239,0.22)]"
-          : "border-white/10 bg-white/[0.06]",
+          : "border-pink-200 bg-white",
       ].join(" ")}
     >
       <span
@@ -71,11 +71,11 @@ const languageOptions: Array<{
 const copy = {
   TR: {
     title: "Ayarlar",
-    subtitle: "EgeLove deneyimini kendine göre özelleştir.",
+    subtitle: "SenVeBen deneyimini kendine göre özelleştir.",
     appearance: "Görünüm",
-    appearanceDesc: "EgeLove'ın görünümünü ve ekran tercihlerini yönet.",
+    appearanceDesc: "SenVeBen'ın görünümünü ve ekran tercihlerini yönet.",
     language: "Dil",
-    languageDesc: "EgeLove'da kullanmak istediğin dili seç.",
+    languageDesc: "SenVeBen'da kullanmak istediğin dili seç.",
     notifications: "Bildirimler",
     notificationsDesc: "Sana hangi bildirimlerin gönderileceğini seç.",
     newMessages: "Yeni mesajlar",
@@ -103,7 +103,7 @@ const copy = {
     logout: "Çıkış Yap",
     saved: "Ayarların kaydedildi",
     secure: "Hesabın güvende",
-    secureDesc: "EgeLove hesabın güvenli bağlantı ile korunuyor.",
+    secureDesc: "SenVeBen hesabın güvenli bağlantı ile korunuyor.",
     premium: "Premium",
     premiumDesc: "Daha fazla özellik ve görünürlük için Premium'u keşfet.",
     premiumCta: "Premium'u İncele",
@@ -111,11 +111,11 @@ const copy = {
   },
   EN: {
     title: "Settings",
-    subtitle: "Customize your EgeLove experience.",
+    subtitle: "Customize your SenVeBen experience.",
     appearance: "Appearance",
-    appearanceDesc: "Manage how EgeLove looks and feels.",
+    appearanceDesc: "Manage how SenVeBen looks and feels.",
     language: "Language",
-    languageDesc: "Choose the language you want to use on EgeLove.",
+    languageDesc: "Choose the language you want to use on SenVeBen.",
     notifications: "Notifications",
     notificationsDesc: "Choose which notifications you want to receive.",
     newMessages: "New messages",
@@ -143,7 +143,7 @@ const copy = {
     logout: "Log Out",
     saved: "Settings saved",
     secure: "Your account is secure",
-    secureDesc: "Your EgeLove account is protected with a secure connection.",
+    secureDesc: "Your SenVeBen account is protected with a secure connection.",
     premium: "Premium",
     premiumDesc: "Discover Premium for more features and visibility.",
     premiumCta: "Explore Premium",
@@ -151,11 +151,11 @@ const copy = {
   },
   RU: {
     title: "Настройки",
-    subtitle: "Настройте EgeLove под себя.",
+    subtitle: "Настройте SenVeBen под себя.",
     appearance: "Внешний вид",
-    appearanceDesc: "Управляйте внешним видом EgeLove.",
+    appearanceDesc: "Управляйте внешним видом SenVeBen.",
     language: "Язык",
-    languageDesc: "Выберите язык EgeLove.",
+    languageDesc: "Выберите язык SenVeBen.",
     notifications: "Уведомления",
     notificationsDesc: "Выберите нужные уведомления.",
     newMessages: "Новые сообщения",
@@ -183,7 +183,7 @@ const copy = {
     logout: "Выйти",
     saved: "Настройки сохранены",
     secure: "Ваш аккаунт защищён",
-    secureDesc: "Аккаунт EgeLove защищён безопасным соединением.",
+    secureDesc: "Аккаунт SenVeBen защищён безопасным соединением.",
     premium: "Premium",
     premiumDesc: "Откройте Premium для дополнительных функций.",
     premiumCta: "Открыть Premium",
@@ -191,9 +191,9 @@ const copy = {
   },
   AR: {
     title: "الإعدادات",
-    subtitle: "خصّص تجربة EgeLove كما تريد.",
+    subtitle: "خصّص تجربة SenVeBen كما تريد.",
     appearance: "المظهر",
-    appearanceDesc: "تحكم في مظهر EgeLove.",
+    appearanceDesc: "تحكم في مظهر SenVeBen.",
     language: "اللغة",
     languageDesc: "اختر اللغة التي تريد استخدامها.",
     notifications: "الإشعارات",
@@ -223,7 +223,7 @@ const copy = {
     logout: "تسجيل الخروج",
     saved: "تم حفظ الإعدادات",
     secure: "حسابك آمن",
-    secureDesc: "حساب EgeLove محمي باتصال آمن.",
+    secureDesc: "حساب SenVeBen محمي باتصال آمن.",
     premium: "Premium",
     premiumDesc: "اكتشف Premium للمزيد من الميزات.",
     premiumCta: "استكشف Premium",
@@ -281,13 +281,13 @@ export default function SettingsPage() {
     description: string;
     children?: React.ReactNode;
   }) => (
-    <div className="flex items-center gap-4 border-b border-white/[0.06] py-5 last:border-b-0">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.035] text-pink-300">
+    <div className="flex items-center gap-4 border-b border-pink-100 py-5 last:border-b-0">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white text-pink-300">
         <Icon className="h-5 w-5" strokeWidth={1.8} />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="font-bold text-white">{title}</p>
-        <p className="mt-1 text-sm leading-6 text-slate-500">{description}</p>
+        <p className="font-bold text-[#2D1721]">{title}</p>
+        <p className="mt-1 text-sm leading-6 text-[#8A6372]">{description}</p>
       </div>
       {children}
     </div>
@@ -304,15 +304,15 @@ export default function SettingsPage() {
     description: string;
     children: React.ReactNode;
   }) => (
-    <section className="overflow-hidden rounded-[28px] border border-white/[0.08] bg-white/[0.035] shadow-[0_25px_80px_rgba(0,0,0,0.18)] backdrop-blur-2xl">
-      <div className="border-b border-white/[0.06] px-6 py-5 sm:px-7">
+    <section className="overflow-hidden rounded-[28px] border border-white/[0.08] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.18)] backdrop-blur-2xl">
+      <div className="border-b border-pink-100 px-6 py-5 sm:px-7">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-blue-500/20 text-pink-300">
             <Icon className="h-5 w-5" strokeWidth={1.8} />
           </div>
           <div>
-            <h2 className="text-lg font-black text-white">{title}</h2>
-            <p className="mt-0.5 text-sm text-slate-500">{description}</p>
+            <h2 className="text-lg font-black text-[#2D1721]">{title}</h2>
+            <p className="mt-0.5 text-sm text-[#8A6372]">{description}</p>
           </div>
         </div>
       </div>
@@ -322,7 +322,7 @@ export default function SettingsPage() {
 
   return (
     <div
-      className="min-h-screen bg-[#080b14] text-white"
+      className="min-h-screen bg-[#080b14] text-[#2D1721]"
       dir={lang === "AR" ? "rtl" : "ltr"}
     >
       <div className="lg:hidden">
@@ -362,10 +362,10 @@ export default function SettingsPage() {
                     <SettingsIcon />
                     {t.title}
                   </div>
-                  <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+                  <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-[#2D1721] sm:text-4xl">
                     {t.title}
                   </h1>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-base">
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8A6372] dark:text-[#7A5363] sm:text-base">
                     {t.subtitle}
                   </p>
                 </div>
@@ -398,8 +398,8 @@ export default function SettingsPage() {
                           className={[
                             "rounded-xl border px-3 py-2 text-xs font-black transition-all",
                             lang === item.code
-                              ? "border-pink-400/30 bg-gradient-to-r from-fuchsia-500/20 to-blue-500/20 text-white shadow-[0_0_22px_rgba(217,70,239,0.15)]"
-                              : "border-white/[0.08] bg-white/[0.025] text-slate-500 hover:border-white/15 hover:text-white",
+                              ? "border-pink-400/30 bg-gradient-to-r from-fuchsia-500/20 to-blue-500/20 text-[#2D1721] shadow-[0_0_22px_rgba(217,70,239,0.15)]"
+                              : "border-white/[0.08] bg-white text-[#8A6372] hover:border-pink-200 hover:text-[#2D1721]",
                           ].join(" ")}
                         >
                           {item.flag} {item.code}
@@ -558,7 +558,7 @@ export default function SettingsPage() {
                   >
                     <Link
                       href="/premium"
-                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-blue-500 px-4 py-2.5 text-xs font-black text-white shadow-[0_12px_30px_rgba(168,85,247,0.2)] transition hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-blue-500 px-4 py-2.5 text-xs font-black text-[#2D1721] shadow-[0_12px_30px_rgba(168,85,247,0.2)] transition hover:-translate-y-0.5"
                     >
                       {t.premiumCta}
                       <ChevronRight className="h-4 w-4" />
@@ -568,9 +568,9 @@ export default function SettingsPage() {
                   <div className="py-5">
                     <Link
                       href="/help"
-                      className="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.025] px-4 py-3.5 transition hover:border-white/15 hover:bg-white/[0.05]"
+                      className="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white px-4 py-3.5 transition hover:border-pink-200 hover:bg-white/[0.05]"
                     >
-                      <span className="text-sm font-bold text-slate-300 group-hover:text-white">
+                      <span className="text-sm font-bold text-[#6B4454] group-hover:text-[#2D1721]">
                         {t.help}
                       </span>
                       <ChevronRight className="h-4 w-4 text-slate-600 transition group-hover:translate-x-0.5 group-hover:text-pink-300" />
@@ -581,7 +581,7 @@ export default function SettingsPage() {
 
               <div className="mt-5 flex items-center justify-center gap-2 pb-5 text-xs text-slate-600">
                 <Lock className="h-3.5 w-3.5" />
-                EgeLove • Güvenli ve kişisel deneyim
+                SenVeBen • Güvenli ve kişisel deneyim
               </div>
             </div>
           </div>
@@ -594,3 +594,6 @@ export default function SettingsPage() {
 function SettingsIcon() {
   return <Palette className="h-3.5 w-3.5" />;
 }
+
+
+

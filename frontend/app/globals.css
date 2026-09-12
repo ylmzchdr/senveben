@@ -40,53 +40,66 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-pink-50: #e0f2fe;
-  --color-pink-100: #bae6fd;
-  --color-pink-200: #7dd3fc;
-  --color-pink-300: #38bdf8;
-  --color-pink-400: #0ea5e9;
-  --color-pink-500: #0284c7;
-  --color-pink-600: #0077b6;
-  --color-pink-700: #03045e;
-  --color-pink-800: #075985;
-  --color-pink-900: #0c4a6e;
-  --color-pink-950: #082f49;
+  /* GERÇEK PEMBE RENK PALETİ */
+  --color-pink-50: #fdf2f8;
+  --color-pink-100: #fce7f3;
+  --color-pink-200: #fbcfe8;
+  --color-pink-300: #f472b6;
+  --color-pink-400: #f43f5e;
+  --color-pink-500: #ec4899;
+  --color-pink-600: #db2777;
+  --color-pink-700: #be185d;
+  --color-pink-800: #9d174d;
+  --color-pink-900: #831843;
+  --color-pink-950: #500724;
 }
 
 :root {
-  --primary: #0077b6;
+  --primary: #ec4899;
   --primary-foreground: #ffffff;
-  --sidebar-primary: #0077b6;
+  --sidebar-primary: #ec4899;
   --sidebar-primary-foreground: #ffffff;
-  --chart-1: #0077b6;
-  --chart-2: #0096c7;
-  --chart-3: #00b4d8;
-  --chart-4: #48cae4;
-  --chart-5: #90e0ef;
+  --chart-1: #ec4899;
+  --chart-2: #db2777;
+  --chart-3: #f472b6;
+  --chart-4: #fbcfe8;
+  --chart-5: #fdf2f8;
   --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: #ffffff;
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.007 0.176 230);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.007 0.176 230);
+  
+  /* BEYAZ VE AÇIK GRİ ARKA PLANLAR */
+  --background: #ffffff;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #27272a;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #ec4899;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #18181b;
+  --sidebar-accent: #fdf2f8;
+  --sidebar-accent-foreground: #be185d;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #ec4899;
+}
+
+/* EĞER SİTEDE HALA .dark SINIFI KALDIYSA BEYAZA ZORLAMAK İÇIN */
+.dark, :is(.dark *) {
+  --background: #ffffff !important;
+  --foreground: #18181b !important;
+  --card: #ffffff !important;
+  --card-foreground: #18181b !important;
+  --sidebar: #ffffff !important;
+  --sidebar-foreground: #18181b !important;
 }
 
 * {
@@ -94,6 +107,6 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
 }

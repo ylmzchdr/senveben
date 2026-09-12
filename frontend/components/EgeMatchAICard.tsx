@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { Heart, Sparkles, Zap, BrainCircuit } from "lucide-react";
@@ -32,20 +32,20 @@ type MatchText = {
 
 const TEXT: Record<Lang, MatchText> = {
   TR: {
-    subtitle: "Yapay zekâ uyum analizi",
-    perfectMatch: "Mükemmel Uyum",
-    highMatch: "Yüksek Uyum",
+    subtitle: "Yapay zekÃ¢ uyum analizi",
+    perfectMatch: "MÃ¼kemmel Uyum",
+    highMatch: "YÃ¼ksek Uyum",
     mediumMatch: "Orta Uyum",
-    lowMatch: "Düşük Uyum",
-    shortComment: "AI kısa yorum",
+    lowMatch: "DÃ¼ÅŸÃ¼k Uyum",
+    shortComment: "AI kÄ±sa yorum",
     energy: "Enerji",
-    interest: "İlgi",
-    love: "Aşk",
+    interest: "Ä°lgi",
+    love: "AÅŸk",
     premiumMessage:
-      "Premium üyeler detaylı AI aşk analizini görebilir.",
+      "Premium Ã¼yeler detaylÄ± AI aÅŸk analizini gÃ¶rebilir.",
     profileFallback: "bu profil",
     summary: (name) =>
-      `EgeMatch AI, senin profil bilgilerinle ${name} arasındaki ilgi, yaşam tarzı ve ilişki beklentisi uyumunu analiz eder.`,
+      `EgeMatch AI, senin profil bilgilerinle ${name} arasÄ±ndaki ilgi, yaÅŸam tarzÄ± ve iliÅŸki beklentisi uyumunu analiz eder.`,
   },
 
   EN: {
@@ -66,37 +66,37 @@ const TEXT: Record<Lang, MatchText> = {
   },
 
   RU: {
-    subtitle: "Анализ совместимости с помощью ИИ",
-    perfectMatch: "Идеальная совместимость",
-    highMatch: "Высокая совместимость",
-    mediumMatch: "Средняя совместимость",
-    lowMatch: "Низкая совместимость",
-    shortComment: "Краткий комментарий ИИ",
-    energy: "Энергия",
-    interest: "Интерес",
-    love: "Любовь",
+    subtitle: "ĞĞ½Ğ°Ğ»Ğ¸Ğ· ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸ Ñ Ğ¿Ğ¾Ğ¼Ğ¾Ñ‰ÑŒÑ Ğ˜Ğ˜",
+    perfectMatch: "Ğ˜Ğ´ĞµĞ°Ğ»ÑŒĞ½Ğ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
+    highMatch: "Ğ’Ñ‹ÑĞ¾ĞºĞ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
+    mediumMatch: "Ğ¡Ñ€ĞµĞ´Ğ½ÑÑ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
+    lowMatch: "ĞĞ¸Ğ·ĞºĞ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
+    shortComment: "ĞšÑ€Ğ°Ñ‚ĞºĞ¸Ğ¹ ĞºĞ¾Ğ¼Ğ¼ĞµĞ½Ñ‚Ğ°Ñ€Ğ¸Ğ¹ Ğ˜Ğ˜",
+    energy: "Ğ­Ğ½ĞµÑ€Ğ³Ğ¸Ñ",
+    interest: "Ğ˜Ğ½Ñ‚ĞµÑ€ĞµÑ",
+    love: "Ğ›ÑĞ±Ğ¾Ğ²ÑŒ",
     premiumMessage:
-      "Премиум-участники могут просматривать подробный анализ совместимости.",
-    profileFallback: "этим профилем",
+      "ĞŸÑ€ĞµĞ¼Ğ¸ÑƒĞ¼-ÑƒÑ‡Ğ°ÑÑ‚Ğ½Ğ¸ĞºĞ¸ Ğ¼Ğ¾Ğ³ÑƒÑ‚ Ğ¿Ñ€Ğ¾ÑĞ¼Ğ°Ñ‚Ñ€Ğ¸Ğ²Ğ°Ñ‚ÑŒ Ğ¿Ğ¾Ğ´Ñ€Ğ¾Ğ±Ğ½Ñ‹Ğ¹ Ğ°Ğ½Ğ°Ğ»Ğ¸Ğ· ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸.",
+    profileFallback: "ÑÑ‚Ğ¸Ğ¼ Ğ¿Ñ€Ğ¾Ñ„Ğ¸Ğ»ĞµĞ¼",
     summary: (name) =>
-      `EgeMatch AI анализирует совместимость между вашим профилем и ${name}, учитывая интересы, образ жизни и ожидания от отношений.`,
+      `EgeMatch AI Ğ°Ğ½Ğ°Ğ»Ğ¸Ğ·Ğ¸Ñ€ÑƒĞµÑ‚ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ Ğ¼ĞµĞ¶Ğ´Ñƒ Ğ²Ğ°ÑˆĞ¸Ğ¼ Ğ¿Ñ€Ğ¾Ñ„Ğ¸Ğ»ĞµĞ¼ Ğ¸ ${name}, ÑƒÑ‡Ğ¸Ñ‚Ñ‹Ğ²Ğ°Ñ Ğ¸Ğ½Ñ‚ĞµÑ€ĞµÑÑ‹, Ğ¾Ğ±Ñ€Ğ°Ğ· Ğ¶Ğ¸Ğ·Ğ½Ğ¸ Ğ¸ Ğ¾Ğ¶Ğ¸Ğ´Ğ°Ğ½Ğ¸Ñ Ğ¾Ñ‚ Ğ¾Ñ‚Ğ½Ğ¾ÑˆĞµĞ½Ğ¸Ğ¹.`,
   },
 
   AR: {
-    subtitle: "تحليل التوافق بالذكاء الاصطناعي",
-    perfectMatch: "توافق مثالي",
-    highMatch: "توافق مرتفع",
-    mediumMatch: "توافق متوسط",
-    lowMatch: "توافق منخفض",
-    shortComment: "تعليق سريع بالذكاء الاصطناعي",
-    energy: "الطاقة",
-    interest: "الاهتمام",
-    love: "الحب",
+    subtitle: "ØªØ­Ù„ÙŠÙ„ Ø§Ù„ØªÙˆØ§ÙÙ‚ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
+    perfectMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ø«Ø§Ù„ÙŠ",
+    highMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ø±ØªÙØ¹",
+    mediumMatch: "ØªÙˆØ§ÙÙ‚ Ù…ØªÙˆØ³Ø·",
+    lowMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ù†Ø®ÙØ¶",
+    shortComment: "ØªØ¹Ù„ÙŠÙ‚ Ø³Ø±ÙŠØ¹ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
+    energy: "Ø§Ù„Ø·Ø§Ù‚Ø©",
+    interest: "Ø§Ù„Ø§Ù‡ØªÙ…Ø§Ù…",
+    love: "Ø§Ù„Ø­Ø¨",
     premiumMessage:
-      "يمكن لأعضاء بريميوم مشاهدة تحليل الحب المفصل بالذكاء الاصطناعي.",
-    profileFallback: "هذا الملف الشخصي",
+      "ÙŠÙ…ÙƒÙ† Ù„Ø£Ø¹Ø¶Ø§Ø¡ Ø¨Ø±ÙŠÙ…ÙŠÙˆÙ… Ù…Ø´Ø§Ù‡Ø¯Ø© ØªØ­Ù„ÙŠÙ„ Ø§Ù„Ø­Ø¨ Ø§Ù„Ù…ÙØµÙ„ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ.",
+    profileFallback: "Ù‡Ø°Ø§ Ø§Ù„Ù…Ù„Ù Ø§Ù„Ø´Ø®ØµÙŠ",
     summary: (name) =>
-      `يحلل EgeMatch AI التوافق بين ملفك الشخصي و${name} بناءً على الاهتمامات ونمط الحياة وتوقعات العلاقة.`,
+      `ÙŠØ­Ù„Ù„ EgeMatch AI Ø§Ù„ØªÙˆØ§ÙÙ‚ Ø¨ÙŠÙ† Ù…Ù„ÙÙƒ Ø§Ù„Ø´Ø®ØµÙŠ Ùˆ${name} Ø¨Ù†Ø§Ø¡Ù‹ Ø¹Ù„Ù‰ Ø§Ù„Ø§Ù‡ØªÙ…Ø§Ù…Ø§Øª ÙˆÙ†Ù…Ø· Ø§Ù„Ø­ÙŠØ§Ø© ÙˆØªÙˆÙ‚Ø¹Ø§Øª Ø§Ù„Ø¹Ù„Ø§Ù‚Ø©.`,
   },
 };
 
@@ -154,7 +154,7 @@ export default function EgeMatchAICard({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_35%)]" />
       <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-pink-400/30 blur-3xl" />
       <div className="absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-purple-500/30 blur-3xl" />
-      <div className="absolute left-[-40%] top-0 h-full w-1/3 skew-x-[-20deg] bg-white/10 blur-xl transition-all duration-1000 group-hover:left-[120%]" />
+      <div className="absolute left-[-40%] top-0 h-full w-1/3 skew-x-[-20deg] bg-pink-50 blur-xl transition-all duration-1000 group-hover:left-[120%]" />
 
       <div className="relative z-10">
         <div className="mb-5 flex items-center justify-between">
@@ -168,8 +168,8 @@ export default function EgeMatchAICard({
             </div>
 
             <div>
-              <h3 className="flex items-center gap-2 text-xl font-black text-white">
-                <span>❤️ EgeMatch AI</span>
+              <h3 className="flex items-center gap-2 text-xl font-black text-[#2D1721]">
+                <span>â¤ï¸ EgeMatch AI</span>
               </h3>
 
               <p className="text-xs font-medium text-pink-100/70">
@@ -184,7 +184,7 @@ export default function EgeMatchAICard({
         </div>
 
         <div className="mb-5 flex flex-wrap items-end gap-3">
-          <div className="text-6xl font-black tracking-tight text-white drop-shadow-lg">
+          <div className="text-6xl font-black tracking-tight text-[#2D1721] drop-shadow-lg">
             %{animatedScore}
           </div>
 
@@ -193,14 +193,14 @@ export default function EgeMatchAICard({
           </div>
         </div>
 
-        <div className="mb-5 h-3 overflow-hidden rounded-full bg-white/10">
+        <div className="mb-5 h-3 overflow-hidden rounded-full bg-pink-50">
           <div
             className="h-full rounded-full bg-gradient-to-r from-sky-400 via-fuchsia-400 to-yellow-300 shadow-lg shadow-pink-400/40 transition-all duration-700"
             style={{ width: `${animatedScore}%` }}
           />
         </div>
 
-        <div className="mb-5 rounded-2xl border border-white/10 bg-black/15 p-4">
+        <div className="mb-5 rounded-2xl border border-pink-200 bg-black/15 p-4">
           <div className="mb-2 flex items-center gap-2 text-base font-bold text-pink-100">
             <BrainCircuit className="h-4 w-4 text-yellow-200" />
             {tx.shortComment}
@@ -212,19 +212,19 @@ export default function EgeMatchAICard({
         </div>
 
         <div className="grid grid-cols-3 gap-2 text-center">
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+          <div className="rounded-2xl border border-pink-200 bg-pink-50 p-3">
             <p className="text-xs text-pink-100/60">{tx.energy}</p>
-            <p className="text-lg font-black text-white">%{energy}</p>
+            <p className="text-lg font-black text-[#2D1721]">%{energy}</p>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+          <div className="rounded-2xl border border-pink-200 bg-pink-50 p-3">
             <p className="text-xs text-pink-100/60">{tx.interest}</p>
-            <p className="text-lg font-black text-white">%{interest}</p>
+            <p className="text-lg font-black text-[#2D1721]">%{interest}</p>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+          <div className="rounded-2xl border border-pink-200 bg-pink-50 p-3">
             <p className="text-xs text-pink-100/60">{tx.love}</p>
-            <p className="text-lg font-black text-white">%{love}</p>
+            <p className="text-lg font-black text-[#2D1721]">%{love}</p>
           </div>
         </div>
 

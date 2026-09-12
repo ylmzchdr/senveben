@@ -129,7 +129,7 @@ function DirectMessageContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121420] text-white flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#121420] text-[#2D1721] flex flex-col items-center justify-center p-4">
 
       <div className="w-full max-w-md bg-[#1a1d30] rounded-xl p-6 shadow-xl border border-slate-800">
 
@@ -137,12 +137,12 @@ function DirectMessageContent() {
           Hızlı Mesaj Gönder
         </h2>
 
-        <p className="text-xs text-slate-500 mb-6 text-center">
+        <p className="text-xs text-[#8A6372] mb-6 text-center">
           Kullanıcıya doğrudan mesaj iletiliyorsunuz.
         </p>
 
         <textarea
-          className="w-full h-32 bg-[#121420] border border-slate-700 rounded-lg p-3 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 resize-none text-sm mb-4"
+          className="w-full h-32 bg-[#121420] border border-slate-700 rounded-lg p-3 text-[#2D1721] placeholder-slate-500 focus:outline-none focus:border-purple-500 resize-none text-sm mb-4"
           placeholder="Mesajınızı buraya yazın..."
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
@@ -150,20 +150,20 @@ function DirectMessageContent() {
 
         <button
           onClick={handleSendMessage}
-          className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 text-sm shadow-lg"
+          className="w-full bg-pink-500 hover:bg-purple-700 text-[#2D1721] font-semibold py-3 px-4 rounded-lg transition duration-200 text-sm shadow-lg"
         >
           Mesajı Gönder
         </button>
 
         {status && (
-          <p className="mt-4 text-xs text-center font-medium text-purple-300 bg-purple-950/30 py-2 rounded-md border border-purple-900/50">
+          <p className="mt-4 text-xs text-center font-medium text-pink-500 bg-purple-950/30 py-2 rounded-md border border-purple-900/50">
             {status}
           </p>
         )}
         <button
   type="button"
   onClick={() => router.push("/messages")}
-  className="w-full mt-3 border border-slate-600 hover:border-purple-500 text-slate-300 hover:text-white font-medium py-2.5 px-4 rounded-lg transition duration-200 text-sm"
+  className="w-full mt-3 border border-slate-600 hover:border-purple-500 text-[#6B4454] hover:text-[#2D1721] font-medium py-2.5 px-4 rounded-lg transition duration-200 text-sm"
 >
   ← Geri Dön
 </button>
@@ -178,7 +178,7 @@ export default function DirectMessagePage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#121420] text-white flex items-center justify-center">
+        <div className="min-h-screen bg-[#121420] text-[#2D1721] flex items-center justify-center">
           Yükleniyor...
         </div>
       }

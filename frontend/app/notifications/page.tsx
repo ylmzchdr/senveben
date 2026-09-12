@@ -87,18 +87,18 @@ export default function NotificationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#121420] text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#121420] text-[#2D1721] flex flex-col font-sans">
       
       {/* 🧭 ÜST NAVİGASYON BARI - SAF HTML GERİ DÖNÜŞ KAPISI ÇAKILDI */}
       <header className="w-full bg-[#1a1d30] border-b border-white/5 px-6 py-5 flex items-center justify-between shadow-md shrink-0">
         <a 
           href="/dashboard" 
-          className="flex items-center gap-3 bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-2xl text-sm font-black tracking-wider transition-all shadow-lg shadow-purple-500/20 border border-purple-400/30"
+          className="flex items-center gap-3 bg-pink-500 hover:bg-purple-500 text-[#2D1721] px-6 py-3 rounded-2xl text-sm font-black tracking-wider transition-all shadow-lg shadow-purple-500/20 border border-purple-400/30"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>⬅️ ANA SAYFAYA GERİ DÖN</span>
         </a>
-        <span className="text-xs font-bold text-slate-500 tracking-widest font-mono">EGELOVE BİLDİRİM MERKEZİ</span>
+        <span className="text-xs font-bold text-[#8A6372] tracking-widest font-mono">SENVEBEN BİLDİRİM MERKEZİ</span>
       </header>
 
       {/* 📊 ANA İÇERİK ALANI */}
@@ -112,7 +112,7 @@ export default function NotificationsPage() {
             </div>
             <div>
               <h2 className="text-lg font-black tracking-wider text-purple-400 uppercase">Son Aktivite Bildirimleri</h2>
-              <p className="text-[10px] text-slate-400 mt-0.5 tracking-wide">
+              <p className="text-[10px] text-[#7A5363] mt-0.5 tracking-wide">
                 Platform genelindeki anlık etkileşimleriniz ve sistem raporları.
               </p>
             </div>
@@ -121,7 +121,7 @@ export default function NotificationsPage() {
           {unreadCount > 0 && (
             <button 
               onClick={markAllAsRead}
-              className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-md shrink-0"
+              className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-[#4A2835] border border-pink-200 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-md shrink-0"
             >
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               <span>Tümünü Okundu İşaretle</span>
@@ -139,7 +139,7 @@ export default function NotificationsPage() {
             {error}
           </div>
         ) : notifications.length === 0 ? (
-          <div className="text-center py-12 text-slate-500 text-xs font-bold tracking-wide uppercase">
+          <div className="text-center py-12 text-[#8A6372] text-xs font-bold tracking-wide uppercase">
             [ Henüz yeni bir bildiriminiz bulunmuyor ]
           </div>
         ) : (
@@ -150,8 +150,8 @@ export default function NotificationsPage() {
                 onClick={() => !notification.isRead && markAsRead(notification.id)}
                 className={`p-5 rounded-2xl border transition-all duration-200 flex items-start gap-4 shadow-xl relative overflow-hidden group cursor-pointer ${
                   notification.isRead 
-                    ? "bg-slate-900/30 border-white/5 opacity-70" 
-                    : "bg-slate-900/60 border-purple-500/20 hover:border-purple-500/40"
+                    ? "bg-white/30 border-white/5 opacity-70" 
+                    : "bg-white/60 border-purple-500/20 hover:border-purple-500/40"
                 }`}
               >
                 {/* Okunmamış Durum Noktası */}
@@ -164,14 +164,14 @@ export default function NotificationsPage() {
                 
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center justify-between gap-4">
-                    <span className={`text-xs font-black tracking-wide ${notification.isRead ? "text-slate-400" : "text-white"}`}>
+                    <span className={`text-xs font-black tracking-wide ${notification.isRead ? "text-[#7A5363]" : "text-[#2D1721]"}`}>
                       {notification.title}
                     </span>
-                    <span className="text-[10px] text-slate-500 font-mono font-medium shrink-0">
+                    <span className="text-[10px] text-[#8A6372] font-mono font-medium shrink-0">
                       {new Date(notification.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
-                  <p className={`text-xs tracking-wide leading-relaxed ${notification.isRead ? "text-slate-500" : "text-slate-200"}`}>
+                  <p className={`text-xs tracking-wide leading-relaxed ${notification.isRead ? "text-[#8A6372]" : "text-[#4A2835]"}`}>
                     {notification.message}
                   </p>
                 </div>
@@ -184,3 +184,4 @@ export default function NotificationsPage() {
     </div>
   );
 }
+

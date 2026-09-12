@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { useEffect, useRef, useState } from "react";
@@ -104,7 +104,7 @@ export default function ProfilePhotoUpload({
         {photos.map((photo, i) => (
           <div
             key={photo.id || i}
-            className="relative aspect-square rounded-xl overflow-hidden bg-white/10"
+            className="relative aspect-square rounded-xl overflow-hidden bg-pink-50"
           >
             <img
               src={getImageUrl(photo.url)}
@@ -120,19 +120,19 @@ export default function ProfilePhotoUpload({
               <button
                 onClick={() => removePhoto(photo)}
                 disabled={removingId === photo.id}
-                className="absolute top-2 right-2 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-white shadow-lg"
+                className="absolute top-2 right-2 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-[#2D1721] shadow-lg"
               >
                 {removingId === photo.id ? (
-                  <Loader2 className="w-4 h-4 text-white animate-spin" />
+                  <Loader2 className="w-4 h-4 text-[#2D1721] animate-spin" />
                 ) : (
-                  <X className="w-4 h-4 text-white" />
+                  <X className="w-4 h-4 text-[#2D1721]" />
                 )}
               </button>
             )}
 
             {/* MAIN */}
             {i === 0 && (
-              <div className="absolute bottom-2 left-2 bg-pink-600 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1">
+              <div className="absolute bottom-2 left-2 bg-pink-600 text-[#2D1721] text-xs px-2 py-0.5 rounded-full flex items-center gap-1">
                 <Check className="w-3 h-3" /> Ana
               </div>
             )}
@@ -144,7 +144,7 @@ export default function ProfilePhotoUpload({
           <button
             onClick={() => inputRef.current?.click()}
             disabled={uploading}
-            className="aspect-square border border-dashed border-white/30 rounded-xl flex items-center justify-center bg-white/5"
+            className="aspect-square border border-dashed border-white/30 rounded-xl flex items-center justify-center bg-pink-50"
           >
             {uploading ? (
               <Loader2 className="animate-spin" />
