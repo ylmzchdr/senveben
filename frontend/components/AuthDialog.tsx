@@ -1,8 +1,6 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,6 +9,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -81,15 +80,11 @@ export default function AuthDialog({
   const { t } = useI18n();
 
   const [tab, setTab] = useState<Tab>(null);
-  const [showPassword, setShowPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [loginData, setLoginData] =
-    useState<LoginData>(initialLoginData);
-
-  const [registerData, setRegisterData] =
-    useState<RegisterData>(initialRegisterData);
+  const [loginData, setLoginData] = useState<LoginData>(initialLoginData);
+  const [registerData, setRegisterData] = useState<RegisterData>(initialRegisterData);
 
   const [cities, setCities] = useState<City[]>([]);
   const [districts, setDistricts] = useState<District[]>([]);
@@ -116,7 +111,6 @@ export default function AuthDialog({
         console.error("Şehirler alınamadı:", error);
         if (!cancelled) {
           setCities([]);
-          alert("Şehirler yüklenemedi. Lütfen tekrar deneyin.");
         }
       } finally {
         if (!cancelled) {
@@ -147,10 +141,7 @@ export default function AuthDialog({
         if (!Number.isInteger(cityId) || cityId <= 0) {
           setDistricts([]);
           if (!cancelled) {
-            setRegisterData((prev) => ({
-              ...prev,
-              districtId: "1",
-            }));
+            setRegisterData((prev) => ({ ...prev, districtId: "1" }));
           }
           return;
         }
@@ -170,10 +161,7 @@ export default function AuthDialog({
         console.error("İlçeler alınamadı:", error);
         if (!cancelled) {
           setDistricts([]);
-          setRegisterData((prev) => ({
-            ...prev,
-            districtId: "1",
-          }));
+          setRegisterData((prev) => ({ ...prev, districtId: "1" }));
         }
       } finally {
         if (!cancelled) {
@@ -271,7 +259,7 @@ export default function AuthDialog({
         cityId,
         cityName: selectedCity.name,
         districtId,
-        districtName: districts.find(d => Number(d.id) === districtId)?.name || "Merkez",
+        districtName: districts.find((d) => Number(d.id) === districtId)?.name || "Merkez",
       });
 
       alert("Kayıt başarılı! Giriş yapabilirsiniz.");
@@ -289,11 +277,14 @@ export default function AuthDialog({
 
   return (
     <Dialog open={!!tab} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[420px] p-6 bg-white rounded-2xl border-0 shadow-xl">
+      <DialogContent className="sm:max-w-[420px] max-h-[90vh] overflow-y-auto p-6 bg-[#25150D] text-amber-50 rounded-2xl border border-amber-900/50 shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center text-gray-800">
+          <DialogTitle className="text-2xl font-bold text-center text-amber-400">
             {tab === "login" ? "Giriş Yap" : "Ücretsiz Katıl"}
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Giriş ve kayıt penceresi
+          </DialogDescription>
         </DialogHeader>
 
         {/* GOOGLE GİRİŞ BUTONU */}
@@ -302,7 +293,7 @@ export default function AuthDialog({
             type="button"
             variant="outline"
             onClick={handleGoogleLogin}
-            className="w-full h-11 border border-gray-200 rounded-xl hover:bg-gray-50 flex items-center justify-center gap-2 font-medium transition-all"
+            className="w-full h-11 border border-amber-900/50 bg-[#1A0E08] text-amber-200 hover:bg-[#321C11] hover:text-amber-100 rounded-xl flex items-center justify-center gap-2 font-medium transition-all"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.18 1-.78 1.85-1.63 2.42v2.77h2.64c1.55-1.42 2.43-3.52 2.43-5.92z"/>
@@ -314,8 +305,8 @@ export default function AuthDialog({
           </Button>
 
           <div className="relative my-2">
-            <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-gray-100"></span></div>
-            <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-gray-400">Veya e-posta ile</span></div>
+            <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-amber-900/40"></span></div>
+            <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#25150D] px-2 text-amber-200/60">Veya e-posta ile</span></div>
           </div>
         </div>
 
@@ -323,26 +314,157 @@ export default function AuthDialog({
         {tab === "login" && (
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-1">
-              <Label htmlFor="loginEmail">E-posta veya Telefon</Label>
+              <Label htmlFor="loginEmail" className="text-amber-200">E-posta veya Telefon</Label>
               <Input
                 id="loginEmail"
                 type="text"
                 required
-                className="h-11 rounded-xl"
+                className="h-11 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 placeholder:text-amber-900/50 focus:border-amber-500"
                 value={loginData.emailOrPhone}
                 onChange={(e) => setLoginData({ ...loginData, emailOrPhone: e.target.value })}
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="loginPassword">Şifre</Label>
+              <Label htmlFor="loginPassword" className="text-amber-200">Şifre</Label>
               <Input
                 id="loginPassword"
                 type="password"
                 required
-                className="h-11 rounded-xl"
+                className="h-11 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 focus:border-amber-500"
                 value={loginData.password}
                 onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
               />
             </div>
-            <Button type="submit" disabled={loading} className="w-full h-11 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl">
+            <Button type="submit" disabled={loading} className="w-full h-11 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold rounded-xl transition-all">
               {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}
+            </Button>
+            <p className="text-center text-sm text-amber-200/70 mt-2">
+              Hesabın yok mu?{" "}
+              <button type="button" className="text-amber-400 font-semibold underline hover:text-amber-300" onClick={() => setTab("register")}>
+                Kayıt Ol
+              </button>
+            </p>
+          </form>
+        )}
+
+        {/* KAYIT PANELİ */}
+        {tab === "register" && (
+          <form onSubmit={handleRegister} className="space-y-3">
+            <div className="space-y-1">
+              <Label htmlFor="username" className="text-amber-200">Kullanıcı Adı</Label>
+              <Input
+                id="username"
+                type="text"
+                required
+                className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 focus:border-amber-500"
+                value={registerData.username}
+                onChange={(e) => setRegisterData({ ...registerData, username: e.target.value })}
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="regEmail" className="text-amber-200">E-posta</Label>
+              <Input
+                id="regEmail"
+                type="email"
+                required
+                className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 focus:border-amber-500"
+                value={registerData.email}
+                onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="regPassword" className="text-amber-200">Şifre</Label>
+              <Input
+                id="regPassword"
+                type="password"
+                required
+                className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 focus:border-amber-500"
+                value={registerData.password}
+                onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
+              />
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor="birthDate" className="text-amber-200">Doğum Tarihi</Label>
+              <Input
+                id="birthDate"
+                type="date"
+                required
+                className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100 focus:border-amber-500 [color-scheme:dark]"
+                value={registerData.birthDate}
+                onChange={(e) => setRegisterData({ ...registerData, birthDate: e.target.value })}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-1">
+                <Label className="text-amber-200">Şehir</Label>
+                <Select
+                  value={registerData.cityId}
+                  onValueChange={(val) => setRegisterData({ ...registerData, cityId: val, districtId: "" })}
+                  disabled={citiesLoading}
+                >
+                  <SelectTrigger className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100">
+                    <SelectValue placeholder={citiesLoading ? "Yükleniyor..." : "Şehir Seç"} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-[#25150D] border-amber-900/60 text-amber-100">
+                    {cities.map((city) => (
+                      <SelectItem key={city.id} value={String(city.id)} className="focus:bg-amber-900/40 focus:text-amber-200">
+                        {city.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-amber-200">İlçe</Label>
+                <Select
+                  value={registerData.districtId}
+                  onValueChange={(val) => setRegisterData({ ...registerData, districtId: val })}
+                  disabled={!registerData.cityId || districtsLoading}
+                >
+                  <SelectTrigger className="h-10 rounded-xl bg-[#1A0E08] border-amber-900/60 text-amber-100">
+                    <SelectValue placeholder={districtsLoading ? "Yükleniyor..." : "İlçe Seç"} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-[#25150D] border-amber-900/60 text-amber-100">
+                    {districts.map((district) => (
+                      <SelectItem key={district.id} value={String(district.id)} className="focus:bg-amber-900/40 focus:text-amber-200">
+                        {district.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2 pt-1">
+              <Checkbox
+                id="terms"
+                checked={agreeTerms}
+                onCheckedChange={(checked) => setAgreeTerms(!!checked)}
+                className="border-amber-700 data-[state=checked]:bg-amber-500 data-[state=checked]:text-stone-950"
+              />
+              <label htmlFor="terms" className="text-xs text-amber-200/70 cursor-pointer">
+                Kullanım şartlarını ve gizlilik politikasını kabul ediyorum.
+              </label>
+            </div>
+
+            <Button type="submit" disabled={loading} className="w-full h-11 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold rounded-xl transition-all">
+              {loading ? "Kayıt Olunuyor..." : "Kayıt Ol"}
+            </Button>
+
+            <p className="text-center text-sm text-amber-200/70 mt-2">
+              Zaten hesabın var mı?{" "}
+              <button type="button" className="text-amber-400 font-semibold underline hover:text-amber-300" onClick={() => setTab("login")}>
+                Giriş Yap
+              </button>
+            </p>
+          </form>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
