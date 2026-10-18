@@ -1,543 +1,530 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import OnlineUsers from "../../components/OnlineUsers";
 import {
-  Bell,
-  Check,
-  ChevronDown,
-  Crown,
-  Languages,
-  LogOut,
-  Menu,
+  Camera,
+  ChevronRight,
+  Download,
+  Heart,
+  Loader2,
   MessageCircle,
   Search,
-  Settings,
-  ShieldCheck,
-  Sparkles,
-  UserRound,
+  Share2,
+  Smartphone,
+  User,
   X,
 } from "lucide-react";
-import Link from "next/link";
-import { FormEvent, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+
+import Topbar from "@/components/dashboard/Topbar";
+import Sidebar from "@/components/dashboard/Sidebar";
 import { useI18n } from "@/lib/i18n-context";
-import type { Lang } from "@/lib/i18n";
+import { api } from "@/lib/api";
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+}
 
-type TopbarProps = {
-  userName?: string;
-  userCity?: string;
-  profilePhoto?: string | null;
-  isPremium?: boolean;
-  unreadMessages?: number;
-  unreadNotifications?: number;
-  onOpenMobileMenu?: () => void;
-};
+export default function DashboardPage() {
+  const [isClient, setIsClient] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-type ActivePanel =
-  | "notifications"
-  | "messages"
-  | "language"
-  | "profile"
-  | null;
+  const [deferredPrompt, setDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
 
-type ThemeMode = "dark" | "light";
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
+  const [showInstallHelp, setShowInstallHelp] = useState(false);
+  const [installMessage, setInstallMessage] = useState("");
 
-const languages: Array<{
-  code: Lang;
-  shortLabel: string;
-  label: string;
-  flag: string;
-}> = [
-  {
-    code: "TR",
-    shortLabel: "TR",
-    label: "Türkçe",
-    flag: "🇹🇷",
-  },
-  {
-    code: "AZ",
-    shortLabel: "AZ",
-    label: "Azərbaycan",
-    flag: "🇦🇿",
-  },
-  {
-    code: "EN",
-    shortLabel: "EN",
-    label: "English",
-    flag: "🇬🇧",
-  },
-  {
-    code: "RU",
-    shortLabel: "RU",
-    label: "Русский",
-    flag: "🇷🇺",
-  },
-  {
-    code: "AR",
-    shortLabel: "AR",
-    label: "العربية",
-    flag: "🇸🇦",
-  },
-];
+  const { t } = useI18n();
 
-export default function Topbar({
-  userName = "Üye",
-  userCity = "Türkiye",
-  profilePhoto = null,
-  isPremium = false,
-  unreadMessages = 0,
-  unreadNotifications = 0,
-  onOpenMobileMenu,
-}: TopbarProps) {
-  const router = useRouter();
-  const { lang, setLang } = useI18n();
-
-  const [activePanel, setActivePanel] =
-    useState<ActivePanel>(null);
-
-  const [searchValue, setSearchValue] =
-    useState("");
-
-  const topbarRef =
-    useRef<HTMLDivElement>(null);
+  const [user, setUser] = useState({
+    name: "Üye",
+    city: "Türkiye",
+    profilePhoto: null as string | null,
+  });
 
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        topbarRef.current &&
-        !topbarRef.current.contains(event.target as Node)
-      ) {
-        setActivePanel(null);
+    const loadUser = async () => {
+      setIsClient(true);
+
+      try {
+        const me: any = await api.users.me();
+
+        localStorage.setItem("user", JSON.stringify(me));
+
+        setUser({
+          name: me.name || me.username || "Üye",
+          city: me.city?.name || me.city || "Türkiye",
+          profilePhoto:
+            me.profilePhoto ||
+            me.profileImage ||
+            me.avatar ||
+            null,
+        });
+      } catch (error) {
+        console.log("Kullanıcı alınamadı:", error);
+
+        try {
+          const rawUser = localStorage.getItem("user");
+
+          if (!rawUser) return;
+
+          const parsed = JSON.parse(rawUser);
+
+          setUser({
+            name: parsed.name || parsed.username || "Üye",
+            city: parsed.city?.name || parsed.city || "Türkiye",
+            profilePhoto:
+              parsed.profilePhoto ||
+              parsed.profileImage ||
+              parsed.avatar ||
+              null,
+          });
+        } catch {
+          // localStorage verisi bozuksa sessizce devam et.
+        }
       }
     };
 
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActivePanel(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOutsideClick);
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-      document.removeEventListener("keydown", handleEscape);
-    };
+    loadUser();
   }, []);
 
-  const togglePanel = (panel: Exclude<ActivePanel, null>) => {
-    setActivePanel((currentPanel) =>
-      currentPanel === panel ? null : panel,
-    );
-  };
-
-  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const query = searchValue.trim();
-
-    if (!query) {
-      router.push("/search");
+  useEffect(() => {
+    if (typeof window === "undefined") {
       return;
     }
 
-    router.push(`/search?q=${encodeURIComponent(query)}`);
-    setActivePanel(null);
+    const navigatorWithStandalone = navigator as Navigator & {
+      standalone?: boolean;
+    };
+
+    const standalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      navigatorWithStandalone.standalone === true;
+
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    const isiPhoneOrIPad =
+      /iphone|ipad|ipod/.test(userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    setIsStandalone(standalone);
+    setIsIOS(isiPhoneOrIPad);
+
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+
+      setDeferredPrompt(event as BeforeInstallPromptEvent);
+      setInstallMessage("");
+    };
+
+    const handleAppInstalled = () => {
+      setDeferredPrompt(null);
+      setIsStandalone(true);
+      setShowInstallHelp(false);
+      setInstallMessage("senveben telefonuna başarıyla yüklendi.");
+    };
+
+    window.addEventListener(
+      "beforeinstallprompt",
+      handleBeforeInstallPrompt
+    );
+
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
+
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (isStandalone) {
+      setInstallMessage("senveben zaten telefonunda yüklü.");
+      return;
+    }
+
+    if (isIOS) {
+      setShowInstallHelp(true);
+      setInstallMessage("");
+      return;
+    }
+
+    if (deferredPrompt) {
+      try {
+        await deferredPrompt.prompt();
+
+        const choice = await deferredPrompt.userChoice;
+
+        setDeferredPrompt(null);
+
+        if (choice.outcome === "accepted") {
+          setInstallMessage("senveben yükleniyor...");
+        } else {
+          setInstallMessage(
+            "Kurulum iptal edildi. İstersen daha sonra tekrar deneyebilirsin."
+          );
+        }
+      } catch (error) {
+        console.log("PWA kurulum hatası:", error);
+
+        setShowInstallHelp(true);
+        setInstallMessage("");
+      }
+
+      return;
+    }
+
+    setShowInstallHelp(true);
+    setInstallMessage("");
   };
 
-  const handleLanguageChange = (languageCode: Lang) => {
-    setLang(languageCode);
-    setActivePanel(null);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    sessionStorage.clear();
-
-    document.cookie =
-      "accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-
-    document.cookie =
-      "refreshToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-
-    document.cookie =
-      "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-
-    router.push("/");
-    router.refresh();
-  };
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-[#1F0F08] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
+      </div>
+    );
+  }
 
   return (
-    <div
-      ref={topbarRef}
-      className="relative z-50 mb-7 rounded-[26px] border border-amber-900/40 bg-[#160A05] px-3 py-3 shadow-md"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
-      />
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#1F0F08] text-amber-50">
+      <div className="flex min-h-screen w-full">
 
-      <div className="flex items-center gap-2.5">
-        {/* MOBİL MENÜ */}
-        <button
-          type="button"
-          onClick={onOpenMobileMenu}
-          aria-label="Menüyü aç"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-amber-900/50 bg-[#120703] text-amber-200 hover:bg-amber-900/30 hover:text-amber-400"
+        {/* SOL SIDEBAR */}
+        <aside
+          className={`fixed inset-y-0 left-0 z-50 w-[286px] shrink-0 bg-[#160A05] transition-transform duration-300 lg:sticky lg:top-0 lg:block lg:translate-x-0 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
-          <Menu className="h-5 w-5" strokeWidth={1.9} />
-        </button>
-
-        {/* ARAMA */}
-        <form
-          onSubmit={handleSearch}
-          className="group relative hidden min-w-0 flex-1 md:block md:max-w-[420px] lg:max-w-[450px] xl:max-w-[480px]"
-        >
-          <Search
-            className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-amber-400/60 transition-colors duration-300 group-focus-within:text-amber-400"
-            strokeWidth={1.9}
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
           />
+        </aside>
 
-          <input
-            type="search"
-            value={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
-            placeholder="İsim, şehir veya kullanıcı adı ara..."
-            aria-label="Üye ara"
-            className="h-11 w-full rounded-2xl border border-amber-900/50 bg-[#120703] pl-11 pr-20 text-base font-normal text-amber-100 placeholder-amber-300/40 outline-none transition-all focus:border-amber-500/60 focus:bg-[#180A04] focus:ring-2 focus:ring-amber-500/20"
-          />
+        {/* SAĞ ANA İÇERİK */}
+        <main className="min-h-screen min-w-0 flex-1 overflow-x-hidden">
+          <div className="w-full pl-0 pr-4 pb-10 pt-4 sm:pr-5 md:pr-6 lg:pr-7 xl:pr-8">
 
-          <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-lg border border-amber-900/40 bg-[#160A05] px-2 py-1 text-[9px] font-bold text-amber-300/60 xl:block">
-            ENTER
-          </span>
-        </form>
+            {/* =====================================================
+                senveben LOGO + SLOGAN
+            ===================================================== */}
+            <div className="mb-2 flex w-full flex-col items-center justify-center gap-3 text-center">
 
-        {/* MOBİL ARAMA */}
-        <Link
-          href="/search"
-          aria-label="Üye ara"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-amber-900/50 bg-[#120703] text-amber-300 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-900/30 hover:text-amber-400 md:hidden"
-        >
-          <Search className="h-[19px] w-[19px]" strokeWidth={1.9} />
-        </Link>
-
-        {/* SAĞ KONTROLLER */}
-        <div className="ml-auto flex min-w-0 shrink-0 items-center gap-2">
-          {/* DİLLER */}
-          <div className="hidden items-center gap-1 sm:flex">
-            {languages.map((language) => {
-              const isSelected = lang === language.code;
-
-              return (
-                <button
-                  key={language.code}
-                  type="button"
-                  onClick={() => handleLanguageChange(language.code)}
-                  aria-label={`${language.label} diline geç`}
-                  className={[
-                    "flex h-9 min-w-[38px] items-center justify-center rounded-xl px-2",
-                    "text-[11px] font-extrabold transition-all duration-200",
-                    isSelected
-                      ? "border border-amber-500 bg-amber-500 text-stone-950 font-bold shadow-md shadow-amber-500/10"
-                      : "border border-amber-900/50 bg-[#120703] text-amber-200/80 hover:border-amber-700/50 hover:bg-amber-900/30 hover:text-amber-300",
-                  ].join(" ")}
-                >
-                  {language.shortLabel}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* MESAJLAR */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => togglePanel("messages")}
-              aria-label="Mesajlar"
-              aria-expanded={activePanel === "messages"}
-              className={[
-                "relative flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border px-3 transition-all duration-300",
-                activePanel === "messages"
-                  ? "border-amber-500 bg-amber-500/20 text-amber-300 font-semibold"
-                  : "border-amber-900/50 bg-[#120703] text-amber-200/80 hover:border-amber-700/50 hover:bg-amber-900/30 hover:text-amber-300",
-              ].join(" ")}
-            >
-              <MessageCircle className="h-[19px] w-[19px]" strokeWidth={1.9} />
-              <span className="hidden text-xs font-bold md:inline">
-                Mesajlar
-              </span>
-              {unreadMessages > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#160A05] bg-amber-500 px-1 text-[9px] font-black text-stone-950">
-                  {unreadMessages > 99 ? "99+" : unreadMessages}
-                </span>
-              )}
-            </button>
-
-            {activePanel === "messages" && (
-              <div className="absolute right-0 top-[calc(100%+12px)] w-[320px] max-w-[calc(100vw-24px)] overflow-hidden rounded-[24px] border border-amber-900/50 bg-[#160A05]/95 shadow-2xl backdrop-blur-2xl">
-                <div className="flex items-center justify-between border-b border-amber-900/40 px-4 py-4">
-                  <div>
-                    <p className="text-base font-extrabold text-amber-100">
-                      Mesajlar
-                    </p>
-                    <p className="mt-0.5 text-[10px] text-amber-200/60">
-                      Son konuşmaların
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setActivePanel(null)}
-                    className="flex h-8 w-8 items-center justify-center rounded-xl text-amber-200/60 transition hover:bg-amber-900/30 hover:text-amber-100"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                </div>
-                <div className="px-5 py-8 text-center">
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-400">
-                    <MessageCircle className="h-5 w-5" strokeWidth={1.8} />
+              <div className="flex select-none items-center gap-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/20 border border-amber-500/40 shadow-lg shadow-amber-500/20">
+                  <span className="text-xl font-black tracking-tighter text-amber-400">
+                    E
                   </span>
-                  <p className="mt-4 text-xs font-bold text-amber-200">
-                    Mesaj önizlemeleri hazırlanıyor
-                  </p>
-                  <p className="mt-1.5 text-[10px] leading-5 text-amber-200/60">
-                    Gerçek mesaj verileri bağlandığında son konuşmalar burada görünecek.
-                  </p>
                 </div>
-                <Link
-                  href="/messages"
-                  onClick={() => setActivePanel(null)}
-                  className="flex min-h-11 items-center justify-center border-t border-amber-900/40 text-xs font-bold text-amber-400 transition hover:bg-amber-900/20"
-                >
-                  Tüm mesajları aç
-                </Link>
-              </div>
-            )}
-          </div>
 
-          {/* BİLDİRİMLER */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => togglePanel("notifications")}
-              aria-label="Bildirimler"
-              aria-expanded={activePanel === "notifications"}
-              className={[
-                "relative flex h-11 shrink-0 items-center justify-center gap-2 rounded-2xl border px-3 transition-all duration-300",
-                activePanel === "notifications"
-                  ? "border-amber-500 bg-amber-500/20 text-amber-300 font-semibold"
-                  : "border-amber-900/50 bg-[#120703] text-amber-200/80 hover:border-amber-700/50 hover:bg-amber-900/30 hover:text-amber-300",
-              ].join(" ")}
-            >
-              <Bell className="h-[19px] w-[19px]" strokeWidth={1.9} />
-              <span className="hidden text-xs font-bold md:inline">
-                Bildirimler
-              </span>
-              {unreadNotifications > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-[#160A05] bg-amber-500 px-1 text-[9px] font-black text-stone-950">
-                  {unreadNotifications > 99 ? "99+" : unreadNotifications}
-                </span>
-              )}
-            </button>
-
-            {activePanel === "notifications" && (
-              <div className="absolute right-0 top-[calc(100%+12px)] w-[340px] max-w-[calc(100vw-24px)] overflow-hidden rounded-[24px] border border-amber-900/50 bg-[#160A05]/95 shadow-2xl backdrop-blur-2xl">
-                <div className="flex items-center justify-between border-b border-amber-900/40 px-4 py-4">
-                  <div>
-                    <p className="text-base font-extrabold text-amber-100">
-                      Bildirimler
-                    </p>
-                    <p className="mt-0.5 text-[10px] text-amber-200/60">
-                      Hesabındaki son gelişmeler
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setActivePanel(null)}
-                    className="flex h-8 w-8 items-center justify-center rounded-xl text-amber-200/60 transition hover:bg-amber-900/30 hover:text-amber-100"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                </div>
-                <div className="px-5 py-8 text-center">
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-400">
-                    <Bell className="h-5 w-5" strokeWidth={1.8} />
+                <h1 className="text-3xl font-black tracking-tight text-amber-400">
+                  senveben
+                  <span className="text-xl font-bold text-amber-300">
+                    .TR
                   </span>
-                  <p className="mt-4 text-xs font-bold text-amber-200">
-                    Yeni bildirimin bulunmuyor
-                  </p>
-                  <p className="mt-1.5 text-[10px] leading-5 text-amber-200/60">
-                    Beğeni, mesaj ve profil hareketleri burada gösterilecek.
-                  </p>
-                </div>
-                <Link
-                  href="/notifications"
-                  onClick={() => setActivePanel(null)}
-                  className="flex min-h-11 items-center justify-center border-t border-amber-900/40 text-xs font-bold text-amber-400 transition hover:bg-amber-900/20"
-                >
-                  Bildirim merkezini aç
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {/* PROFİL */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => togglePanel("profile")}
-              aria-expanded={activePanel === "profile"}
-              className={[
-                "flex h-11 shrink-0 items-center gap-2 rounded-2xl border p-1.5 pr-2.5 transition-all duration-300",
-                activePanel === "profile"
-                  ? "border-amber-500 bg-amber-500/20 text-amber-300"
-                  : "border-amber-900/50 bg-[#120703] text-amber-200/80 hover:border-amber-700/50 hover:bg-amber-900/30 hover:text-amber-300",
-              ].join(" ")}
-            >
-              <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-amber-500 to-amber-700">
-                {profilePhoto ? (
-                  <img
-                    src={profilePhoto}
-                    alt={`${userName} profil fotoğrafı`}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <UserRound
-                    className="h-[17px] w-[17px] text-stone-950"
-                    strokeWidth={1.9}
-                  />
-                )}
-                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#160A05] bg-emerald-400" />
-              </span>
-
-              <div className="hidden min-w-0 pr-1 text-left sm:flex sm:flex-col">
-                <span className="block max-w-28 truncate text-xs font-black text-amber-100">
-                  {userName}
-                </span>
-                <span className="block max-w-28 truncate text-[10px] font-medium text-amber-400">
-                  {userCity}
-                </span>
+                </h1>
               </div>
 
-              <ChevronDown
-                className={[
-                  "hidden h-3.5 w-3.5 text-amber-400/70 transition-transform duration-300 xl:block",
-                  activePanel === "profile" ? "rotate-180" : "",
-                ].join(" ")}
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-900/40 bg-[#140804] px-4 py-1.5 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+                </span>
+
+                <p className="text-xs font-bold tracking-wide text-amber-300">
+                  {t.dashboard.connectionTitle}
+                </p>
+              </div>
+            </div>
+
+            <div className="mb-6 w-full">
+              <Topbar
+                userName={user.name}
+                userCity={user.city}
+                profilePhoto={user.profilePhoto}
+                onOpenMobileMenu={() => setIsSidebarOpen(true)}
               />
-            </button>
+            </div>
 
-            {activePanel === "profile" && (
-              <div className="absolute right-0 top-[calc(100%+12px)] w-72 overflow-hidden rounded-[24px] border border-amber-900/50 bg-[#160A05]/95 p-2 shadow-2xl backdrop-blur-2xl">
-                <div className="relative overflow-hidden rounded-[19px] border border-amber-900/40 bg-gradient-to-br from-amber-900/30 via-[#2A1309]/40 to-transparent p-4">
-                  <div className="flex items-center gap-3">
-                    <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 shadow-lg shadow-amber-500/20">
-                      {profilePhoto ? (
-                        <img
-                          src={profilePhoto}
-                          alt={`${userName} profil fotoğrafı`}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <UserRound
-                          className="h-6 w-6 text-stone-950"
-                          strokeWidth={1.8}
-                        />
-                      )}
-                    </span>
+            <OnlineUsers />
+
+            <section className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+
+              {/* PROFİLİM */}
+              <Link href="/profile/edit" className="group min-w-0">
+                <div className="h-full rounded-2xl border border-amber-900/40 bg-gradient-to-r from-[#2A1309] to-[#140804] p-5 transition-all hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/10">
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-amber-500/30 bg-amber-500/15">
+                      <User className="h-6 w-6 text-amber-300" />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-base font-black text-amber-100 md:text-lg">
+                        Profilim
+                      </h2>
+
+                      <p className="mt-1 text-xs text-amber-200/60 md:text-sm">
+                        {t.dashboard.profileDesc}
+                      </p>
+                    </div>
+
+                    <ChevronRight className="h-5 w-5 shrink-0 text-amber-300 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* BİRİNİ BUL */}
+              <Link href="/search" className="group min-w-0">
+                <div className="h-full rounded-2xl border border-amber-900/40 bg-[#140804] p-5 transition-all hover:bg-[#1A0B05]">
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-amber-900/50 bg-[#120703]">
+                      <Search className="h-6 w-6 text-amber-300" />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-base font-black text-amber-100 md:text-lg">
+                        {t.dashboard.find}
+                      </h2>
+
+                      <p className="mt-1 truncate text-xs text-amber-200/60 md:text-sm">
+                        {t.dashboard.findProfileDesc}
+                      </p>
+                    </div>
+
+                    <ChevronRight className="h-5 w-5 shrink-0 text-amber-300 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </Link>
+
+            </section>
+
+            <section className="mt-6 grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+
+              {/* CANLI SOHBET */}
+              <Link href="/messages" className="group block min-w-0">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-amber-900/40 bg-gradient-to-br from-[#2A1309] to-[#140804] p-6 shadow-xl shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 hover:border-amber-500/60">
+
+                  <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-amber-500/10 blur-3xl transition-all duration-500 group-hover:bg-amber-500/20" />
+
+                  <div className="relative mb-4 flex items-center gap-4">
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/20">
+                      <Camera className="h-5 w-5 animate-pulse text-amber-400" />
+                    </div>
 
                     <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <p className="truncate text-base font-extrabold text-amber-100">
-                          {userName}
-                        </p>
-                        {isPremium && (
-                          <Crown className="h-3.5 w-3.5 text-amber-400" />
-                        )}
-                      </div>
-                      <p className="mt-1 truncate text-[10px] text-amber-200/60">
-                        {userCity}
-                      </p>
-                      <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 text-[8px] font-bold uppercase tracking-wider text-emerald-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                        Çevrimiçi
+                      <h3 className="text-sm font-bold tracking-wide text-amber-100 md:text-base">
+                        {t.dashboard.liveChatTitle}
+                      </h3>
+
+                      <span className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-emerald-400">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                        {t.dashboard.liveChatStatus}
                       </span>
                     </div>
+
                   </div>
+
+                  <p className="relative text-xs leading-relaxed tracking-wide text-amber-200/70 md:text-sm">
+                    {t.dashboard.liveChatDesc}
+                  </p>
+
                 </div>
+              </Link>
 
-                <div className="mt-2 space-y-1">
-                  <Link
-                    href="/profile"
-                    onClick={() => setActivePanel(null)}
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-amber-200/80 transition hover:bg-amber-900/20 hover:text-amber-100"
-                  >
-                    <UserRound className="h-4 w-4 text-amber-400" />
-                    Profilimi görüntüle
-                  </Link>
-                  <Link
-                    href="/profile/edit"
-                    onClick={() => setActivePanel(null)}
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-amber-200/80 transition hover:bg-amber-900/20 hover:text-amber-100"
-                  >
-                    <Settings className="h-4 w-4 text-amber-400" />
-                    Profili düzenle
-                  </Link>
-                  <Link
-                    href="/premium"
-                    onClick={() => setActivePanel(null)}
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-amber-200/80 transition hover:bg-amber-900/20 hover:text-amber-400"
-                  >
-                    <Crown className="h-4 w-4 text-amber-400" />
-                    Premium özellikler
-                  </Link>
-                  <Link
-                    href="/help"
-                    onClick={() => setActivePanel(null)}
-                    className="flex items-center gap-3 rounded-2xl px-3 py-2.5 text-xs font-bold text-amber-200/80 transition hover:bg-amber-900/20 hover:text-amber-100"
-                  >
-                    <ShieldCheck className="h-4 w-4 text-emerald-400" />
-                    Güvenlik merkezi
-                  </Link>
+              {/* TELEFONA YÜKLE */}
+              <div className="relative h-full min-w-0 overflow-hidden rounded-3xl border border-amber-900/40 bg-gradient-to-br from-[#1F0F08] via-[#140804] to-[#2A1309] p-6 shadow-xl shadow-amber-500/5 backdrop-blur-xl">
+
+                <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-amber-500/10 blur-3xl" />
+
+                <div className="relative flex h-full flex-col">
+
+                  <div className="mb-4 flex items-center gap-4">
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10">
+                      <Smartphone className="h-5 w-5 text-amber-400" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-bold tracking-wide text-amber-100 md:text-base">
+                        senveben&apos;ı Telefona Yükle
+                      </h3>
+
+                      <span
+                        className={`mt-1 inline-block rounded-md border px-2 py-1 text-[9px] font-bold tracking-wider ${
+                          isStandalone
+                            ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                            : "border-amber-500/20 bg-amber-500/10 text-amber-400"
+                        }`}
+                      >
+                        {isStandalone ? "TELEFONUNDA YÜKLÜ" : "ÜCRETSİZ"}
+                      </span>
+                    </div>
+
+                  </div>
+
+                  <p className="relative mb-4 text-xs leading-relaxed tracking-wide text-amber-200/70 md:text-sm">
+                    senveben&apos;a ana ekranından tek dokunuşla ulaş.
+                    Tarayıcıyı açmadan uygulama gibi kullan.
+                  </p>
+
+                  {!isStandalone && (
+                    <button
+                      type="button"
+                      onClick={handleInstallClick}
+                      className="relative mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-amber-500/40 bg-amber-500 hover:bg-amber-600 px-4 py-3 text-sm font-black text-stone-950 transition-all shadow-lg shadow-amber-500/10 active:scale-[0.99]"
+                    >
+                      <Download className="h-4 w-4" />
+                      Telefona Yükle
+                    </button>
+                  )}
+
+                  {isStandalone && (
+                    <div className="relative mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-bold text-emerald-400">
+                      <Smartphone className="h-4 w-4" />
+                      senveben Telefonunda
+                    </div>
+                  )}
+
+                  {installMessage && (
+                    <p className="mt-3 text-xs leading-relaxed text-amber-300">
+                      {installMessage}
+                    </p>
+                  )}
+
                 </div>
+              </div>
 
-                {!isPremium && (
-                  <Link
-                    href="/premium"
-                    onClick={() => setActivePanel(null)}
-                    className="mt-2 flex items-center gap-3 rounded-2xl border border-amber-700/30 bg-gradient-to-r from-amber-900/40 to-[#2A1309] px-3 py-3 transition hover:border-amber-500/40"
+            </section>
+
+            {/* PWA KURULUM YARDIMI */}
+            {showInstallHelp && !isStandalone && (
+              <div className="mt-4 overflow-hidden rounded-2xl border border-amber-900/40 bg-[#160A05] shadow-xl shadow-black/20">
+
+                <div className="flex items-start justify-between gap-4 p-5">
+
+                  <div className="flex min-w-0 gap-3">
+
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-500/20 bg-amber-500/10">
+                      <Share2 className="h-5 w-5 text-amber-400" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-black text-amber-100">
+                        {isIOS
+                          ? "iPhone'a senveben Nasıl Eklenir?"
+                          : "senveben'ı Ana Ekrana Ekle"}
+                      </h3>
+
+                      {isIOS ? (
+                        <p className="mt-2 text-xs leading-6 text-amber-200/70 md:text-sm">
+                          Safari&apos;de alttaki
+                          <span className="font-bold text-amber-300">
+                            {" "}Paylaş{" "}
+                          </span>
+                          simgesine dokun. Açılan menüden
+                          <span className="font-bold text-white">
+                            {" "}Ana Ekrana Ekle{" "}
+                          </span>
+                          seçeneğini seç ve ardından
+                          <span className="font-bold text-amber-300">
+                            {" "}Ekle
+                          </span>
+                          butonuna dokun.
+                        </p>
+                      ) : (
+                        <p className="mt-2 text-xs leading-6 text-amber-200/70 md:text-sm">
+                          Tarayıcının menüsünü aç ve
+                          <span className="font-bold text-white">
+                            {" "}Uygulamayı yükle{" "}
+                          </span>
+                          veya
+                          <span className="font-bold text-white">
+                            {" "}Ana ekrana ekle{" "}
+                          </span>
+                          seçeneğini kullan. Kurulum seçeneği görünmüyorsa
+                          sayfayı normal tarayıcı sekmesinde açıp tekrar dene.
+                        </p>
+                      )}
+                    </div>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    aria-label="Kurulum yardımını kapat"
+                    onClick={() => setShowInstallHelp(false)}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-amber-900/40 bg-[#120703] text-amber-300 transition hover:bg-amber-900/20 hover:text-white"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/20 text-amber-400">
-                      <Sparkles className="h-4 w-4" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[11px] font-extrabold text-amber-100">
-                        Premium’a yükselt
-                      </span>
-                      <span className="mt-0.5 block text-[9px] text-amber-200/60">
-                        Daha fazla görünürlük kazan
-                      </span>
-                    </span>
-                  </Link>
-                )}
+                    <X className="h-4 w-4" />
+                  </button>
 
-                <div className="my-2 h-px bg-amber-900/40" />
-
-                <button
-                  type="button"
-                  onClick={handleLogout}
-                  className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left text-xs font-bold text-amber-200/60 transition hover:bg-red-500/10 hover:text-red-400"
-                >
-                  <LogOut className="h-4 w-4" />
-                  Güvenli çıkış yap
-                </button>
+                </div>
               </div>
             )}
+
+            {/* =====================================================
+                ALT KARTLAR
+            ===================================================== */}
+            <section className="mt-6 grid w-full grid-cols-2 gap-4 md:grid-cols-2">
+
+              {/* YENİ BEĞENİ */}
+              <Link
+                href="/likes"
+                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-amber-900/40 bg-[#160A05] p-4 transition-all hover:border-amber-500/40"
+              >
+                <Heart className="h-4 w-4 text-amber-500" />
+
+                <div>
+                  <span className="block text-xs font-bold text-amber-100">
+                    {t.dashboard.newLike}
+                  </span>
+
+                  <span className="mt-0.5 block text-[10px] font-semibold text-emerald-400">
+                    ● {t.dashboard.active}
+                  </span>
+                </div>
+              </Link>
+
+              {/* MESAJLAR */}
+              <Link
+                href="/messages"
+                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-amber-900/40 bg-[#160A05] p-4 transition-all hover:border-amber-500/40"
+              >
+                <MessageCircle className="h-4 w-4 text-amber-400" />
+
+                <div>
+                  <span className="block text-xs font-bold text-amber-100">
+                    {t.dashboard.messages}
+                  </span>
+
+                  <span className="mt-0.5 block text-[10px] font-medium text-amber-300/50">
+                    {t.dashboard.openChats}
+                  </span>
+                </div>
+              </Link>
+
+            </section>
+
+            {/* ALT BOŞLUK */}
+            <div className="h-10" />
+
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
