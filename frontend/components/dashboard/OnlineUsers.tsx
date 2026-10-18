@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n-context";
 
@@ -12,7 +12,6 @@ type OnlineUser = {
   isOnline: boolean;
 };
 
-// Gerçekçi çevrimiçi kullanıcı listesi (Yüklenme beklemeden anında görünür)
 const DUMMY_ONLINE_USERS: OnlineUser[] = [
   { id: "1", name: "Elin", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", city: "İzmir", isOnline: true },
   { id: "2", name: "Zeynep", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", city: "İstanbul", isOnline: true },
@@ -26,6 +25,17 @@ const DUMMY_ONLINE_USERS: OnlineUser[] = [
 
 export default function OnlineUsers() {
   const { t } = useI18n();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="w-full rounded-3xl border border-amber-900/30 bg-[#120a06]/80 p-4 shadow-xl backdrop-blur-md min-h-[110px]" />
+    );
+  }
 
   return (
     <div className="w-full rounded-3xl border border-amber-900/30 bg-[#120a06]/80 p-4 shadow-xl backdrop-blur-md">
@@ -51,12 +61,11 @@ export default function OnlineUsers() {
             href={`/profile/${u.id}`}
             className="group relative flex shrink-0 flex-col items-center gap-1.5 transition-transform hover:scale-105"
           >
-            <div className="relative h-16 w-16 rounded-full border-2 border-amber-500/40 p-0.5 shadow-md shadow-amber-950/40 group-hover:border-amber-400">
-              <Image
+            <div className="relative h-16 w-16 rounded-full border-2 border-amber-500/40 p-0.5 shadow-md shadow-amber-950/40 group-hover:border-amber-400 overflow-hidden">
+              <img
                 src={u.avatar}
                 alt={u.name}
-                fill
-                className="rounded-full object-cover"
+                className="h-full w-full rounded-full object-cover"
               />
               <span className="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-[#120a06] bg-emerald-500 shadow-sm" />
             </div>
