@@ -439,13 +439,20 @@ export const api = {
     },
   },
 
+
+
   cities: {
-    list: () =>
-      request<any[]>("/cities"),
+    countries: () =>
+      request<any[]>("/cities/countries"),
+
+    list: (countryId?: number) =>
+      request<any[]>(
+        countryId
+          ? `/cities?countryId=${countryId}`
+          : "/cities"
+      ),
 
     districts: (cityId: number) =>
-      request<any[]>(
-        `/cities/${cityId}/districts`,
-      ),
+      request<any[]>(`/cities/${cityId}/districts`),
   },
 };
