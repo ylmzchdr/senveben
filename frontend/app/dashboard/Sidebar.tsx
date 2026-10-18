@@ -43,7 +43,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
   const router = useRouter();
   const { lang } = useI18n();
 
-  const copy = {
+  const copyMap = {
     TR: {
       home: "Ana Sayfa",
       discover: "Sana Uygun Kişiyi Bul",
@@ -66,6 +66,30 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
       logout: "Çıkış Yap",
       mainMenu: "Ana menü",
       accountMenu: "Hesap menüsü",
+    },
+
+    AZ: {
+      home: "Ana Səhifə",
+      discover: "Sənə Uyğun Şəxsi Tap",
+      likes: "Bəyənmələr",
+      messages: "Mesajlar",
+      notifications: "Bildirişlər",
+      profile: "Profilim",
+      settings: "Tənzimləmələr",
+      help: "Kömək Mərkəzi",
+      platform: "SenVeBen.TR KEYFİYYƏTİNDƏ TƏHLÜKƏSİZ TƏCRÜBƏ",
+
+      menu: "İdarəetmə Mərkəzi",
+      account: "Hesabım",
+      special: "Xüsusi",
+      premiumText:
+        "Daha çox görünürlük, məhdudiyyətsiz əlaqə və xüsusi imkanlar əldə edin.",
+      premiumCta: "Premium-a Bax",
+      secure: "Təhlükəsiz bağlantı",
+      protected: "Hesabınız qorunur",
+      logout: "Çıxış Et",
+      mainMenu: "Ana menyu",
+      accountMenu: "Hesab menyusu",
     },
 
     EN: {
@@ -136,7 +160,9 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
       mainMenu: "القائمة الرئيسية",
       accountMenu: "قائمة الحساب",
     },
-  }[lang];
+  };
+
+  const copy = copyMap[(lang as keyof typeof copyMap)] || copyMap.TR;
 
   const mainMenuItems: MenuItem[] = [
     {
@@ -162,12 +188,6 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
     },
   ];
 
-  /*
-   * Burada AYARLAR özellikle bulunmuyor.
-   *
-   * Çünkü Ayarlar'ı menünün EN ALTINA,
-   * Çıkış Yap'ın hemen üstüne taşıyoruz.
-   */
   const accountMenuItems: MenuItem[] = [
     {
       label: copy.profile,
@@ -222,16 +242,16 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
         className={[
           "group relative flex min-h-12 items-center gap-3 rounded-2xl px-3.5 py-3",
           "transition-all duration-300 ease-out",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400/80",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/80",
           active
-            ? "bg-gradient-to-r from-pink-500/20 via-rose-500/15 to-orange-400/10 text-white shadow-[0_12px_35px_rgba(236,72,153,0.12)]"
-            : "text-slate-300 hover:bg-white/[0.055] hover:text-white",
+            ? "bg-gradient-to-r from-amber-500/25 via-amber-600/15 to-amber-900/10 text-amber-100 shadow-[0_12px_35px_rgba(245,158,11,0.12)]"
+            : "text-amber-200/70 hover:bg-amber-900/20 hover:text-amber-100",
         ].join(" ")}
       >
         {active && (
           <span
             aria-hidden="true"
-            className="absolute bottom-2 left-0 top-2 w-1 rounded-r-full bg-gradient-to-b from-pink-400 via-rose-400 to-orange-300 shadow-[0_0_18px_rgba(244,114,182,0.85)]"
+            className="absolute bottom-2 left-0 top-2 w-1 rounded-r-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 shadow-[0_0_18px_rgba(245,158,11,0.85)]"
           />
         )}
 
@@ -240,8 +260,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
             "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border",
             "transition-all duration-300",
             active
-              ? "border-pink-400/25 bg-pink-400/10 text-pink-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
-              : "border-white/[0.06] bg-white/[0.025] text-slate-500 group-hover:border-white/10 group-hover:bg-white/[0.06] group-hover:text-pink-300",
+              ? "border-amber-500/30 bg-amber-500/20 text-amber-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+              : "border-amber-900/30 bg-[#120703] text-amber-400/60 group-hover:border-amber-700/40 group-hover:bg-amber-900/20 group-hover:text-amber-300",
           ].join(" ")}
         >
           <Icon
@@ -255,7 +275,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
         </span>
 
         {item.badge && (
-          <span className="rounded-full border border-pink-400/20 bg-pink-400/10 px-2 py-0.5 text-[10px] font-bold text-pink-300">
+          <span className="rounded-full border border-amber-500/30 bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">
             {item.badge}
           </span>
         )}
@@ -264,8 +284,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
           className={[
             "h-4 w-4 shrink-0 transition-all duration-300",
             active
-              ? "translate-x-0 text-pink-300 opacity-100"
-              : "-translate-x-1 text-slate-600 opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
+              ? "translate-x-0 text-amber-300 opacity-100"
+              : "-translate-x-1 text-amber-700 opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
           ].join(" ")}
           strokeWidth={2}
         />
@@ -274,56 +294,51 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
   };
 
   return (
-   <aside className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col overflow-hidden border-r border-white/[0.07] bg-slate-950 transition-all duration-300 md:sticky md:top-0 md:flex ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+    <aside className={`fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col overflow-hidden border-r border-amber-900/40 bg-[#160A05] transition-all duration-300 md:sticky md:top-0 md:flex ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
 
-      {/* Arka plan ışıkları */}
+      {/* Arka plan kahverengi/amber ışıkları */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-pink-500/[0.13] blur-[90px]"
+        className="pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-amber-500/[0.12] blur-[90px]"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-28 -right-28 h-72 w-72 rounded-full bg-violet-500/[0.09] blur-[100px]"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:34px_34px] opacity-30"
+        className="pointer-events-none absolute -bottom-28 -right-28 h-72 w-72 rounded-full bg-amber-700/[0.08] blur-[100px]"
       />
 
       <div className="relative z-10 flex h-full min-h-screen flex-col">
         {/* LOGO */}
-        <div className="border-b border-white/[0.065] px-5 pb-5 pt-6">
+        <div className="border-b border-amber-900/40 px-5 pb-5 pt-6">
           <Link
             href="/dashboard"
-            className="group flex items-center gap-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400/80"
+            className="group flex items-center gap-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/80"
           >
             <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500 via-rose-500 to-orange-400 opacity-90 shadow-[0_12px_35px_rgba(236,72,153,0.28)] transition-transform duration-300 group-hover:scale-105" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 opacity-90 shadow-[0_12px_35px_rgba(245,158,11,0.28)] transition-transform duration-300 group-hover:scale-105" />
 
-              <div className="absolute inset-[1px] rounded-[15px] bg-gradient-to-br from-white/20 to-transparent" />
+              <div className="absolute inset-[1px] rounded-[15px] bg-gradient-to-br from-amber-200/20 to-transparent" />
 
               <Heart
-                className="relative z-10 h-6 w-6 fill-white text-white"
+                className="relative z-10 h-6 w-6 fill-stone-950 text-stone-950"
                 strokeWidth={1.8}
               />
 
-              <span className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full border-2 border-[#090c15] bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.7)]" />
+              <span className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full border-2 border-[#160A05] bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.7)]" />
             </div>
 
             <div className="min-w-0">
               <div className="flex items-center gap-1">
-                <span className="text-[20px] font-black tracking-[-0.04em] text-white">
+                <span className="text-[20px] font-black tracking-[-0.04em] text-amber-50">
                   SEN
                 </span>
 
-                <span className="bg-gradient-to-r from-pink-400 via-rose-400 to-orange-300 bg-clip-text text-[20px] font-black tracking-[-0.04em] text-transparent">
+                <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-[20px] font-black tracking-[-0.04em] text-transparent">
                   VEBEN
                 </span>
               </div>
 
-              <p className="mt-0.5 truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+              <p className="mt-0.5 truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300/60">
                 {copy.platform}
               </p>
             </div>
@@ -334,7 +349,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
         <div className="flex-1 overflow-y-auto px-4 py-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {/* ANA MENÜ */}
           <nav aria-label={copy.mainMenu}>
-            <p className="mb-2.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
+            <p className="mb-2.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-400/50">
               {copy.menu}
             </p>
 
@@ -343,11 +358,11 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
             </div>
           </nav>
 
-          <div className="my-5 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+          <div className="my-5 h-px bg-gradient-to-r from-transparent via-amber-900/40 to-transparent" />
 
           {/* HESAP MENÜSÜ */}
           <nav aria-label={copy.accountMenu}>
-            <p className="mb-2.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
+            <p className="mb-2.5 px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-400/50">
               {copy.account}
             </p>
 
@@ -357,38 +372,38 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
           </nav>
 
           {/* PREMIUM */}
-          <div className="relative mt-6 overflow-hidden rounded-[24px] border border-pink-400/[0.14] bg-gradient-to-br from-pink-500/[0.13] via-violet-500/[0.07] to-orange-400/[0.08] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+          <div className="relative mt-6 overflow-hidden rounded-[24px] border border-amber-700/30 bg-gradient-to-br from-amber-900/30 via-[#2A1309]/50 to-amber-900/20 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-7 -top-9 h-24 w-24 rounded-full bg-pink-400/20 blur-3xl"
+              className="pointer-events-none absolute -right-7 -top-9 h-24 w-24 rounded-full bg-amber-500/20 blur-3xl"
             />
 
             <div className="relative">
               <div className="mb-4 flex items-start justify-between">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-amber-300/20 bg-amber-300/10 text-amber-300">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-amber-500/30 bg-amber-500/10 text-amber-400">
                   <Crown
                     className="h-5 w-5"
                     strokeWidth={1.9}
                   />
                 </span>
 
-                <span className="flex items-center gap-1 rounded-full border border-emerald-400/15 bg-emerald-400/[0.08] px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-emerald-300">
+                <span className="flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-amber-300">
                   <Sparkles className="h-3 w-3" />
                   {copy.special}
                 </span>
               </div>
 
-              <h3 className="text-base font-extrabold tracking-tight text-white">
+              <h3 className="text-base font-extrabold tracking-tight text-amber-100">
                 SenVeBen Premium
               </h3>
 
-              <p className="mt-1.5 text-[11px] leading-5 text-slate-400">
+              <p className="mt-1.5 text-[11px] leading-5 text-amber-200/60">
                 {copy.premiumText}
               </p>
 
               <Link
                 href="/premium"
-                className="mt-4 flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 via-rose-500 to-orange-400 px-3 text-xs font-extrabold text-white shadow-[0_10px_30px_rgba(236,72,153,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(236,72,153,0.32)] focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-300"
+                className="mt-4 flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 px-3 text-xs font-extrabold text-stone-950 shadow-[0_10px_30px_rgba(245,158,11,0.2)] transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
               >
                 {copy.premiumCta}
 
@@ -401,8 +416,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
           </div>
 
           {/* GÜVENLİ BAĞLANTI */}
-          <div className="mt-4 flex items-center gap-3 rounded-2xl border border-emerald-400/[0.09] bg-emerald-400/[0.035] px-3.5 py-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/[0.08] text-emerald-300">
+          <div className="mt-4 flex items-center gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
               <ShieldCheck
                 className="h-[18px] w-[18px]"
                 strokeWidth={1.9}
@@ -410,34 +425,29 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
             </span>
 
             <div className="min-w-0">
-              <p className="text-[11px] font-bold text-slate-300">
+              <p className="text-[11px] font-bold text-amber-100">
                 {copy.secure}
               </p>
 
-              <p className="mt-0.5 text-[10px] text-slate-600">
+              <p className="mt-0.5 text-[10px] text-amber-200/50">
                 {copy.protected}
               </p>
             </div>
           </div>
         </div>
 
-        {/* =========================================================
-            EN ALT BÖLÜM
-            AYARLAR → ÇIKIŞ YAP
-            ========================================================= */}
-        <div className="relative border-t border-white/[0.065] p-4">
-          {/* AYARLAR - ARTIK EN ALTTA */}
+        {/* EN ALT BÖLÜM: AYARLAR → ÇIKIŞ YAP */}
+        <div className="relative border-t border-amber-900/40 p-4 bg-[#140804]">
           <div className="mb-2">
             {renderMenuItem(settingsMenuItem)}
           </div>
 
-          {/* ÇIKIŞ */}
           <button
             type="button"
             onClick={handleLogout}
-            className="group flex min-h-12 w-full items-center gap-3 rounded-2xl border border-transparent px-3.5 py-3 text-left text-slate-500 transition-all duration-300 hover:border-red-400/[0.09] hover:bg-red-400/[0.055] hover:text-red-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
+            className="group flex min-h-12 w-full items-center gap-3 rounded-2xl border border-transparent px-3.5 py-3 text-left text-amber-200/60 transition-all duration-300 hover:border-red-500/20 hover:bg-red-500/10 hover:text-red-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.055] bg-white/[0.025] transition-all duration-300 group-hover:border-red-400/10 group-hover:bg-red-400/[0.07]">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-900/40 bg-[#120703] transition-all duration-300 group-hover:border-red-500/30 group-hover:bg-red-500/20">
               <LogOut
                 className="h-[19px] w-[19px]"
                 strokeWidth={1.9}
@@ -454,8 +464,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
             />
           </button>
 
-          <p className="mt-3 text-center text-[9px] font-medium tracking-[0.08em] text-slate-700">
-            SenVeBen � 2026
+          <p className="mt-3 text-center text-[9px] font-medium tracking-[0.08em] text-amber-400/40">
+            SenVeBen © 2026
           </p>
         </div>
       </div>
