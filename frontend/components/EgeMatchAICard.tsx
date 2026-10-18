@@ -31,21 +31,36 @@ type MatchText = {
 };
 
 const TEXT: Record<Lang, MatchText> = {
-  TR: {
-    subtitle: "Yapay zekÃ¢ uyum analizi",
-    perfectMatch: "MÃ¼kemmel Uyum",
-    highMatch: "YÃ¼ksek Uyum",
-    mediumMatch: "Orta Uyum",
-    lowMatch: "DÃ¼ÅŸÃ¼k Uyum",
-    shortComment: "AI kÄ±sa yorum",
+  AZ: {
+    subtitle: "Süni intellekt uyğunluq analizi",
+    perfectMatch: "Mükəmməl Uyğunluq",
+    highMatch: "Yüksək Uyğunluq",
+    mediumMatch: "Orta Uyğunluq",
+    lowMatch: "Aşağı Uyğunluq",
+    shortComment: "Sİ qısa şərh",
     energy: "Enerji",
-    interest: "Ä°lgi",
-    love: "AÅŸk",
-    premiumMessage:
-      "Premium Ã¼yeler detaylÄ± AI aÅŸk analizini gÃ¶rebilir.",
+    interest: "Maraq",
+    love: "Sevgi",
+    premiumMessage: "Premium üzvlər ətraflı Sİ sevgi analizini görə bilər.",
     profileFallback: "bu profil",
     summary: (name) =>
-      `EgeMatch AI, senin profil bilgilerinle ${name} arasÄ±ndaki ilgi, yaÅŸam tarzÄ± ve iliÅŸki beklentisi uyumunu analiz eder.`,
+      `EgeMatch AI, sənin profil məlumatlarınla ${name} arasındakı maraq, həyat tərzi və əlaqə gözləntisi uyğunluğunu analiz edir.`,
+  },
+  TR: {
+    subtitle: "Yapay zekâ uyum analizi",
+    perfectMatch: "Mükemmel Uyum",
+    highMatch: "Yüksek Uyum",
+    mediumMatch: "Orta Uyum",
+    lowMatch: "Düşük Uyum",
+    shortComment: "AI kısa yorum",
+    energy: "Enerji",
+    interest: "İlgi",
+    love: "Aşk",
+    premiumMessage:
+      "Premium üyeler detaylı AI aşk analizini görebilir.",
+    profileFallback: "bu profil",
+    summary: (name) =>
+      `EgeMatch AI, senin profil bilgilerinle ${name} arasındaki ilgi, yaşam tarzı ve ilişki beklentisi uyumunu analiz eder.`,
   },
 
   EN: {
@@ -66,37 +81,37 @@ const TEXT: Record<Lang, MatchText> = {
   },
 
   RU: {
-    subtitle: "ĞĞ½Ğ°Ğ»Ğ¸Ğ· ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸ Ñ Ğ¿Ğ¾Ğ¼Ğ¾Ñ‰ÑŒÑ Ğ˜Ğ˜",
-    perfectMatch: "Ğ˜Ğ´ĞµĞ°Ğ»ÑŒĞ½Ğ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
-    highMatch: "Ğ’Ñ‹ÑĞ¾ĞºĞ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
-    mediumMatch: "Ğ¡Ñ€ĞµĞ´Ğ½ÑÑ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
-    lowMatch: "ĞĞ¸Ğ·ĞºĞ°Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ",
-    shortComment: "ĞšÑ€Ğ°Ñ‚ĞºĞ¸Ğ¹ ĞºĞ¾Ğ¼Ğ¼ĞµĞ½Ñ‚Ğ°Ñ€Ğ¸Ğ¹ Ğ˜Ğ˜",
-    energy: "Ğ­Ğ½ĞµÑ€Ğ³Ğ¸Ñ",
-    interest: "Ğ˜Ğ½Ñ‚ĞµÑ€ĞµÑ",
-    love: "Ğ›ÑĞ±Ğ¾Ğ²ÑŒ",
+    subtitle: "Анализ совместимости с помощью ИИ",
+    perfectMatch: "Идеальная совместимость",
+    highMatch: "Высокая совместимость",
+    mediumMatch: "Средняя совместимость",
+    lowMatch: "Низкая совместимость",
+    shortComment: "Краткий комментарий ИИ",
+    energy: "Энергия",
+    interest: "Интерес",
+    love: "Любовь",
     premiumMessage:
-      "ĞŸÑ€ĞµĞ¼Ğ¸ÑƒĞ¼-ÑƒÑ‡Ğ°ÑÑ‚Ğ½Ğ¸ĞºĞ¸ Ğ¼Ğ¾Ğ³ÑƒÑ‚ Ğ¿Ñ€Ğ¾ÑĞ¼Ğ°Ñ‚Ñ€Ğ¸Ğ²Ğ°Ñ‚ÑŒ Ğ¿Ğ¾Ğ´Ñ€Ğ¾Ğ±Ğ½Ñ‹Ğ¹ Ğ°Ğ½Ğ°Ğ»Ğ¸Ğ· ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸.",
-    profileFallback: "ÑÑ‚Ğ¸Ğ¼ Ğ¿Ñ€Ğ¾Ñ„Ğ¸Ğ»ĞµĞ¼",
+      "Премиум-участники могут просматривать подробный анализ совместимости.",
+    profileFallback: "этим профилем",
     summary: (name) =>
-      `EgeMatch AI Ğ°Ğ½Ğ°Ğ»Ğ¸Ğ·Ğ¸Ñ€ÑƒĞµÑ‚ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚ÑŒ Ğ¼ĞµĞ¶Ğ´Ñƒ Ğ²Ğ°ÑˆĞ¸Ğ¼ Ğ¿Ñ€Ğ¾Ñ„Ğ¸Ğ»ĞµĞ¼ Ğ¸ ${name}, ÑƒÑ‡Ğ¸Ñ‚Ñ‹Ğ²Ğ°Ñ Ğ¸Ğ½Ñ‚ĞµÑ€ĞµÑÑ‹, Ğ¾Ğ±Ñ€Ğ°Ğ· Ğ¶Ğ¸Ğ·Ğ½Ğ¸ Ğ¸ Ğ¾Ğ¶Ğ¸Ğ´Ğ°Ğ½Ğ¸Ñ Ğ¾Ñ‚ Ğ¾Ñ‚Ğ½Ğ¾ÑˆĞµĞ½Ğ¸Ğ¹.`,
+      `EgeMatch AI анализирует совместимость между вашим профилем и ${name}, учитывая интересы, образ жизни и ожидания от отношений.`,
   },
 
   AR: {
-    subtitle: "ØªØ­Ù„ÙŠÙ„ Ø§Ù„ØªÙˆØ§ÙÙ‚ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
-    perfectMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ø«Ø§Ù„ÙŠ",
-    highMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ø±ØªÙØ¹",
-    mediumMatch: "ØªÙˆØ§ÙÙ‚ Ù…ØªÙˆØ³Ø·",
-    lowMatch: "ØªÙˆØ§ÙÙ‚ Ù…Ù†Ø®ÙØ¶",
-    shortComment: "ØªØ¹Ù„ÙŠÙ‚ Ø³Ø±ÙŠØ¹ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
-    energy: "Ø§Ù„Ø·Ø§Ù‚Ø©",
-    interest: "Ø§Ù„Ø§Ù‡ØªÙ…Ø§Ù…",
-    love: "Ø§Ù„Ø­Ø¨",
+    subtitle: "تحليل التوافق بالذكاء الاصطناعي",
+    perfectMatch: "توافق مثالي",
+    highMatch: "توافق مرتفع",
+    mediumMatch: "توافق متوسط",
+    lowMatch: "توافق منخفض",
+    shortComment: "تعليق سريع بالذكاء الاصطناعي",
+    energy: "الطاقة",
+    interest: "الاهتمام",
+    love: "الححب",
     premiumMessage:
-      "ÙŠÙ…ÙƒÙ† Ù„Ø£Ø¹Ø¶Ø§Ø¡ Ø¨Ø±ÙŠÙ…ÙŠÙˆÙ… Ù…Ø´Ø§Ù‡Ø¯Ø© ØªØ­Ù„ÙŠÙ„ Ø§Ù„Ø­Ø¨ Ø§Ù„Ù…ÙØµÙ„ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ.",
-    profileFallback: "Ù‡Ø°Ø§ Ø§Ù„Ù…Ù„Ù Ø§Ù„Ø´Ø®ØµÙŠ",
+      "يمكن لأعضاء بريميوم مشاهدة تحليل الحب المفصل بالذكاء الاصطناعي.",
+    profileFallback: "هذا الملف الشخصي",
     summary: (name) =>
-      `ÙŠØ­Ù„Ù„ EgeMatch AI Ø§Ù„ØªÙˆØ§ÙÙ‚ Ø¨ÙŠÙ† Ù…Ù„ÙÙƒ Ø§Ù„Ø´Ø®ØµÙŠ Ùˆ${name} Ø¨Ù†Ø§Ø¡Ù‹ Ø¹Ù„Ù‰ Ø§Ù„Ø§Ù‡ØªÙ…Ø§Ù…Ø§Øª ÙˆÙ†Ù…Ø· Ø§Ù„Ø­ÙŠØ§Ø© ÙˆØªÙˆÙ‚Ø¹Ø§Øª Ø§Ù„Ø¹Ù„Ø§Ù‚Ø©.`,
+      `يحلل EgeMatch AI التوافق بين ملفك الشخصي و${name} بناءً على الاهتمامات ونمط الحياة وتوقعات العلاقة.`,
   },
 };
 
@@ -112,7 +127,7 @@ export default function EgeMatchAICard({
   const { lang } = useI18n();
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const currentLang: Lang = ["TR", "EN", "RU", "AR"].includes(lang)
+  const currentLang: Lang = ["TR", "AZ", "EN", "RU", "AR"].includes(lang)
     ? (lang as Lang)
     : "TR";
 
@@ -169,7 +184,7 @@ export default function EgeMatchAICard({
 
             <div>
               <h3 className="flex items-center gap-2 text-xl font-black text-[#2D1721]">
-                <span>â¤ï¸ EgeMatch AI</span>
+                <span>❤️ EgeMatch AI</span>
               </h3>
 
               <p className="text-xs font-medium text-pink-100/70">
