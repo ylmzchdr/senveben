@@ -23,6 +23,7 @@ const API_URL =
 
 const languages: { code: Lang; label: string }[] = [
   { code: "TR", label: "Türkçe" },
+  { code: "AZ", label: "Azərbaycan" },
   { code: "EN", label: "English" },
   { code: "RU", label: "Русский" },
   { code: "AR", label: "العربية" },
@@ -30,6 +31,7 @@ const languages: { code: Lang; label: string }[] = [
 
 const welcomeByLang: Record<Lang, string> = {
   TR: "Hoş geldin",
+  AZ: "Xoş gəlmisən",
   EN: "Welcome",
   RU: "Добро пожаловать",
   AR: "مرحباً",
@@ -75,16 +77,16 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
         });
 
         if (!res.ok) {
-  setUserName(null);
-  return;
-}
+          setUserName(null);
+          return;
+        }
 
-const data = await res.json();
-const user = data.user || data.profile || data;
-setUserName(getFirstName(user));
+        const data = await res.json();
+        const user = data.user || data.profile || data;
+        setUserName(getFirstName(user));
       } catch {
-  setUserName(null);
-}
+        setUserName(null);
+      }
     };
 
     fetchMe();
@@ -99,16 +101,16 @@ setUserName(getFirstName(user));
   };
 
   const loggedInLabel = userName
-  ? `${welcomeByLang[lang]} ${userName}`
-  : `${welcomeByLang[lang]}`;
+    ? `${welcomeByLang[lang] || welcomeByLang.TR} ${userName}`
+    : `${welcomeByLang[lang] || welcomeByLang.TR}`;
 
   const navItems = [
-  { label: t.nav.home, href: "/" },
-  { label: t.nav.dashboard, href: "/dashboard" },
-  { label: t.nav.likes, href: "/likes" },
-  { label: t.nav.messages, href: "/messages" },
-  { label: t.nav.premium, href: "/premium" },
-];
+    { label: t.nav.home, href: "/" },
+    { label: t.nav.dashboard, href: "/dashboard" },
+    { label: t.nav.likes, href: "/likes" },
+    { label: t.nav.messages, href: "/messages" },
+    { label: t.nav.premium, href: "/premium" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-[#EC4899] text-black shadow-md border-b border-black/10 font-sans">
@@ -137,10 +139,9 @@ setUserName(getFirstName(user));
             {languages.map((l) => (
               <button
                 key={l.code}
-             onClick={() => {
-  console.log("LANG:", l.code);
-  setLang(l.code);
-}}
+                onClick={() => {
+                  setLang(l.code);
+                }}
                 className={`px-2 py-1 rounded text-xs font-bold transition ${
                   lang === l.code
                     ? "bg-white text-black shadow-sm"
@@ -238,7 +239,7 @@ setUserName(getFirstName(user));
             {isLoggedIn ? (
               <>
                 <Link
-                 href="/profile"
+                  href="/profile"
                   className="bg-black text-pink-600 w-full font-bold text-center rounded px-4 py-2 no-underline truncate"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -287,6 +288,3 @@ setUserName(getFirstName(user));
     </header>
   );
 }
-
-
-
