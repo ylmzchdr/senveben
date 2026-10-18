@@ -69,6 +69,21 @@ const languageOptions: Array<{
 ];
 
 const copy = {
+  AZ: {
+    title: "Tənzimləmələr",
+    subtitle: "SenVeBen təcrübənizi fərdiləşdirin.",
+    appearance: "Görünüş",
+    appearanceDesc: "SenVeBen-in görünüşünü və ekran seçimlərini idarə edin.",
+    language: "Dil",
+    languageDesc: "SenVeBen-də istifadə etmək istədiyiniz dili seçin.",
+    notifications: "Bildirişlər",
+    notificationsDesc: "Hansı bildirişlərin göndəriləcəyini seçin.",
+    newMessages: "Yeni mesajlar",
+    newMessagesDesc: "Yeni mesaj gəldikdə bildiriş al.",
+    likes: "Bəyənmələr",
+    likesDesc: "Biri səni bəyəndikdə bildiriş al.",
+    matches: "Eşləşmələr",
+  },
   TR: {
     title: "Ayarlar",
     subtitle: "SenVeBen deneyimini kendine göre özelleştir.",
