@@ -6,7 +6,6 @@ import { Heart, Crown, Search } from "lucide-react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import Topbar from "@/components/dashboard/Topbar";
 import Header from "@/components/Header";
-import OnlineUsers from "@/components/dashboard/OnlineUsers";
 import { useI18n } from "@/lib/i18n-context";
 
 export default function LikesPage() {
@@ -31,12 +30,7 @@ export default function LikesPage() {
             <Topbar />
           </div>
 
-          {/* Profil Üstü Online Üyeler Barı */}
-          <div className="mb-6">
-            <OnlineUsers />
-          </div>
-
-          {/* Sayfa Başlığı */}
+          {/* Sayfa Ana Başlığı */}
           <div className="mb-8 rounded-3xl border border-amber-900/30 bg-[#140b07]/80 p-6 shadow-2xl backdrop-blur-md">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -80,7 +74,7 @@ export default function LikesPage() {
                 <Crown className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="font-bold text-amber-200">Bu kişi seni beğendi!</h3>
+                <h3 className="font-bold text-amber-200">Kimler seni beğendiğini görmek ister misin?</h3>
                 <p className="text-xs text-amber-300/70">Fotoğrafını görmek ve kim olduğunu keşfetmek için Premium'a geç.</p>
               </div>
             </div>
