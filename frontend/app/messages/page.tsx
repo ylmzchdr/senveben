@@ -382,6 +382,13 @@ function MessagesContent() {
         total: "إجمالي", conversations: "محادثات", onlineStatus: "متصل", premiumVideo: "محادثة فيديو مع Premium", today: "اليوم", noConversationMessages: "لا توجد رسائل في هذه المحادثة بعد.", startChat: "ابدأ محادثة", startChatDesc: "اختر محادثة من اليسار لبدء مراسلة الشخص الذي تطابقت معه.",
         messagePlaceholder: "اكتب رسالتك...", send: "إرسال", sending: "...", enterHint: "اضغط Enter للإرسال • Shift + Enter لسطر جديد", moreFor: "للمزيد من المزايا", premiumGo: "انتقل إلى Premium!", premiumDesc: "مكالمات فيديو مباشرة، إشعارات القراءة، إبراز الملف الشخصي، استخدام بلا إعلانات والعديد من المزايا بانتظارك.", specialFilters: "فلاتر خاصة والمزيد", securePayment: "دفع آمن وسريع",
       },
+      AZ: {
+  user: "İstifadəçi", home: "Ana Səhifə", myPage: "Mənim Səhifəm", likes: "Bəyənmələr", messages: "Mesajlar", premium: "Premium",
+  welcome: "Xoş gəlmisiniz", logout: "Çıxış", backHome: "ANA SƏHİFƏYƏ QAYIT",
+  chatTitle: "Mesajlar", all: "Hamısı", new: "Yeni", online: "Onlayn", favorites: "Seçilmişlər",
+  search: "Axtar...", loading: "Mesajlar yüklənir...", noMessage: "Hələ ki mesaj yoxdur",
+  messagePlaceholder: "Mesajınızı yazın...", send: "GÖNDƏR",
+}
     };
     return translations[lang] || translations.TR;
   }, [lang]);
@@ -2024,11 +2031,11 @@ function MessagesContent() {
    ========================================================= */
 
 export default function MessagesPage() {
-  return (
+ return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-[#020817] text-[#2D1721]">
-          <div className="font-semibold text-zinc-400">Mesajlar yükleniyor...</div>
+        <div className="flex min-h-screen items-center justify-center bg-[#080503] text-amber-100">
+          <div className="font-semibold text-amber-300/60">Mesajlar yükleniyor...</div>
         </div>
       }
     >
@@ -2036,6 +2043,3 @@ export default function MessagesPage() {
     </Suspense>
   );
 }
-
-
-
