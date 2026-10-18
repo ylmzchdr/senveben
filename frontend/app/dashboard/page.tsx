@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import OnlineUsers from "../../components/OnlineUsers";
-import {
+import OnlineUsers from "@/components/dashboard/OnlineUsers";
+import { 
   Camera,
   ChevronRight,
   Download,
@@ -257,8 +257,9 @@ export default function DashboardPage() {
                 onOpenMobileMenu={() => setIsSidebarOpen(true)}
               />
             </div>
-
-            <OnlineUsers />
+<div className="mb-6">
+  <OnlineUsers />
+</div>
 
             <section className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
 
