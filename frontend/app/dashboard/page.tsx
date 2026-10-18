@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import OnlineUsers from "../../components/OnlineUsers";
@@ -17,11 +19,10 @@ import {
   X,
 } from "lucide-react";
 
-import Topbar from "@/components/dashboard/Topbar";
-import Sidebar from "./Sidebar";
+import Topbar from "../../components/dashboard/Topbar";
+import Sidebar from "../../components/dashboard/Sidebar";
 import { useI18n } from "@/lib/i18n-context";
 import { api } from "@/lib/api";
-
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{
