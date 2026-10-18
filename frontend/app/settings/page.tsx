@@ -9,7 +9,6 @@ import {
   Globe2,
   Heart,
   Lock,
-
   Palette,
   ShieldCheck,
   Sparkles,
@@ -63,6 +62,7 @@ const languageOptions: Array<{
   flag: string;
 }> = [
   { code: "TR", label: "Türkçe", native: "Türkçe", flag: "🇹🇷" },
+  { code: "AZ", label: "Azərbaycan", native: "Azərbaycan", flag: "🇦🇿" },
   { code: "EN", label: "English", native: "English", flag: "🇬🇧" },
   { code: "RU", label: "Русский", native: "Русский", flag: "🇷🇺" },
   { code: "AR", label: "العربية", native: "العربية", flag: "🇸🇦" },
@@ -83,6 +83,31 @@ const copy = {
     likes: "Bəyənmələr",
     likesDesc: "Biri səni bəyəndikdə bildiriş al.",
     matches: "Eşləşmələr",
+    matchesDesc: "Yeni bir eşləşmə olduqda bildiriş al.",
+    sounds: "Bildiriş səsləri",
+    soundsDesc: "Bildirişlərdə səs istifadə et.",
+    privacy: "Məxfilik və təhlükəsizlik",
+    privacyDesc: "Hesabınızın görünməsini və təhlükəsizliyini idarə edin.",
+    online: "Onlayn statusunu göstər",
+    onlineDesc: "Digər üzvlər onlayn olduğunuzu görə bilsin.",
+    read: "Oxundu bilgisini göstər",
+    readDesc: "Mesajların oxundu bilgisini qarşı tərəfə göstər.",
+    profile: "Profil tənzimləmələri",
+    profileDesc: "Profil məlumatlarınızı və şəklinizi redaktə edin.",
+    editProfile: "Profilimi Redaktə Et",
+    security: "Təhlükəsizlik",
+    securityDesc: "Hesabınızı qorumaq üçün profil məlumatlarınızı yoxlayın.",
+    account: "Hesab",
+    accountDesc: "Hesabınızla əlaqədar əməliyyatlar.",
+    help: "Yardım Mərkəzi",
+    logout: "Çıxış Et",
+    saved: "Tənzimləmələr yadda saxlanıldı",
+    secure: "Hesabınız təhlükəsizdir",
+    secureDesc: "SenVeBen hesabınız təhlükəsiz bağlantı ilə qorunur.",
+    premium: "Premium",
+    premiumDesc: "Daha çox xüsusiyyət və görünürlük üçün Premium-u kəşf edin.",
+    premiumCta: "Premium-u İncelə",
+    active: "Aktiv",
   },
   TR: {
     title: "Ayarlar",
@@ -248,7 +273,7 @@ const copy = {
 
 export default function SettingsPage() {
   const { lang, setLang } = useI18n();
-  const t = copy[lang] ?? copy.TR;
+  const t = (copy as Record<string, any>)[lang] ?? copy.TR;
 
   const [newMessages, setNewMessages] = useState(true);
   const [likes, setLikes] = useState(true);
@@ -270,7 +295,6 @@ export default function SettingsPage() {
     setSounds(readBool("egelove-notify-sounds", true));
     setOnline(readBool("egelove-show-online", true));
     setReadReceipts(readBool("egelove-read-receipts", true));
-
   }, []);
 
   const saveValue = (key: string, value: boolean) => {
@@ -609,6 +633,3 @@ export default function SettingsPage() {
 function SettingsIcon() {
   return <Palette className="h-3.5 w-3.5" />;
 }
-
-
-
