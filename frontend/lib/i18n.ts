@@ -435,4 +435,4 @@ openFilters: "فتح الفلاتر",
   features: { title: "لماذا SenVeBen؟", members: "قاعدة أعضاء كبيرة", membersDesc: "أكبر موقع زواج مع 90 ألف تسجيل شهرياً.", secure: "منصة آمنة", secureDesc: "جميع بياناتك مشفرة.", mobile: "تطبيق جوال", mobileDesc: "الوصول إلى حسابك في أي وقت.", experience: "15 عاماً من الخبرة", experienceDesc: "آلاف القصص السعيدة بدأت معنا." },
 };
 
-export const translations: Record<Lang, typeof tr> = { TR: tr, EN: en, RU: ru, AR: ar };
+export const translations: Record<string, typeof tr> = { TR: tr, AZ: ar, EN: en, RU: ru, AR: ar };
