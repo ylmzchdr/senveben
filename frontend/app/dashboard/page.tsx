@@ -192,19 +192,19 @@ export default function DashboardPage() {
 
   if (!isClient) {
     return (
-      <div className="min-h-screen bg-[#080b18] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-purple-500 animate-spin" />
+      <div className="min-h-screen bg-[#1F0F08] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[#080b18] text-white">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#1F0F08] text-amber-50">
       <div className="flex min-h-screen w-full">
 
         {/* SOL SIDEBAR */}
         <aside
-          className={`fixed inset-y-0 left-0 z-50 w-[286px] shrink-0 bg-[#080b18] transition-transform duration-300 lg:sticky lg:top-0 lg:block lg:translate-x-0 ${
+          className={`fixed inset-y-0 left-0 z-50 w-[286px] shrink-0 bg-[#160A05] transition-transform duration-300 lg:sticky lg:top-0 lg:block lg:translate-x-0 ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -224,27 +224,27 @@ export default function DashboardPage() {
             <div className="mb-2 flex w-full flex-col items-center justify-center gap-3 text-center">
 
               <div className="flex select-none items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-500 shadow-lg shadow-purple-500/20">
-                  <span className="text-xl font-black tracking-tighter text-white">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/20 border border-amber-500/40 shadow-lg shadow-amber-500/20">
+                  <span className="text-xl font-black tracking-tighter text-amber-400">
                     E
                   </span>
                 </div>
 
-                <h1 className="text-3xl font-black tracking-tight bg-gradient-to-r from-white via-purple-200 to-cyan-300 bg-clip-text text-transparent">
-                 senveben
-                  <span className="text-xl font-bold text-cyan-400">
+                <h1 className="text-3xl font-black tracking-tight text-amber-400">
+                  senveben
+                  <span className="text-xl font-bold text-amber-300">
                     .TR
                   </span>
                 </h1>
               </div>
 
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-900/40 bg-[#140804] px-4 py-1.5 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
                 </span>
 
-                <p className="text-xs font-bold tracking-wide text-cyan-400">
+                <p className="text-xs font-bold tracking-wide text-amber-300">
                   {t.dashboard.connectionTitle}
                 </p>
               </div>
@@ -265,48 +265,48 @@ export default function DashboardPage() {
 
               {/* PROFİLİM */}
               <Link href="/profile/edit" className="group min-w-0">
-                <div className="h-full rounded-2xl border border-purple-500/40 bg-gradient-to-r from-purple-900/50 to-slate-900/70 p-5 transition-all hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/10">
+                <div className="h-full rounded-2xl border border-amber-900/40 bg-gradient-to-r from-[#2A1309] to-[#140804] p-5 transition-all hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/10">
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-purple-400/25 bg-purple-500/15">
-                      <User className="h-6 w-6 text-purple-300" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-amber-500/30 bg-amber-500/15">
+                      <User className="h-6 w-6 text-amber-300" />
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h2 className="text-base font-black md:text-lg">
+                      <h2 className="text-base font-black text-amber-100 md:text-lg">
                         Profilim
                       </h2>
 
-                      <p className="mt-1 text-xs text-slate-400 md:text-sm">
+                      <p className="mt-1 text-xs text-amber-200/60 md:text-sm">
                         {t.dashboard.profileDesc}
                       </p>
                     </div>
 
-                    <ChevronRight className="h-5 w-5 shrink-0 text-purple-300 transition-transform group-hover:translate-x-1" />
+                    <ChevronRight className="h-5 w-5 shrink-0 text-amber-300 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
 
               {/* BİRİNİ BUL */}
               <Link href="/search" className="group min-w-0">
-                <div className="h-full rounded-2xl border border-white/15 bg-slate-900/60 p-5 transition-all hover:bg-slate-900/80">
+                <div className="h-full rounded-2xl border border-amber-900/40 bg-[#140804] p-5 transition-all hover:bg-[#1A0B05]">
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-950">
-                      <Search className="h-6 w-6 text-purple-300" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-amber-900/50 bg-[#120703]">
+                      <Search className="h-6 w-6 text-amber-300" />
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h2 className="text-base font-black text-white md:text-lg">
+                      <h2 className="text-base font-black text-amber-100 md:text-lg">
                         {t.dashboard.find}
                       </h2>
 
-                      <p className="mt-1 truncate text-xs text-slate-400 md:text-sm">
+                      <p className="mt-1 truncate text-xs text-amber-200/60 md:text-sm">
                         {t.dashboard.findProfileDesc}
                       </p>
                     </div>
 
-                    <ChevronRight className="h-5 w-5 shrink-0 text-purple-300 transition-transform group-hover:translate-x-1" />
+                    <ChevronRight className="h-5 w-5 shrink-0 text-amber-300 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
@@ -317,18 +317,18 @@ export default function DashboardPage() {
 
               {/* CANLI SOHBET */}
               <Link href="/messages" className="group block min-w-0">
-                <div className="relative h-full overflow-hidden rounded-3xl border border-purple-500/40 bg-gradient-to-br from-purple-900/40 to-slate-900/60 p-6 shadow-xl shadow-purple-500/5 backdrop-blur-xl transition-all duration-300 hover:border-purple-400/60">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-amber-900/40 bg-gradient-to-br from-[#2A1309] to-[#140804] p-6 shadow-xl shadow-amber-500/5 backdrop-blur-xl transition-all duration-300 hover:border-amber-500/60">
 
-                  <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-purple-500/10 blur-3xl transition-all duration-500 group-hover:bg-purple-500/20" />
+                  <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-amber-500/10 blur-3xl transition-all duration-500 group-hover:bg-amber-500/20" />
 
                   <div className="relative mb-4 flex items-center gap-4">
 
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-500/30 bg-purple-500/20">
-                      <Camera className="h-5 w-5 animate-pulse text-purple-400" />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/20">
+                      <Camera className="h-5 w-5 animate-pulse text-amber-400" />
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="text-sm font-bold tracking-wide text-white md:text-base">
+                      <h3 className="text-sm font-bold tracking-wide text-amber-100 md:text-base">
                         {t.dashboard.liveChatTitle}
                       </h3>
 
@@ -340,7 +340,7 @@ export default function DashboardPage() {
 
                   </div>
 
-                  <p className="relative text-xs leading-relaxed tracking-wide text-slate-300 md:text-sm">
+                  <p className="relative text-xs leading-relaxed tracking-wide text-amber-200/70 md:text-sm">
                     {t.dashboard.liveChatDesc}
                   </p>
 
@@ -348,20 +348,20 @@ export default function DashboardPage() {
               </Link>
 
               {/* TELEFONA YÜKLE */}
-              <div className="relative h-full min-w-0 overflow-hidden rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-cyan-950/30 via-slate-900/60 to-purple-950/30 p-6 shadow-xl shadow-cyan-500/5 backdrop-blur-xl">
+              <div className="relative h-full min-w-0 overflow-hidden rounded-3xl border border-amber-900/40 bg-gradient-to-br from-[#1F0F08] via-[#140804] to-[#2A1309] p-6 shadow-xl shadow-amber-500/5 backdrop-blur-xl">
 
-                <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl" />
+                <div className="absolute right-0 top-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-amber-500/10 blur-3xl" />
 
                 <div className="relative flex h-full flex-col">
 
                   <div className="mb-4 flex items-center gap-4">
 
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10">
-                      <Smartphone className="h-5 w-5 text-cyan-400" />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10">
+                      <Smartphone className="h-5 w-5 text-amber-400" />
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="text-sm font-bold tracking-wide text-white md:text-base">
+                      <h3 className="text-sm font-bold tracking-wide text-amber-100 md:text-base">
                         senveben&apos;ı Telefona Yükle
                       </h3>
 
@@ -369,7 +369,7 @@ export default function DashboardPage() {
                         className={`mt-1 inline-block rounded-md border px-2 py-1 text-[9px] font-bold tracking-wider ${
                           isStandalone
                             ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                            : "border-cyan-500/20 bg-cyan-500/10 text-cyan-400"
+                            : "border-amber-500/20 bg-amber-500/10 text-amber-400"
                         }`}
                       >
                         {isStandalone ? "TELEFONUNDA YÜKLÜ" : "ÜCRETSİZ"}
@@ -378,7 +378,7 @@ export default function DashboardPage() {
 
                   </div>
 
-                  <p className="relative mb-4 text-xs leading-relaxed tracking-wide text-slate-400 md:text-sm">
+                  <p className="relative mb-4 text-xs leading-relaxed tracking-wide text-amber-200/70 md:text-sm">
                     senveben&apos;a ana ekranından tek dokunuşla ulaş.
                     Tarayıcıyı açmadan uygulama gibi kullan.
                   </p>
@@ -387,7 +387,7 @@ export default function DashboardPage() {
                     <button
                       type="button"
                       onClick={handleInstallClick}
-                      className="relative mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-4 py-3 text-sm font-black text-white transition-all hover:border-cyan-300/60 hover:from-cyan-500/30 hover:to-purple-500/30 active:scale-[0.99]"
+                      className="relative mt-auto flex w-full items-center justify-center gap-2 rounded-xl border border-amber-500/40 bg-amber-500 hover:bg-amber-600 px-4 py-3 text-sm font-black text-stone-950 transition-all shadow-lg shadow-amber-500/10 active:scale-[0.99]"
                     >
                       <Download className="h-4 w-4" />
                       Telefona Yükle
@@ -402,7 +402,7 @@ export default function DashboardPage() {
                   )}
 
                   {installMessage && (
-                    <p className="mt-3 text-xs leading-relaxed text-cyan-300">
+                    <p className="mt-3 text-xs leading-relaxed text-amber-300">
                       {installMessage}
                     </p>
                   )}
@@ -414,27 +414,27 @@ export default function DashboardPage() {
 
             {/* PWA KURULUM YARDIMI */}
             {showInstallHelp && !isStandalone && (
-              <div className="mt-4 overflow-hidden rounded-2xl border border-cyan-500/25 bg-[#0d1325] shadow-xl shadow-black/20">
+              <div className="mt-4 overflow-hidden rounded-2xl border border-amber-900/40 bg-[#160A05] shadow-xl shadow-black/20">
 
                 <div className="flex items-start justify-between gap-4 p-5">
 
                   <div className="flex min-w-0 gap-3">
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-                      <Share2 className="h-5 w-5 text-cyan-400" />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-500/20 bg-amber-500/10">
+                      <Share2 className="h-5 w-5 text-amber-400" />
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="text-sm font-black text-white">
+                      <h3 className="text-sm font-black text-amber-100">
                         {isIOS
                           ? "iPhone'a senveben Nasıl Eklenir?"
                           : "senveben'ı Ana Ekrana Ekle"}
                       </h3>
 
                       {isIOS ? (
-                        <p className="mt-2 text-xs leading-6 text-slate-300 md:text-sm">
+                        <p className="mt-2 text-xs leading-6 text-amber-200/70 md:text-sm">
                           Safari&apos;de alttaki
-                          <span className="font-bold text-cyan-300">
+                          <span className="font-bold text-amber-300">
                             {" "}Paylaş{" "}
                           </span>
                           simgesine dokun. Açılan menüden
@@ -442,13 +442,13 @@ export default function DashboardPage() {
                             {" "}Ana Ekrana Ekle{" "}
                           </span>
                           seçeneğini seç ve ardından
-                          <span className="font-bold text-cyan-300">
+                          <span className="font-bold text-amber-300">
                             {" "}Ekle
                           </span>
                           butonuna dokun.
                         </p>
                       ) : (
-                        <p className="mt-2 text-xs leading-6 text-slate-300 md:text-sm">
+                        <p className="mt-2 text-xs leading-6 text-amber-200/70 md:text-sm">
                           Tarayıcının menüsünü aç ve
                           <span className="font-bold text-white">
                             {" "}Uygulamayı yükle{" "}
@@ -469,7 +469,7 @@ export default function DashboardPage() {
                     type="button"
                     aria-label="Kurulum yardımını kapat"
                     onClick={() => setShowInstallHelp(false)}
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-slate-400 transition hover:bg-white/[0.08] hover:text-white"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-amber-900/40 bg-[#120703] text-amber-300 transition hover:bg-amber-900/20 hover:text-white"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -486,12 +486,12 @@ export default function DashboardPage() {
               {/* YENİ BEĞENİ */}
               <Link
                 href="/likes"
-                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/40 p-4 transition-all hover:border-pink-500/40"
+                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-amber-900/40 bg-[#160A05] p-4 transition-all hover:border-amber-500/40"
               >
-                <Heart className="h-4 w-4 text-pink-500" />
+                <Heart className="h-4 w-4 text-amber-500" />
 
                 <div>
-                  <span className="block text-xs font-bold text-slate-200">
+                  <span className="block text-xs font-bold text-amber-100">
                     {t.dashboard.newLike}
                   </span>
 
@@ -504,16 +504,16 @@ export default function DashboardPage() {
               {/* MESAJLAR */}
               <Link
                 href="/messages"
-                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/40 p-4 transition-all hover:border-blue-500/40"
+                className="flex h-28 min-w-0 flex-col justify-between rounded-2xl border border-amber-900/40 bg-[#160A05] p-4 transition-all hover:border-amber-500/40"
               >
-                <MessageCircle className="h-4 w-4 text-blue-400" />
+                <MessageCircle className="h-4 w-4 text-amber-400" />
 
                 <div>
-                  <span className="block text-xs font-bold text-slate-200">
+                  <span className="block text-xs font-bold text-amber-100">
                     {t.dashboard.messages}
                   </span>
 
-                  <span className="mt-0.5 block text-[10px] font-medium text-slate-500">
+                  <span className="mt-0.5 block text-[10px] font-medium text-amber-300/50">
                     {t.dashboard.openChats}
                   </span>
                 </div>
