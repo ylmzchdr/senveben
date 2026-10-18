@@ -1,4 +1,4 @@
-export type Lang = "TR" | "EN" | "RU" | "AR";
+export type Lang = "TR" | "EN" | "RU" | "AR" | "AZ";
 
 const tr = {
   nav: { home: "Ana Sayfa", discover: "Sana Uygun Kişiyi Bul", likes: "Beğeniler", messages: "Mesajlar", premium: "Premium", dashboard: "Benim Sayfam" },
