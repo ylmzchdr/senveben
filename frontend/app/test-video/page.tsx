@@ -41,7 +41,7 @@ export default function TestVideoPage() {
 
   return (
     <div className="min-h-screen bg-[#121420] text-white flex flex-col items-center justify-center p-6">
-      <div className="max-w-md w-full bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 text-center shadow-2xl">
+      <div className="max-w-md w-full /60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 text-center shadow-2xl">
         <h2 className="text-xl font-bold mb-2 tracking-wide text-purple-400">
           🛰️ GEÇİCİ VİDEO LABORATUVARI
         </h2>

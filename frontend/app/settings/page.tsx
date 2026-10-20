@@ -41,7 +41,7 @@ function Toggle({ checked, onChange, label }: ToggleProps) {
       className={[
         "relative h-7 w-12 shrink-0 rounded-full border transition-all duration-300",
         checked
-          ? "border-pink-400/40 bg-gradient-to-r from-fuchsia-500 to-blue-500 shadow-[0_0_24px_rgba(217,70,239,0.22)]"
+          ? "border-[#3d2516]/40 bg-gradient-to-r from-fuchsia-500 to-blue-500 shadow-[0_0_24px_rgba(217,70,239,0.22)]"
           : "border-pink-200 bg-white",
       ].join(" ")}
     >
@@ -378,15 +378,15 @@ export default function SettingsPage() {
         <main className="relative min-w-0 flex-1 overflow-hidden bg-[radial-gradient(circle_at_10%_5%,rgba(56,189,248,0.09),transparent_28%),radial-gradient(circle_at_92%_14%,rgba(217,70,239,0.09),transparent_30%),linear-gradient(135deg,#070a12_0%,#0d101a_52%,#090c15_100%)]">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-40 -top-48 h-[500px] w-[500px] rounded-full bg-pink-500/[0.13] blur-[130px]"
+            className="pointer-events-none absolute -left-40 -top-48 h-[500px] w-[500px] rounded-full bg-[#e59000]/[0.13] blur-[130px]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-48 top-40 h-[520px] w-[520px] rounded-full bg-violet-500/[0.11] blur-[140px]"
+            className="pointer-events-none absolute -right-48 top-40 h-[520px] w-[520px] rounded-full bg-[#3d2516]/[0.11] blur-[140px]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-cyan-500/[0.07] blur-[130px]"
+            className="pointer-events-none absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-[#1f120c]/[0.07] blur-[130px]"
           />
 
           <div className="relative z-10">
@@ -397,11 +397,11 @@ export default function SettingsPage() {
             <div className="mx-auto w-full max-w-[1180px] px-4 py-6 sm:px-6 sm:py-8 xl:px-8">
               <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-pink-400/20 bg-pink-500/[0.08] px-3 py-1.5 text-xs font-bold text-pink-300">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#3d2516]/20 bg-[#e59000]/[0.08] px-3 py-1.5 text-xs font-bold text-pink-300">
                     <SettingsIcon />
                     {t.title}
                   </div>
-                  <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-[#2D1721] sm:text-4xl">
+                  <h1 className="text-3xl font-black tracking-tight text-[#eec590] dark:text-[#2D1721] sm:text-4xl">
                     {t.title}
                   </h1>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-[#8A6372] dark:text-[#7A5363] sm:text-base">
@@ -437,7 +437,7 @@ export default function SettingsPage() {
                           className={[
                             "rounded-xl border px-3 py-2 text-xs font-black transition-all",
                             lang === item.code
-                              ? "border-pink-400/30 bg-gradient-to-r from-fuchsia-500/20 to-blue-500/20 text-[#2D1721] shadow-[0_0_22px_rgba(217,70,239,0.15)]"
+                              ? "border-[#3d2516]/30 bg-gradient-to-r from-fuchsia-500/20 to-blue-500/20 text-[#2D1721] shadow-[0_0_22px_rgba(217,70,239,0.15)]"
                               : "border-white/[0.08] bg-white text-[#8A6372] hover:border-pink-200 hover:text-[#2D1721]",
                           ].join(" ")}
                         >
@@ -573,7 +573,7 @@ export default function SettingsPage() {
                   >
                     <Link
                       href="/profile/edit"
-                      className="inline-flex items-center gap-2 rounded-xl border border-pink-400/20 bg-pink-500/[0.08] px-4 py-2.5 text-xs font-black text-pink-200 transition hover:bg-pink-500/[0.14]"
+                      className="inline-flex items-center gap-2 rounded-xl border border-[#3d2516]/20 bg-[#e59000]/[0.08] px-4 py-2.5 text-xs font-black text-pink-200 transition hover:bg-[#e59000]/[0.14]"
                     >
                       {t.editProfile}
                       <ChevronRight className="h-4 w-4" />

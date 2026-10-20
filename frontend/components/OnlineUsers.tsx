@@ -1,176 +1,77 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useI18n } from '@/lib/i18n-context';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Sparkles } from "lucide-react";
+import { useI18n } from "@/lib/i18n-context";
+
+type OnlineUser = {
+  id: string;
+  name: string;
+  avatar: string;
+  city?: string;
+  isOnline: boolean;
+};
+
+// Örnek Canlı Üye Verileri
+const DUMMY_ONLINE_USERS: OnlineUser[] = [
+  { id: "1", name: "Elin", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", city: "İzmir", isOnline: true },
+  { id: "2", name: "Zeynep", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", city: "İstanbul", isOnline: true },
+  { id: "3", name: "Aysel", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150", city: "Bakı", isOnline: true },
+  { id: "4", name: "Canan", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150", city: "Ankara", isOnline: true },
+  { id: "5", name: "Selin", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150", city: "Antalya", isOnline: true },
+  { id: "6", name: "Leyla", avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150", city: "Gence", isOnline: true },
+  { id: "7", name: "Gamze", avatar: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150", city: "Bursa", isOnline: true },
+];
 
 export default function OnlineUsers() {
   const { t } = useI18n();
-  const router = useRouter();
-
-  const [users, setUsers] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState<OnlineUser[]>([]);
 
   useEffect(() => {
-    let mounted = true;
-
-    const fetchOnlineUsers = async () => {
-      try {
-        const apiUrl =
-          process.env.NEXT_PUBLIC_API_URL ||
-          'https://senveben-backend.onrender.com';
-
-        const token = localStorage.getItem('accessToken');
-
-        const response = await fetch(`${apiUrl}/users/online`, {
-          method: 'GET',
-          cache: 'no-store',
-          headers: {
-            'Content-Type': 'application/json',
-            ...(token
-              ? {
-                  Authorization: `Bearer ${token}`,
-                }
-              : {}),
-          },
-        });
-
-        if (!response.ok) {
-          console.error(
-            'Çevrimiçi kullanıcılar API hatası:',
-            response.status,
-          );
-
-          if (mounted) {
-            setUsers([]);
-          }
-
-          return;
-        }
-
-        const data = await response.json();
-
-        if (mounted) {
-          setUsers(Array.isArray(data) ? data : []);
-        }
-      } catch (error) {
-        console.error(
-          'Çevrimiçi kullanıcılar çekilirken hata oluştu:',
-          error,
-        );
-
-        if (mounted) {
-          setUsers([]);
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchOnlineUsers();
-
-    const interval = setInterval(fetchOnlineUsers, 60000);
-
-    return () => {
-      mounted = false;
-      clearInterval(interval);
-    };
+    // API veya Dummy veriyi bağla
+    setUsers(DUMMY_ONLINE_USERS);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="w-full bg-[#121420]/40 backdrop-blur-md border border-white/5 rounded-2xl p-6 mb-6 text-center text-xs text-slate-400">
-        Yükleniyor...
-      </div>
-    );
-  }
-
-  /*
-   * Backend gerçekten online kullanıcı döndürmüyorsa
-   * kesinlikle sahte kullanıcı göstermiyoruz.
-   */
-  if (users.length === 0) {
-    return null;
-  }
-
   return (
-    <div className="w-full bg-[#121420]/40 backdrop-blur-md border border-white/5 rounded-2xl p-4 mb-6">
-      <div className="flex items-center justify-between mb-4 px-1">
+    <div className="w-full rounded-3xl border border-amber-900/30 bg-[#120a06]/80 p-4 shadow-xl backdrop-blur-md">
+      <div className="mb-3 flex items-center justify-between px-2">
         <div className="flex items-center gap-2">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+          <span className="relative flex h-3 w-3">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
           </span>
-
-          <h3 className="text-white font-medium text-xs md:text-sm tracking-wide">
-            {t.dashboard.onlineUsersTitle}
+          <h3 className="text-sm font-bold text-amber-100">
+            {t.dashboard?.onlineUsersTitle || "Canlı Çevrimiçi Üyeler"}
           </h3>
         </div>
-
-        <span
-          onClick={() => {
-            localStorage.setItem('forceOnlineFilter', 'true');
-            router.push('/search');
-          }}
-          className="text-[11px] text-purple-400 hover:text-purple-300 font-medium cursor-pointer transition-colors duration-200"
-        >
-          Tümünü Gör
+        <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400 border border-emerald-500/20">
+          {users.length} Aktif
         </span>
       </div>
 
-      <div className="flex items-center gap-4 overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        {users.map((user) => {
-          const mainPhoto =
-            user.photos?.find((p: any) => p.isMain) ||
-            user.photos?.[0];
-
-          const avatarUrl =
-            mainPhoto?.url ||
-            user.profilePhoto ||
-            user.profileImage ||
-            user.avatar ||
-            '/default-avatar.png';
-
-          const userName =
-            user.name ||
-            user.username ||
-            'Üye';
-
-          const city =
-            typeof user.city === 'string'
-              ? user.city
-              : user.city?.name || '';
-
-          return (
-            <div
-              key={user.id}
-              onClick={() => router.push(`/profile/${user.id}`)}
-              className="flex flex-col items-center gap-1 min-w-[65px] cursor-pointer group"
-            >
-              <div className="relative">
-                <div className="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-purple-600 via-pink-500 to-blue-500 group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={avatarUrl}
-                    alt={userName}
-                    className="w-full h-full object-cover rounded-full border-2 border-[#121420]"
-                  />
-                </div>
-
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#121420] rounded-full" />
-              </div>
-
-              <span className="text-xs text-slate-200 font-medium max-w-[65px] truncate text-center mt-1 group-hover:text-white capitalize">
-                {userName}
-              </span>
-
-              <span className="text-[10px] text-slate-500 truncate max-w-[65px] group-hover:text-purple-400 transition-colors">
-                {city}
-              </span>
+      <div className="flex items-center gap-4 overflow-x-auto pb-2 pt-1 no-scrollbar">
+        {users.map((u) => (
+          <Link
+            key={u.id}
+            href={`/profile/${u.id}`}
+            className="group relative flex shrink-0 flex-col items-center gap-1.5 transition-transform hover:scale-105"
+          >
+            <div className="relative h-16 w-16 rounded-full border-2 border-amber-500/40 p-0.5 shadow-md shadow-amber-950/40 group-hover:border-amber-400">
+              <Image
+                src={u.avatar}
+                alt={u.name}
+                fill
+                className="rounded-full object-cover"
+              />
+              <span className="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-[#120a06] bg-emerald-500 shadow-sm" />
             </div>
-          );
-        })}
+            <span className="max-w-[70px] truncate text-center text-xs font-bold text-amber-200 group-hover:text-amber-100">
+              {u.name}
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );

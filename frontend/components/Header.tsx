@@ -1,4 +1,5 @@
-﻿"use client";
+﻿
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -113,11 +114,11 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#EC4899] text-black shadow-md border-b border-black/10 font-sans">
+    <header className="sticky top-0 z-50 bg-[#110D0A] text-[#FDE68A] shadow-md border-b border-[#D97706]/30 font-sans">
       <div className="mx-auto max-w-7xl px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          <Heart className="w-7 h-7 text-black fill-black" />
-          <span className="text-xl font-black tracking-tighter text-black lowercase">
+          <Heart className="w-7 h-7 text-[#FBBF24] fill-[#FBBF24]" />
+          <span className="text-xl font-black tracking-tighter text-[#FDE68A] lowercase">
             senveben
           </span>
         </Link>
@@ -127,7 +128,7 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
             <Link
               key={item.label}
               href={item.href}
-              className="text-black/80 hover:text-black transition font-bold text-base no-underline"
+              className="text-[#FDE68A]/80 hover:text-[#FBBF24] transition font-bold text-base no-underline"
             >
               {item.label}
             </Link>
@@ -135,17 +136,15 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
         </nav>
 
         <div className="hidden lg:flex gap-2 items-center">
-          <div className="flex items-center bg-white/30 rounded border border-black/10 p-0.5">
+          <div className="flex items-center bg-[#2B1408] rounded border border-[#D97706]/30 p-0.5">
             {languages.map((l) => (
               <button
                 key={l.code}
-                onClick={() => {
-                  setLang(l.code);
-                }}
+                onClick={() => setLang(l.code)}
                 className={`px-2 py-1 rounded text-xs font-bold transition ${
                   lang === l.code
-                    ? "bg-white text-black shadow-sm"
-                    : "text-black/70 hover:text-black hover:bg-white/20"
+                    ? "bg-[#FBBF24] text-[#110D0A] shadow-sm"
+                    : "text-[#FDE68A]/70 hover:text-[#FDE68A] hover:bg-[#D97706]/20"
                 }`}
               >
                 {l.code}
@@ -153,19 +152,19 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
             ))}
           </div>
 
-          <div className="w-px h-6 bg-black/20 mx-2" />
+          <div className="w-px h-6 bg-[#D97706]/30 mx-2" />
 
           {isLoggedIn ? (
             <>
               <Link
                 href="/profile"
-                className="bg-black text-pink-600 font-bold text-xs h-8 px-4 rounded flex items-center no-underline max-w-[220px] truncate"
+                className="bg-[#2B1408] text-[#FBBF24] border border-[#D97706]/40 font-bold text-xs h-8 px-4 rounded flex items-center no-underline max-w-[220px] truncate"
               >
                 {loggedInLabel}
               </Link>
 
               <Button
-                className="bg-white text-black hover:bg-white/80 font-bold text-xs h-8 px-4 shadow-sm"
+                className="bg-[#FBBF24] text-[#110D0A] hover:bg-[#F59E0B] font-bold text-xs h-8 px-4 shadow-sm"
                 onClick={handleLogout}
               >
                 Çıkış
@@ -175,7 +174,7 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
             <>
               <Button
                 variant="outline"
-                className="text-black border-black/60 hover:bg-black/10 hover:text-black text-xs font-bold h-8 px-4 bg-transparent"
+                className="text-[#FDE68A] border-[#D97706]/60 hover:bg-[#D97706]/15 hover:text-[#FBBF24] text-xs font-bold h-8 px-4 bg-transparent"
                 onClick={onOpenLogin}
               >
                 {t.auth.login}
@@ -183,7 +182,7 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
 
               {onOpenRegister && (
                 <Button
-                  className="bg-black text-pink-600 hover:bg-black/80 font-bold text-xs h-8 px-4 shadow-sm"
+                  className="bg-[#F07800] text-white hover:bg-[#D97706] font-bold text-xs h-8 px-4 shadow-sm"
                   onClick={onOpenRegister}
                 >
                   {t.auth.register}
@@ -194,30 +193,34 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
         </div>
 
         <button
-          className="lg:hidden text-black"
+          className="lg:hidden text-[#FDE68A]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Menüyü aç/kapat"
           aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#EC4899] border-t border-black/10 p-4">
+        <div className="lg:hidden bg-[#110D0A] border-t border-[#D97706]/30 p-4">
           <nav className="flex flex-col gap-3">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-black font-bold text-left no-underline"
+                className="text-[#FDE68A] hover:text-[#FBBF24] font-bold text-left no-underline"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
 
-            <div className="flex gap-2 my-2 bg-white/20 p-1 rounded w-fit">
+            <div className="flex gap-2 my-2 bg-[#2B1408] border border-[#D97706]/30 p-1 rounded w-fit">
               {languages.map((l) => (
                 <button
                   key={l.code}
@@ -227,8 +230,8 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
                   }}
                   className={`px-2 py-1 rounded text-xs font-bold ${
                     lang === l.code
-                      ? "bg-white text-black"
-                      : "text-black/70 hover:text-black"
+                      ? "bg-[#FBBF24] text-[#110D0A]"
+                      : "text-[#FDE68A]/70 hover:text-[#FDE68A]"
                   }`}
                 >
                   {l.code}
@@ -240,14 +243,14 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
               <>
                 <Link
                   href="/profile"
-                  className="bg-black text-pink-600 w-full font-bold text-center rounded px-4 py-2 no-underline truncate"
+                  className="bg-[#2B1408] border border-[#D97706]/40 text-[#FBBF24] w-full font-bold text-center rounded px-4 py-2 no-underline truncate"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {loggedInLabel}
                 </Link>
 
                 <Button
-                  className="bg-white text-black w-full font-bold"
+                  className="bg-[#FBBF24] text-[#110D0A] hover:bg-[#F59E0B] w-full font-bold"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     handleLogout();
@@ -260,7 +263,7 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
               <>
                 <Button
                   variant="outline"
-                  className="w-full text-black border-black/40 bg-transparent font-bold"
+                  className="w-full text-[#FDE68A] border-[#D97706]/50 hover:bg-[#D97706]/15 bg-transparent font-bold"
                   onClick={() => {
                     if (onOpenLogin) onOpenLogin();
                     setMobileMenuOpen(false);
@@ -271,7 +274,7 @@ export default function Header({ onOpenLogin, onOpenRegister }: HeaderProps) {
 
                 {onOpenRegister && (
                   <Button
-                    className="bg-black text-pink-600 w-full font-bold"
+                    className="bg-[#F07800] text-white hover:bg-[#D97706] w-full font-bold"
                     onClick={() => {
                       onOpenRegister();
                       setMobileMenuOpen(false);

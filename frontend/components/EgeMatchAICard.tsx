@@ -174,7 +174,7 @@ export default function EgeMatchAICard({
       <div className="relative z-10">
         <div className="mb-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/20 shadow-lg shadow-pink-500/20">
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e59000]/20 shadow-lg shadow-pink-500/20">
               <div className="absolute inset-0 animate-ping rounded-2xl bg-pink-400/20" />
               <Heart
                 className="relative h-6 w-6 text-pink-300"
@@ -203,7 +203,7 @@ export default function EgeMatchAICard({
             %{animatedScore}
           </div>
 
-          <div className="mb-3 rounded-full border border-pink-300/30 bg-pink-500/20 px-4 py-1.5 text-base font-bold text-pink-50 shadow-lg shadow-pink-500/20">
+          <div className="mb-3 rounded-full border border-pink-300/30 bg-[#e59000]/20 px-4 py-1.5 text-base font-bold text-pink-50 shadow-lg shadow-pink-500/20">
             {finalLabel}
           </div>
         </div>

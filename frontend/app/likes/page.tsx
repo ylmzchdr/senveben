@@ -80,7 +80,7 @@ export default function LikesPage() {
             </div>
             <Link
               href="/premium"
-              className="shrink-0 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-3 text-xs font-black text-slate-950 shadow-lg hover:from-amber-400 hover:to-amber-500 transition-all"
+              className="shrink-0 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 px-5 py-3 text-xs font-black text-[#eec590] shadow-lg hover:from-amber-400 hover:to-amber-500 transition-all"
             >
               👑 Premium'a Geç
             </Link>
