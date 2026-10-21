@@ -28,9 +28,52 @@ export default function Home() {
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-amber-200/80">
             <a href="#" className="hover:text-amber-400 transition-colors">Ana Sayfa</a>
+            <a href="/dashboard" className="hover:text-amber-400 transition-colors">Taş Port</a>
           </nav>
+
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              onClick={() => setAuthTab("login")}
+              className="text-amber-100 hover:text-amber-400"
+            >
+              Giriş Yap
+            </Button>
+            <Button
+              onClick={() => setAuthTab("register")}
+              className="bg-amber-400 text-amber-950 hover:bg-amber-300 font-semibold"
+            >
+              Kayıt Ol
+            </Button>
+          </div>
         </div>
       </header>
+
+      {/* HERO SECTION */}
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col items-center justify-center text-center">
+        <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-amber-400 leading-tight mb-6 max-w-4xl">
+          Türkiye'nin Arkadaşlık ve Sosyal Portalı
+        </h1>
+        <p className="text-lg text-amber-200/60 mb-10 max-w-2xl leading-relaxed">
+          Aradığınız topluluğu, etkinlikleri ve gerçek arkadaşlıkları keşfetmeye hemen başlayın.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
+          <Button
+            size="lg"
+            onClick={() => setAuthTab("register")}
+            className="bg-amber-400 text-amber-950 hover:bg-amber-300 text-base font-bold px-8 h-14"
+          >
+            Hemen Ücretsiz Üye Ol
+          </Button>
+        </div>
+      </main>
+
+      {/* DIALOGS */}
+      <AuthDialog
+        isOpen={authTab !== null}
+        onClose={() => setAuthTab(null)}
+        defaultTab={authTab || "login"}
+      />
     </div>
   );
 }
