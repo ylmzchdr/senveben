@@ -1,20 +1,20 @@
-/* vscode-css-disable-unknown-at-rules */
+
 @import "tailwindcss";
 
-/* Hover ve active seçici tanımı */
+/* Tailwind CSS v4 yardımcı sınıfları */
 @utility hover-active {
-  &:hover, &:active {
+  &:hover,
+  &:active {
     @apply transition-colors;
   }
 }
 
-/* Tailwind v4 Tema Tanımlamaları */
 @theme {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -34,13 +34,13 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  
+
+  --color-chart-1: #e59000;
+  --color-chart-2: #a15c00;
+  --color-chart-3: #f0b56d;
+  --color-chart-4: #f6d2a4;
+  --color-chart-5: #fef8f0;
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -50,210 +50,208 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Ana sayfa renk paleti */
   --color-main-bg: #160c08;
   --color-card-bg: #1f120c;
-  --color-brand-orange: #e59000;
-  --color-main-text: #eec590;
-  --color-main-border: #3d2516;
+  --color-brand-orange: #ffc928;
+  --color-main-text: #fff5df;
+  --color-main-border: #5b4027;
 
-  /* Tema Tonları */
-  --color-theme-50: #fef8f0;
-  --color-theme-100: #fbebd4;
-  --color-theme-200: #f6d2a4;
-  --color-theme-300: #f0b56d;
-  --color-theme-400: #e59000;
-  --color-theme-500: #c77600;
-  --color-theme-600: #a15c00;
-  --color-theme-700: #7c4401;
-  --color-theme-800: #5d3406;
-  --color-theme-900: #3d2516;
+  --color-theme-50: #fffaf0;
+  --color-theme-100: #fff0cf;
+  --color-theme-200: #ffe080;
+  --color-theme-300: #ffd34d;
+  --color-theme-400: #ffc928;
+  --color-theme-500: #e5a900;
+  --color-theme-600: #bd8200;
+  --color-theme-700: #8c5b0a;
+  --color-theme-800: #5d3b17;
+  --color-theme-900: #35271b;
   --color-theme-950: #1f120c;
 }
 
 :root {
-  --primary: #e59000;
-  --primary-foreground: #ffffff;
-  --sidebar-primary: #e59000;
-  --sidebar-primary-foreground: #ffffff;
-  --chart-1: #e59000;
-  --chart-2: #a15c00;
-  --chart-3: #f0b56d;
-  --chart-4: #f6d2a4;
-  --chart-5: #fef8f0;
   --radius: 0.65rem;
-  
+
   --background: #160c08;
-  --foreground: #eec590;
+  --foreground: #fff5df;
+
   --card: #1f120c;
-  --card-foreground: #eec590;
-  --popover: #1f120c;
-  --popover-foreground: #eec590;
-  --secondary: #1f120c;
-  --secondary-foreground: #eec590;
-  --muted: #1f120c;
-  --muted-foreground: #3d2516;
-  --accent: #1f120c;
-  --accent-foreground: #eec590;
-  --destructive: #ef4444;
+  --card-foreground: #fff5df;
+
+  --popover: #21170f;
+  --popover-foreground: #fff5df;
+
+  --primary: #ffc928;
+  --primary-foreground: #21170f;
+
+  --secondary: #35271b;
+  --secondary-foreground: #fff5df;
+
+  --muted: #35271b;
+  --muted-foreground: #d6c4ad;
+
+  --accent: #493522;
+  --accent-foreground: #fff5df;
+
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: #3d2516;
-  --input: #3d2516;
-  --ring: #e59000;
+
+  --border: #5b4027;
+  --input: #5b4027;
+  --ring: #ffc928;
+
   --sidebar: #1f120c;
-  --sidebar-foreground: #eec590;
-  --sidebar-accent: #3d2516;
-  --sidebar-accent-foreground: #e59000;
-  --sidebar-border: #3d2516;
-  --sidebar-ring: #e59000;
+  --sidebar-foreground: #fff5df;
+  --sidebar-primary: #ffc928;
+  --sidebar-primary-foreground: #21170f;
+  --sidebar-accent: #35271b;
+  --sidebar-accent-foreground: #ffc928;
+  --sidebar-border: #5b4027;
+  --sidebar-ring: #ffc928;
 }
 
-.dark, :is(.dark *) {
-  --background: #160c08 !important;
-  --foreground: #eec590 !important;
-  --card: #1f120c !important;
-  --card-foreground: #eec590 !important;
-  --sidebar: #1f120c !important;
-  --sidebar-foreground: #eec590 !important;
+.dark {
+  --background: #160c08;
+  --foreground: #fff5df;
+  --card: #1f120c;
+  --card-foreground: #fff5df;
+  --popover: #21170f;
+  --popover-foreground: #fff5df;
+  --primary: #ffc928;
+  --primary-foreground: #21170f;
+  --secondary: #35271b;
+  --secondary-foreground: #fff5df;
+  --muted: #35271b;
+  --muted-foreground: #d6c4ad;
+  --accent: #493522;
+  --accent-foreground: #fff5df;
+  --border: #5b4027;
+  --input: #5b4027;
+  --ring: #ffc928;
+  --sidebar: #1f120c;
+  --sidebar-foreground: #fff5df;
+  --sidebar-primary: #ffc928;
+  --sidebar-primary-foreground: #21170f;
+  --sidebar-accent: #35271b;
+  --sidebar-accent-foreground: #ffc928;
+  --sidebar-border: #5b4027;
+  --sidebar-ring: #ffc928;
 }
 
+/* Temel sayfa renkleri */
 * {
   border-color: var(--border);
 }
 
-/* Tüm Sayfa ve Kapsayıcı Sıfırlaması */
-html, body, #__next, root {
-  background-color: #160c08 !important;
-  color: #eec590 !important;
-  min-height: 100vh;
+html,
+body {
+  min-height: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
-/* Dashboard, Sidebar ve Ana Alanların Rengi */
-.dashboard-container,
-.sidebar,
-aside,
-main,
-section,
-header {
-  background-color: #160c08 !important;
-}
-
-/* Kartlar ve Kutular */
+/* Kartlar ve paneller */
 .card,
 .dashboard-card,
-.bg-card,
-html body .bg-white, 
-html body [class*="bg-slate-"],
-html body [class*="bg-gray-"],
-html body [class*="bg-zinc-"],
-html body [class*="bg-neutral-"] {
-  background-color: #1f120c !important;
-  color: #eec590 !important;
-  border-color: #3d2516 !important;
+.bg-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-color: var(--border);
 }
 
-/* Gradyan Arka Planları Temizleme */
-html body [class*="bg-gradient-"], 
-html body [class*="from-purple-"], 
-html body [class*="to-blue-"] {
-  background: #160c08 !important;
-  background-image: none !important;
+/* Ana altın sarısı butonlar */
+button.bg-primary,
+a.bg-primary,
+.bg-primary {
+  background-color: #ffc928;
+  color: #21170f;
 }
 
-/* Buton ve Vurgu Renkleri */
-html body .bg-pink-500, 
-html body .bg-pink-600, 
-html body [class*="bg-pink-"] {
-  background-color: #e59000 !important;
-  color: #ffffff !important;
+/* Yaygın pembe butonları altın sarısına dönüştür */
+.bg-pink-400,
+.bg-pink-500,
+.bg-pink-600,
+.bg-pink-700,
+.bg-pink-800,
+.bg-pink-900,
+.bg-rose-400,
+.bg-rose-500,
+.bg-rose-600,
+.bg-rose-700,
+.bg-fuchsia-400,
+.bg-fuchsia-500,
+.bg-fuchsia-600,
+.bg-purple-400,
+.bg-purple-500,
+.bg-purple-600,
+.bg-purple-700,
+.bg-violet-400,
+.bg-violet-500,
+.bg-violet-600,
+.bg-violet-700,
+.bg-indigo-400,
+.bg-indigo-500,
+.bg-indigo-600,
+.bg-blue-500,
+.bg-blue-600 {
+  background-color: #ffc928;
+  color: #21170f;
+  border-color: #ffc928;
 }
 
-html body .text-pink-500, 
-html body .text-pink-600,
-html body [class*="text-pink-"] {
-  color: #e59000 !important;
+/* Pembe, mor ve mavi metin vurguları */
+.text-pink-400,
+.text-pink-500,
+.text-pink-600,
+.text-rose-400,
+.text-rose-500,
+.text-rose-600,
+.text-fuchsia-400,
+.text-fuchsia-500,
+.text-fuchsia-600,
+.text-purple-400,
+.text-purple-500,
+.text-purple-600,
+.text-violet-400,
+.text-violet-500,
+.text-violet-600,
+.text-indigo-400,
+.text-indigo-500,
+.text-indigo-600,
+.text-blue-400,
+.text-blue-500,
+.text-blue-600 {
+  color: #ffc928;
 }
 
-/* Form Elemanları (Input, Textarea) */
-html body input, 
-html body textarea,
-html body select {
-  background-color: #160c08 !important;
-  color: #eec590 !important;
-  border-color: #3d2516 !important;
-}
-/* -------------------------------------------------------------
-   TÜM BİLEŞEN VE SAYFA RENKLERİNİ ANA SAYFAYA ZORLA EŞİTLEME
-   ------------------------------------------------------------- */
-
-/* 1. Tüm Sayfa Arka Planları */
-html, body, #__next, [class*="min-h-screen"], main, section, div[class*="bg-"] {
-  background-color: #160c08 !important;
-  background-image: none !important;
-}
-
-/* 2. Profil, Mesajlar ve Kart Alanları (Koyu Kahve İç Kutular) */
-.card,
-[class*="rounded-"],
-[class*="shadow-"],
-div[class*="bg-white"],
-div[class*="bg-pink-"],
-div[class*="bg-purple-"],
-div[class*="bg-slate-"],
-div[class*="bg-zinc-"],
-div[class*="bg-gray-"],
-div[class*="bg-blue-"] {
-  background-color: #1f120c !important;
-  border-color: #3d2516 !important;
-}
-
-/* Alt sayfaları ana sayfa temasına eşitleme (Hatasız Temiz Kod) */
-
-/* 1. Arka Planlar ve Kartlar */
-.bg-white,
-[class*="bg-slate-"],
-[class*="bg-gray-"],
-[class*="bg-zinc-"] {
-  background-color: #1f120c !important;
-  color: #eec590 !important;
-}
-
-/* 2. Pembe ve Mor Butonlar */
-button,
-.btn,
-[class*="bg-pink-"],
-[class*="bg-purple-"],
-[class*="bg-violet-"] {
-  background-color: #e59000 !important;
-  color: #160c08 !important;
-  border-color: #e59000 !important;
-}
-
-/* 3. Inputlar ve Arama Kutuları */
+/* Form alanları */
 input,
 textarea,
 select {
-  background-color: #160c08 !important;
-  color: #eec590 !important;
-  border: 1px solid #3d2516 !important;
+  background-color: #21170f;
+  color: #fff5df;
+  border-color: #8b6740;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #a15c00 !important;
+  color: #c2ad93;
+  opacity: 1;
 }
 
-/* 4. Pembe / Mor Yazılar ve Gradyan Temizliği */
-[class*="text-pink-"],
-[class*="text-purple-"],
-[class*="text-violet-"] {
-  color: #e59000 !important;
+/* Klavye odağı ve erişilebilirlik */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #ffc928;
+  outline-offset: 2px;
 }
 
-[class*="from-pink-"],
-[class*="from-purple-"],
-[class*="from-violet-"] {
-  --tw-gradient-from: #e59000 !important;
-  --tw-gradient-to: #3d2516 !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+/* Altın sarısı butonların üzerine gelince */
+button.bg-primary:hover,
+a.bg-primary:hover {
+  background-color: #ffe080;
+  color: #21170f;
 }
