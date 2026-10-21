@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import AuthDialog from "@/components/AuthDialog";
 import { Button } from "@/components/ui/button";
