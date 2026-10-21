@@ -26,12 +26,34 @@ export default function RootLayout({
   return (
     <html lang="tr" className="dark" style={{ colorScheme: "dark" }}>
       <head>
-        {/* Google Analytics ve Harici Scriptler Buraya Gelecek */}
+        {/* Google Analytics ve Harici Scriptler */}
       </head>
-      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-primary selection:text-background bg-[#160c08]">
+      <body className="min-h-screen bg-[#160c08] text-[#fff5df] antialiased selection:bg-[#ffc928] selection:text-[#160c08]">
         <Providers>
-          <div className="relative flex min-h-screen flex-col bg-background text-foreground bg-[#160c08]">
-            <main className="flex-1 bg-background text-foreground bg-[#160c08]">
+          {/* Dil seçeneklerini ve karanlık butonları görünür kılan akıllı CSS */}
+          <style dangerouslySetInnerHTML={{__html: `
+            input, select, textarea {
+              background-color: #21170f !important;
+              border: 1px solid #5b4027 !important;
+              color: #fff5df !important;
+            }
+            .bg-card, [class*="bg-card"], div[class*="rounded-xl"] {
+              background-color: #1f120c !important;
+              border: 1px solid #35271b !important;
+            }
+            /* Üst menüdeki arama, dil ve tüm buton simgelerini altın sarısı yap */
+            svg, .icon, [class*="icon-"], button i {
+              color: #ffc928 !important;
+              fill: #ffc928 !important;
+            }
+            /* Dil seçeneği yuvarlak alanlarını ve metinlerini zorla görünür yap */
+            [class*="language"], [class*="lang"], .dropdown, [class*="select-"] {
+              color: #ffc928 !important;
+              border-color: #5b4027 !important;
+            }
+          `}} />
+          <div className="relative flex min-h-screen flex-col bg-[#160c08] text-[#fff5df]">
+            <main className="flex-1 bg-[#160c08] text-[#fff5df]">
               {children}
             </main>
           </div>
