@@ -1,4 +1,4 @@
-import Type { Metadata } from "next";
+import type { Metadata } from "next";
 import Script from "next/script";
 import Providers from "@/components/Providers";
 import CookieConsent from "@/components/CookieConsent";
@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         {/* Google Analytics ve Harici Scriptler */}
       </head>
-      <body className="min-h-screen bg-[#160c08] text-[#fff5df] antialiased selection:bg-[#ffc928] selection:text-[#160c08]">
+      <body className="min-h-screen bg-[#160c08] text-[#eec590] antialiased selection:bg-[#ffc928] selection:text-[#160c08]">
         <Providers>
           {/* Dil seçeneklerini ve karanlık butonları görünür kılan akıllı CSS */}
           <style dangerouslySetInnerHTML={{__html: `
@@ -52,8 +52,8 @@ export default function RootLayout({
               border-color: #5b4027 !important;
             }
           `}} />
-          <div className="relative flex min-h-screen flex-col bg-[#160c08] text-[#fff5df]">
-            <main className="flex-1 bg-[#160c08] text-[#fff5df]">
+          <div className="relative flex min-h-screen flex-col bg-[#160c08]">
+            <main className="flex-1 bg-[#160c08]">
               {children}
             </main>
           </div>
