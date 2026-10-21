@@ -1,89 +1,51 @@
 "use client";
+
 import { useState } from "react";
 import AuthDialog from "@/components/AuthDialog";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [authTab, setAuthTab] = useState<"login" | "register" | null>(null);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-background">
-      {/* HEADER / NAVBAR */}
-      <header className="w-full border-b border-main-border bg-card/90 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-bold text-xl">
-              ♥
-            </div>
-            <div>
-              <span className="text-2xl font-black tracking-wider text-primary uppercase block leading-none">
-                SenVeBen
-              </span>
-              <span className="text-[10px] tracking-widest text-muted-foreground uppercase font-semibold">
-                Daha Fazla Aşk
-              </span>
-            </div>
-          </div>
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#160c08] text-[#eec590] px-4 text-center">
+      {/* Üst Logo / Başlık Alanı */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-black tracking-tight text-amber-100 mb-2">
+          SenVeBen
+        </h1>
+        <p className="text-sm text-amber-200/70 max-w-sm">
+          Türkiye'nin 81 ilinden yeni insanlarla tanışmak ve güvenli bağlantılar kurmak için doğru yerdesiniz.
+        </p>
+      </div>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-            <a href="#" className="text-primary transition-colors">Ana Sayfa</a>
-            <a href="/dashboard" className="hover:text-primary transition-colors">Taş Port</a>
-          </nav>
+      {/* Giriş ve Üye Ol Butonları */}
+      <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs mb-12">
+        <button
+          type="button"
+          onClick={() => setAuthTab("login")}
+          className="flex-1 h-12 rounded-xl bg-amber-500 font-bold text-[#160c08] hover:bg-amber-400 transition duration-200 shadow-md"
+        >
+          Giriş Yap
+        </button>
+        <button
+          type="button"
+          onClick={() => setAuthTab("register")}
+          className="flex-1 h-12 rounded-xl border border-amber-500/30 bg-[#1A0E08] font-bold text-amber-100 hover:border-amber-500 hover:bg-[#20120a] transition duration-200 shadow-sm"
+        >
+          Üye Ol
+        </button>
+      </div>
 
-          <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              onClick={() => setAuthTab("login")}
-              className="text-foreground hover:text-primary hover:bg-secondary"
-            >
-              Giriş Yap
-            </Button>
-            <Button
-              onClick={() => setAuthTab("register")}
-              className="bg-primary text-background hover:bg-theme-300 font-semibold"
-            >
-              Kayıt Ol
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* HERO SECTION */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-primary leading-tight mb-6">
-            Türkiye'nin Arkadaşlık ve Sosyal Portalı
-          </h1>
-          <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-            Aradığınız topluluğu, etkinlikleri ve gerçek arkadaşlıkları keşfetmeye hemen başlayın.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              size="lg"
-              onClick={() => setAuthTab("register")}
-              className="bg-primary text-background hover:bg-theme-300 text-base font-bold px-8 h-14"
-            >
-              Hemen Ücretsiz Üye Ol
-            </Button>
-            <a href="/dashboard">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-main-border bg-card text-foreground hover:bg-secondary text-base font-semibold px-8 h-14 w-full sm:w-auto"
-              >
-                Taş Port Paneline Git
-              </Button>
-            </a>
-          </div>
-        </div>
-      </main>
-
-      {/* AUTHENTICATION DIALOG */}
-      <AuthDialog
-        isOpen={authTab !== null}
-        onClose={() => setAuthTab(null)}
-        defaultTab={authTab || "login"}
+      {/* AuthDialog Bileşeni - Beklediği özellikler olan activeTab ve onClose ile düzeltildi */}
+      <AuthDialog 
+        activeTab={authTab} 
+        onClose={() => setAuthTab(null)} 
       />
+
+      {/* Alt Bilgi */}
+      <p className="text-[11px] text-amber-300/30 absolute bottom-6">
+        © 2026 SENveBEN. Tüm hakları saklıdır.
+      </p>
     </div>
   );
 }
