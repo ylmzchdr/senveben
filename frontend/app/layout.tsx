@@ -16,7 +16,13 @@ export const metadata: Metadata = {
     "SenVeBen",
     "arkadaşlık sitesi",
   ],
-};
+  // AdSense için gerekli olan hatasız meta etiket tanımı:
+  other: {
+   "google-adsense-account": "ca-pub-3769248372738122",
+
+  },
+}
+
 
 export default function RootLayout({
   children,
