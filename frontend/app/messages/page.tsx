@@ -1820,7 +1820,8 @@ function MessagesContent() {
                   <li key={item} className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-xs font-black">✓</span>{item}</li>
                 ))}
               </ul>
-              <button type="button" onClick={goPremium} className="mt-5 w-full rounded-full bg-gradient-to-r from-[#F6BA48] to-[#EF912C] px-5 py-3 font-black text-black shadow-lg shadow-yellow-500/20 transition hover:scale-[1.01]">👑 {t.goPremium}</button>
+              <button type="button" onClick={goPremium} className="mt-5 w-full rounded-full bg-primary text-primary-foreground hover:bg-[#ffe080] px-5 py-3 font-black shadow-lg shadow-yellow-500/10 transition hover:scale-[1.01]">👑 {t.goPremium}</button>
+
               <p className="mt-2 text-center text-xs text-white/50">{t.premiumOnly}</p>
             </div>
           </div>
@@ -1989,8 +1990,9 @@ function MessagesContent() {
         <section className="mt-5 overflow-hidden rounded-[26px] border border-[#F6BA48]/50 bg-[radial-gradient(circle_at_12%_50%,rgba(246,186,72,.20),transparent_30%),linear-gradient(100deg,#310D0C,#512510_55%,#683312)] p-5 shadow-2xl sm:p-7">
           <div className="grid items-center gap-6 lg:grid-cols-[260px_1fr_1fr_270px]">
             <div className="hidden items-center justify-center lg:flex">
-              <div className="relative flex h-40 w-48 items-end justify-center rounded-[30px] bg-gradient-to-t from-[#7E4114]/80 to-transparent">
-                <div className="absolute bottom-2 h-16 w-40 rounded-full bg-gradient-to-r from-[#683312] to-[#512510] shadow-[0_0_45px_rgba(246,186,72,.45)]" />
+              <div className="bg-card border border-border text-foreground rounded-[30px] ...">
+               <div className="absolute bottom-2 h-16 w-40 rounded-full bg-gradient-to-r from-[#e5a900] to-[#ffc928] shadow-[0_0_45px_rgba(255,201,40,.6)]" />
+
                 <div className="relative mb-10 text-7xl drop-shadow-[0_0_20px_rgba(255,192,0,.55)]">👑</div>
               </div>
             </div>
@@ -2005,8 +2007,9 @@ function MessagesContent() {
               ))}
             </ul>
             <div>
-              <button type="button" onClick={goPremium} className="w-full rounded-full bg-gradient-to-r from-[#F6BA48] to-[#EF912C] px-5 py-4 text-lg font-black text-black shadow-xl shadow-yellow-500/20 transition hover:scale-[1.01]">👑 {t.goPremium}</button>
-              <p className="mt-4 text-center text-sm text-white/55">♡ {t.securePayment}</p>
+             <button type="button" onClick={goPremium} className="mt-5 w-full rounded-full bg-primary text-primary-foreground hover:opacity-90 px-5 py-3 font-black shadow-lg transition hover:scale-[1.01]">👑 {t.goPremium}</button>
+
+
             </div>
           </div>
         </section>

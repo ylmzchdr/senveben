@@ -27,6 +27,12 @@ export default function RootLayout({
     <html lang="tr" className="dark" style={{ colorScheme: "dark" }}>
       <head>
         {/* Google Analytics ve Harici Scriptler */}
+        <Script
+          async
+          src="https://googlesyndication.com"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-screen bg-[#160c08] text-[#eec590] antialiased selection:bg-[#ffc928] selection:text-[#160c08]">
         <Providers>

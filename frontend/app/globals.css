@@ -255,3 +255,144 @@ a.bg-primary:hover {
   background-color: #ffe080;
   color: #21170f;
 }
+/* ==========================================================================
+   SENVEBEN.COM.TR - GLOBAL RENK UYUMLULUK PAKETİ
+   Giriş Sayfası ve Dashboard Renk Şemasını Tüm Alt Sayfalara Yayma Kodu
+   ========================================================================== */
+
+/* 1. Tüm sitenin ana arka planını ve genel metin rengini eşitler */
+html, body {
+  background-color: #160c08 !important; /* Köknar Kahvesi */
+  color: #eec590 !important;             /* Altın / Krem Metin Rengi */
+}
+
+/* 2. Diğer sayfalardaki (Mesajlar, Profil vb.) tüm ana kapsayıcıları ve kartları hizalar */
+main, section, article, .page-container, .dashboard-card {
+  background-color: #160c08 !important;
+  color: #eec590 !important;
+}
+
+/* 3. İkincil paneller, kenar çubukları (sidebar) ve alternatif arka plan alanları */
+.sidebar, .chat-container, .profile-sidebar, .secondary-bg {
+  background-color: #1A0E08 !important; /* İkincil Çok Koyu Kahve */
+}
+
+/* 4. Tüm site genelindeki butonları ve interaktif alanları giriş sayfasıyla eşitler */
+button, .btn-primary, .action-button {
+  background-color: #1A0E08 !important;
+  color: #eec590 !important;
+  border: 1px solid rgba(217, 119, 6, 0.4) !important; /* amber-600/%40 sınır */
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* 5. Butonların ve linklerin hover (üzerine gelme) efektlerini sabitler */
+button:hover, .btn-primary:hover, .action-button:hover {
+  background-color: #20120a !important; /* Hover Altı Koyu Ton */
+  border-color: rgb(252, 211, 77) !important; /* text-amber-300 */
+}
+
+/* 6. Form elemanları, input alanları ve seçim kutuları */
+input, textarea, select {
+  background-color: #1A0E08 !important;
+  color: #eec590 !important;
+  border: 1px solid rgba(217, 119, 6, 0.3) !important;
+}
+/* ==========================================================================
+   PROFİL SAYFASI ÖZEL RENK EZİCİLERİ (OVERRIDE)
+   ========================================================================== */
+
+/* 1. Üst kısımdaki pembe/mor gradyan arka planı koyu temaya eşitler */
+div[class*="bg-gradient-to-"], 
+div[class*="from-pink-"], 
+div[class*="to-purple-"] {
+  background-image: none !important;
+  background-color: #1f120c !important; /* Panel Koyu Kahverengi */
+  border: 1px solid #5b4027 !important;  /* Sınır Rengi */
+}
+
+/* 2. "Profili Düzenle" ve diğer tüm pembe/mor butonları altın sarısı yapar */
+button[class*="bg-pink-"], 
+a[class*="bg-pink-"],
+button[class*="bg-purple-"],
+a[class*="bg-purple-"],
+.bg-pink-600,
+.bg-pink-500 {
+  background-color: #ffc928 !important;   /* Ana Altın Sarısı */
+  color: #21170f !important;             /* Koyu Metin */
+  background-image: none !important;
+}
+
+/* 3. Butonların üzerine gelindiğinde (hover) renk değişimi */
+button[class*="bg-pink-"]:hover, 
+a[class*="bg-pink-"]:hover,
+button[class*="bg-purple-"]:hover,
+a[class*="bg-purple-"]:hover {
+  background-color: #ffe080 !important;   /* Açık Altın */
+  color: #21170f !important;
+}
+
+/* 4. Profil kartı üzerindeki sarı/turuncu ikon ve detaylar */
+[class*="text-pink-"], 
+[class*="text-purple-"] {
+  color: #ffc928 !important;
+}
+
+/* 5. Alt kısımdaki beyaz bilgi kartlarının arka planını koyu kahve yapar */
+div[class*="bg-white"], 
+.bg-white {
+  background-color: #1f120c !important;   /* Panel Koyu Kahverengi */
+  color: #fff5df !important;             /* Krem Metin */
+  border: 1px solid #5b4027 !important;
+}
+/* ==========================================================================
+   PROFİL SAYFASI KESİN ÇÖZÜM - OVERRIDE CSS
+   ========================================================================== */
+
+/* 1. Pembe/Mor Gradyan Arka Plan Kartını Koyu Kahverengiye Çevirir */
+div[style*="background"], 
+.from-pink-500, 
+.to-purple-500,
+div[class*="from-pink-"] {
+  background: #1f120c !important;
+  background-image: none !important;
+  background-color: #1f120c !important;
+  border: 1px solid #5b4027 !important;
+}
+
+/* 2. "Profili Düzenle" ve Tüm Pembe Butonları Altın Sarısı Yapar */
+.bg-pink-600,
+button.bg-pink-600,
+a[class*="bg-pink-"],
+button[class*="bg-pink-"],
+[class*="bg-gradient"] button {
+  background: #ffc928 !important;
+  background-color: #ffc928 !important;
+  background-image: none !important;
+  color: #21170f !important;
+  border-color: #ffc928 !important;
+}
+
+/* 3. Buton Hover Efekti */
+.bg-pink-600:hover,
+button.bg-pink-600:hover {
+  background-color: #ffe080 !important;
+  color: #21170f !important;
+}
+
+/* 4. Alt kısımdaki Beyaz/Açık Gri Bilgi Kartlarını Koyu Kahve Yapar */
+.bg-white,
+div[class*="bg-gray-"],
+.card,
+.dashboard-card {
+  background-color: #1f120c !important;
+  color: #fff5df !important;
+  border: 1px solid #5b4027 !important;
+}
+
+/* 5. Kartların İçindeki Başlık ve İkon Renklerini Düzeltir */
+.text-gray-900, 
+.text-black,
+div[class*="bg-white"] span,
+div[class*="bg-white"] p {
+  color: #fff5df !important;
+}
